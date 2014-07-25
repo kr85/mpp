@@ -1,0 +1,39 @@
+{
+  "name": "mpp",
+  "version": "0.0.1",
+  "description": "A website to track and log your training for maximal physical performance.",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "gulp": "^3.8.6",
+    "gulp-bower": "^0.0.6"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-less": "^0.11.3",
+    "grunt-contrib-uglify": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-phpunit": "^0.3.3"
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kr85/mpp.git"
+  },
+  "keywords": [
+    "Maximal",
+    "Physical",
+    "Performance",
+    "MMA",
+    "Kosta",
+    "Rashev"
+  ],
+  "author": "Kosta Rashev",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/kr85/mpp/issues"
+  },
+  "homepage": "https://github.com/kr85/mpp"
+}

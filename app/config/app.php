@@ -124,6 +124,7 @@ return array(
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Mrjuliuss\Syntara\SyntaraServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+      'Way\Generators\GeneratorsServiceProvider',
 
 	),
 
