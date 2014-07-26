@@ -53,4 +53,9 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User
    {
       return $this::$registerRules;
    }
+
+   public function questions()
+   {
+      return $this->hasMany('Question', 'user_id');
+   }
 }

@@ -3,8 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEppsTable extends Migration
-{
+class CreateEppsTable extends Migration {
    /**
     * Run the migrations.
     *

@@ -14,7 +14,7 @@ class AddExplosivePowerIndexToEppsTable extends Migration {
 	{
 		Schema::table('epps', function(Blueprint $table)
 		{
-         $table->integer('explosive_power_index')->unsigned()->nullable()->default(0);
+         //$table->integer('explosive_power_index')->unsigned()->nullable()->default(0);
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddExplosivePowerIndexToEppsTable extends Migration {
 	{
 		Schema::table('epps', function(Blueprint $table)
 		{
-         $table->dropColumn('explosive_power_index');
+         //$table->dropColumn('explosive_power_index');
 		});
 	}
 
