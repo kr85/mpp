@@ -1,28 +1,51 @@
 <?php
 
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
+class User extends Cartalyst\Sentry\Users\Eloquent\User
+{
+   public static $registerRules = array(
+      'username'              => 'required|unique:users|between:4,16',
+      'email'                 => 'required|email|unique:users',
+      'password'              => 'required|min:8|confirmed',
+      'password_confirmation' => 'required|min:8'
+   );
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+   public static $sessionRules = array(
+      'email'                 => 'required|email|exists:users',
+      'password'              => 'required|min:8',
+   );
 
-	use UserTrait, RemindableTrait;
+   public function getUsername()
+   {
+      return $this->username;
+   }
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+   public function getReminderEmail()
+   {
+      return $this->email;
+   }
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token');
+   public function getFirstName()
+   {
+      return $this->first_name;
+   }
 
+   public function getLastName()
+   {
+      return $this->last_name;
+   }
 
+   public function getPermissions()
+   {
+      return $this->permissions;
+   }
 
+   public function getAuthPassword()
+   {
+      return $this->password;
+   }
+
+   public function getSessionRules()
+   {
+      return $this::$sessionRules;
+   }
 }

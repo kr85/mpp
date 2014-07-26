@@ -88,3 +88,31 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/*
+ * ------------------------------------------------------------------------
+ * MPP Custom Filters
+ * ------------------------------------------------------------------------
+ *
+ */
+
+Route::filter('isGuest', function($route, $request)
+{
+   if (!Sentry::check()) {
+      // The user is a guest.
+   } else {
+      return Redirect::route('sessions.login')
+         ->with('error', 'You are already logged in!');
+   }
+});
+
+Route::filter('user', function($route, $request)
+{
+   if (Sentry::check()) {
+      // The user is logged in.
+   } else {
+      return Redirect::route('index')
+         ->with('error', 'You need to login first!');
+   }
+});
+

@@ -125,6 +125,7 @@ return array(
 		'Mrjuliuss\Syntara\SyntaraServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
       'Way\Generators\GeneratorsServiceProvider',
+      'MPP\Repositories\RepositoryServiceProvider',
 
 	),
 

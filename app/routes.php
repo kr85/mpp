@@ -15,3 +15,21 @@ Route::get('/', array(
    'as'   => 'index',
    'uses' => 'HomeController@getIndex'
 ));
+
+Route::get('login', array(
+   'as'     => 'sessions.login',
+   'before' => 'is_guest',
+   'uses'   => 'SessionsController@create'
+));
+
+Route::post('login', array(
+   'as'     => 'sessions.store',
+   'before' => 'csrf|isGuest',
+   'uses'   => 'SessionsController@store'
+));
+
+Route::get('logout', array(
+   'as'     => 'sessions.logout',
+   'before' => 'user',
+   'uses'   => 'SessionsController@destroy'
+));
