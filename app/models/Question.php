@@ -7,6 +7,11 @@ class Question extends \Eloquent
       'answered', 'viewed',   'votes'
    );
 
+   public static $rules = array(
+      'title'    => 'required|min:3',
+      'question' => 'required|min:10'
+   );
+
    public function users()
    {
       return $this->belongsTo('User', 'user_id');
@@ -16,6 +21,11 @@ class Question extends \Eloquent
    {
       return $this->belongsToMany('Tag', 'questions_tags')
          ->withTimestamps();
+   }
+
+   public function getQuestionRules()
+   {
+      return $this::$rules;
    }
 
 }

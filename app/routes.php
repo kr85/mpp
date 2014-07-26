@@ -46,4 +46,21 @@ Route::post('register', array(
    'uses'   => 'RegisterController@store'
 ));
 
+Route::get('ask', array(
+   'as'     => 'qa.create',
+   'before' => 'user',
+   'uses'   => 'QuestionsController@create'
+));
+
+Route::post('ask', array(
+   'as'     => 'qa.store',
+   'before' => 'user|csrf',
+   'uses'   => 'QuestionsController@store'
+));
+
+Route::get('question/{id}/{title}', array(
+   'as' => '',
+   'uses' => ''
+))->where(array('id' => '[0-9]+', 'title' => '[0-9a-zA-Z\-\_]+'));
+
 Route::resource('epps', 'EppsController');

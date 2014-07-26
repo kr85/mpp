@@ -39,5 +39,8 @@
 
         <!-- JavaScript -->
         {{ HTML::script('assets/javascript/frontend.js') }}
+
+        @yield('assets')
+
     </body>
 </html>
