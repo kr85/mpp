@@ -45,3 +45,5 @@ Route::post('register', array(
    'before' => 'csrf|isGuest',
    'uses'   => 'RegisterController@store'
 ));
+
+Route::resource('epps', 'EppsController');

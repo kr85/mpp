@@ -1,20 +1,24 @@
 <?php
 
 use MPP\Repositories\User\UserRepository;
+use Cartalyst\Sentry\Sentry as Sentry;
 
 class RegisterController extends \BaseController
 {
    protected $user;
    protected $userRepository;
+   protected $sentry;
    protected $layout = 'layouts.master';
 
    public function __construct(
       User $user,
-      UserRepository $userRepository
+      UserRepository $userRepository,
+      Sentry $sentry
    )
    {
       $this->user = $user;
       $this->userRepository = $userRepository;
+      $this->sentry = $sentry;
    }
 
 
@@ -33,6 +37,10 @@ class RegisterController extends \BaseController
             ->withErrors($validation);
       } else {
          $user = $this->userRepository->storeRegister();
+
+         $userGroup = $this->sentry->findGroupById(2);
+
+         $user->addGroup($userGroup);
 
          $login = $this->userRepository->storeSession();
 

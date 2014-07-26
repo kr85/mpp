@@ -60,6 +60,7 @@ class EloquentUserRepository implements UserRepository
    public function destroySession()
    {
       \Sentry::logout();
+
    }
 
    public function storeRegister()

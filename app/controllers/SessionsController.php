@@ -76,13 +76,12 @@ class SessionsController extends \BaseController
 
             $login = $this->userRepository->storeSession();
 
-            if (!$login) {
+            if ($login->getId() == null) {
                return Redirect::route('sessions.login');
+            } else {
+               return \Redirect::route('index')
+                  ->with('success', 'You\'ve successfully logged in!');
             }
-
-            return \Redirect::route('index')
-               ->with('success', 'You\'ve successfully logged in!');
-
          } catch (LoginRequiredException $e) {
             return \Redirect::route('sessions.login')
                ->withInput()

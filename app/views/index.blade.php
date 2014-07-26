@@ -6,6 +6,7 @@
 
     @if(Sentry::check())
         {{ Sentry::getUser()->username }}
+        {{ ExplosivePower::getExplosivePowerIndex() }}
     @endif
 
 @stop

@@ -1,6 +1,7 @@
 <?php namespace MPP\Repositories;
 
 use Illuminate\Support\ServiceProvider;
+use MPP\Repositories\User\EloquentUserRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -11,9 +12,8 @@ class RepositoryServiceProvider extends ServiceProvider
 
    public function registerUserRepository()
    {
-      $this->app->bind(
-         'MPP\Repositories\User\UserRepository',
-         'MPP\Repositories\User\EloquentUserRepository'
-      );
+      $this->app->bind('MPP\Repositories\User\UserRepository', function($app) {
+         return new EloquentUserRepository(new \User());
+      });
    }
 }
