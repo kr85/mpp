@@ -33,3 +33,15 @@ Route::get('logout', array(
    'before' => 'user',
    'uses'   => 'SessionsController@destroy'
 ));
+
+Route::get('register', array(
+   'as'     => 'register.index',
+   'before' => 'isGuest',
+   'uses'   => 'RegisterController@create'
+));
+
+Route::post('register', array(
+   'as'     => 'register.store',
+   'before' => 'csrf|isGuest',
+   'uses'   => 'RegisterController@store'
+));

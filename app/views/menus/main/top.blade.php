@@ -19,7 +19,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (!Sentry::check())
-                    <li>{{ HTML::link('', 'Register') }}</li>
+                    <li>{{ HTML::link('/register', 'Register') }}</li>
                     <li>{{ HTML::link('/login', 'Login') }}</li
                 @else
                     <li>{{ HTML::link('/logout', 'Logout') }}</li

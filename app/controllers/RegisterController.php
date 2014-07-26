@@ -1,86 +1,49 @@
 <?php
 
-class RegisterController extends \BaseController {
+use MPP\Repositories\User\UserRepository;
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /register
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
+class RegisterController extends \BaseController
+{
+   protected $user;
+   protected $userRepository;
+   protected $layout = 'layouts.master';
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /register/create
-	 *
-	 * @return Response
-	 */
+   public function __construct(
+      User $user,
+      UserRepository $userRepository
+   )
+   {
+      $this->user = $user;
+      $this->userRepository = $userRepository;
+   }
+
+
 	public function create()
 	{
-		//
+		$this->layout->content = View::make('register.index');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /register
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
-		//
-	}
+		$validation = Validator::make(Input::all(), $this->user->getRegisterRules());
 
-	/**
-	 * Display the specified resource.
-	 * GET /register/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+      if ($validation->fails()) {
+         return Redirect::back()
+            ->withInput()
+            ->withErrors($validation);
+      } else {
+         $user = $this->userRepository->storeRegister();
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /register/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+         $login = $this->userRepository->storeSession();
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /register/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
+         if ($login->getId() != null) {
+            return Redirect::route('index')
+               ->with('success', 'You\'ve registered and logged in successfully!');
+         } else {
+            return Redirect::back()
+               ->withInput()
+               ->with('error', 'Registration was unsuccessful!');
+         }
+      }
 	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /register/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }

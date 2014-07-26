@@ -27,6 +27,10 @@
 
         <div class="container">
 
+            @if (Session::has('success'))
+                {{ Session::get('success') }}
+            @endif
+
             @yield('content')
 
         </div>

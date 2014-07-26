@@ -5,8 +5,18 @@
     {{ Form::open(array('route' => 'sessions.store', 'class' => 'form-login')) }}
         <h2>Login</h2>
 
-        @if (Session::has('errors'))
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
 
+        @if (Session::has('error'))
+            {{ Session::get('error') }}
+        @endif
+
+        @if (Session::has('success'))
+            {{ Session::get('success') }}
         @endif
 
         <p>{{ Form::text('email', null, array('class'=>'input-text-field', 'placeholder'=>'Email')) }}</p>

@@ -1,7 +1,17 @@
 <?php
 
 use MPP\Repositories\User\UserRepository;
+use Cartalyst\Sentry\Users\LoginRequiredException;
+use Cartalyst\Sentry\Users\PasswordRequiredException;
+use Cartalyst\Sentry\Users\WrongPasswordException;
+use Cartalyst\Sentry\Users\UserNotFoundException;
+use Cartalyst\Sentry\Users\UserNotActivatedException;
+use Cartalyst\Sentry\Throttling\UserSuspendedException;
+use Cartalyst\Sentry\Throttling\UserBannedException;
 
+/**
+ * Class SessionsController
+ */
 class SessionsController extends \BaseController
 {
    /**
@@ -55,50 +65,50 @@ class SessionsController extends \BaseController
     */
    public function store()
 	{
-		$validation = Validator::make(Input::all(), $this->user->getSessionRules());
+      $validation = \Validator::make(\Input::all(), $this->user->getSessionRules());
 
       if ($validation->fails()) {
-         return Redirect::route('sessions.login')
+         return \Redirect::route('sessions.login')
             ->withInput()
             ->withErrors($validation);
       } else {
          try {
-            $credentials = array(
-               'email'    => Input::get('email'),
-               'password' => Input::get('password')
-            );
 
-            Sentry::authenticate($credentials, false);
+            $login = $this->userRepository->storeSession();
 
-            return Redirect::route('index')
+            if (!$login) {
+               return Redirect::route('sessions.login');
+            }
+
+            return \Redirect::route('index')
                ->with('success', 'You\'ve successfully logged in!');
 
-         } catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
-            return Redirect::route('sessions.login')
+         } catch (LoginRequiredException $e) {
+            return \Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'Login field is required.');
-         } catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
-            return Redirect::route('sessions.login')
+         } catch (PasswordRequiredException $e) {
+            return \Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'Password field is required.');
-         } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
-            return Redirect::route('sessions.login')
+         } catch (WrongPasswordException $e) {
+            return \Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'Wrong password, try again.');
-         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-            return Redirect::route('sessions.login')
+         } catch (UserNotFoundException $e) {
+            return \Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'User was not found.');
-         } catch (Cartalyst\Sentry\Users\UserNotActivatedException $e) {
-            return Redirect::route('sessions.login')
+         } catch (UserNotActivatedException $e) {
+            return \Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'User is not activated.');
-         } catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e) {
-            return Redirect::route('sessions.login')
+         } catch (UserSuspendedException $e) {
+            return \Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'User is suspended.');
-         } catch (Cartalyst\Sentry\Throttling\UserBannedException $e) {
-            return Redirect::route('sessions.login')
+         } catch (UserBannedException $e) {
+            return \Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'User is banned.');
          }
@@ -112,7 +122,7 @@ class SessionsController extends \BaseController
     */
    public function destroy()
 	{
-		Sentry::logout();
+		$this->userRepository->destroySession();
 
       return Redirect::route('sessions.logout')
          ->with('success', 'You\'ve successfully logged out!');

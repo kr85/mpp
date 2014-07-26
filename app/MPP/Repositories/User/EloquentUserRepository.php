@@ -45,4 +45,36 @@ class EloquentUserRepository implements UserRepository
       }
    }
 
+   public function storeSession()
+   {
+      $credentials = array(
+         'email'    => \Input::get('email'),
+         'password' => \Input::get('password')
+      );
+
+       $login = \Sentry::authenticate($credentials, false);
+
+      return $login;
+   }
+
+   public function destroySession()
+   {
+      \Sentry::logout();
+   }
+
+   public function storeRegister()
+   {
+      $user = \Sentry::getUserProvider()->create(array(
+         'username'     => \Input::get('username'),
+         'email'        => \Input::get('email'),
+         'password'     => \Input::get('password'),
+         'first_name'   => \Input::get('first_name'),
+         'last_name'    => \Input::get('last_name'),
+         'permissions'  => array('general-user' => 1),
+         'activated'    => 1,
+         'activated_at' => new \DateTime()
+      ));
+
+      return $user;
+   }
 }

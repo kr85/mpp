@@ -48,4 +48,9 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User
    {
       return $this::$sessionRules;
    }
+
+   public function getRegisterRules()
+   {
+      return $this::$registerRules;
+   }
 }
