@@ -14,6 +14,7 @@
 
         <!-- Custom CSS -->
         {{ HTML::style('assets/stylesheets/custom.css') }}
+        {{-- HTML::style('assets/stylesheets/styles.css') --}}
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,20 +26,30 @@
     <body>
         @include('menus.main.top')
 
-        <div class="container">
+        <div class="container container-color">
 
             @if (Session::has('success'))
-                {{ Session::get('success') }}
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
+
+            @if (Session::has('error'))
+                <div class="alert alert-warning" role="alert">
+                    {{ Session::get('error') }}
+                </div>
             @endif
 
             @yield('content')
 
-        </div>
+            @include('footers.main.footer')
 
-        @include('footers.main.footer')
+        </div>
 
         <!-- JavaScript -->
         {{ HTML::script('assets/javascript/frontend.js') }}
+        {{ HTML::script('assets/javascript/libs.js') }}
+        {{ HTML::script('assets/javascript/plugins.js') }}
 
         @yield('assets')
 

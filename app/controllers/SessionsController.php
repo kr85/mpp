@@ -68,7 +68,7 @@ class SessionsController extends \BaseController
       $validation = \Validator::make(\Input::all(), $this->user->getSessionRules());
 
       if ($validation->fails()) {
-         return \Redirect::route('sessions.login')
+         return Redirect::route('sessions.login')
             ->withInput()
             ->withErrors($validation);
       } else {
@@ -79,35 +79,35 @@ class SessionsController extends \BaseController
             if ($login->getId() == null) {
                return Redirect::route('sessions.login');
             } else {
-               return \Redirect::route('index')
+               return Redirect::intended('/')
                   ->with('success', 'You\'ve successfully logged in!');
             }
          } catch (LoginRequiredException $e) {
-            return \Redirect::route('sessions.login')
+            return Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'Login field is required.');
          } catch (PasswordRequiredException $e) {
-            return \Redirect::route('sessions.login')
+            return Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'Password field is required.');
          } catch (WrongPasswordException $e) {
-            return \Redirect::route('sessions.login')
+            return Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'Wrong password, try again.');
          } catch (UserNotFoundException $e) {
-            return \Redirect::route('sessions.login')
+            return Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'User was not found.');
          } catch (UserNotActivatedException $e) {
-            return \Redirect::route('sessions.login')
+            return Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'User is not activated.');
          } catch (UserSuspendedException $e) {
-            return \Redirect::route('sessions.login')
+            return Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'User is suspended.');
          } catch (UserBannedException $e) {
-            return \Redirect::route('sessions.login')
+            return Redirect::route('sessions.login')
                ->withInput()
                ->with('error', 'User is banned.');
          }
@@ -123,7 +123,7 @@ class SessionsController extends \BaseController
 	{
 		$this->userRepository->destroySession();
 
-      return Redirect::route('sessions.logout')
+      return Redirect::route('index')
          ->with('success', 'You\'ve successfully logged out!');
 	}
 

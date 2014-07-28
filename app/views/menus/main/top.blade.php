@@ -15,7 +15,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#forum">Forum</a></li>
-                <li><a href="#qa">Q/A</a></li>
+                <li>{{ HTML::link('/qa', 'Q/A') }}</li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (!Sentry::check())
