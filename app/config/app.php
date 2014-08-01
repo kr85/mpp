@@ -126,6 +126,7 @@ return array(
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
       'Way\Generators\GeneratorsServiceProvider',
       'MPP\Repositories\RepositoryServiceProvider',
+      'Khill\Fontawesome\FontAwesomeServiceProvider',
 
 	),
 

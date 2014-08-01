@@ -3,31 +3,64 @@
 use MPP\Repositories\User\UserRepository;
 use Cartalyst\Sentry\Sentry as Sentry;
 
+/**
+ * Class RegisterController
+ */
 class RegisterController extends \BaseController
 {
+   /**
+    * User model.
+    *
+    * @var User
+    */
    protected $user;
+
+   /**
+    * User repository.
+    *
+    * @var MPP\Repositories\User\UserRepository
+    */
    protected $userRepository;
+
+   /**
+    * Sentry model.
+    *
+    * @var Sentry
+    */
    protected $sentry;
+
+   /**
+    * Master layout.
+    *
+    * @var string
+    */
    protected $layout = 'layouts.master';
 
    public function __construct(
-      User $user,
-      UserRepository $userRepository,
-      Sentry $sentry
+      User $user                     = null,
+      UserRepository $userRepository = null,
+      Sentry $sentry                 = null
    )
    {
-      $this->user = $user;
+      $this->user           = $user;
       $this->userRepository = $userRepository;
-      $this->sentry = $sentry;
+      $this->sentry         = $sentry;
    }
 
-
-	public function create()
+   /**
+    * Displays the registration page.
+    */
+   public function create()
 	{
 		$this->layout->content = View::make('register.index');
 	}
 
-	public function store()
+   /**
+    * Stores a new user to the database.
+    *
+    * @return \Illuminate\Http\RedirectResponse
+    */
+   public function store()
 	{
 		$validation = Validator::make(Input::all(), $this->user->getRegisterRules());
 

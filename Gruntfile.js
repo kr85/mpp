@@ -21,7 +21,11 @@ module.exports = function(grunt) {
       },
       js_frontend: {
         src: [
-          './bower_components/jquery/dist/jquery.js',
+          //'./bower_components/jquery-migrate/jquery-migrate.js',
+          //'./bower_components/jquery/dist/jquery.js',
+          './bower_components/jquery/dist/libs/jquery-1.10.1.js',
+          './bower_components/jquery/dist/libs/jquery-migrate-1.2.1.js',
+          './bower_components/jquery.ui/dist/jquery-ui.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
           './app/assets/javascript/frontend.js'
         ],
@@ -29,7 +33,11 @@ module.exports = function(grunt) {
       },
       js_backend: {
         src: [
-          './bower_components/jquery/dist/jquery.js',
+          //'./bower_components/jquery-migrate/jquery-migrate.js',
+          //'./bower_components/jquery/dist/jquery.js',
+          './bower_components/jquery/dist/libs/jquery-1.10.1.js',
+          './bower_components/jquery/dist/libs/jquery-migrate-1.2.1.js',
+          './bower_components/jquery.ui/dist/jquery-ui.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
           './app/assets/javascript/backend.js'
         ],
@@ -63,8 +71,9 @@ module.exports = function(grunt) {
     watch: {
         js_frontend: {
           files: [
-            //watched files
-            './bower_components/jquery/dist/jquery.js',
+            './bower_components/jquery.ui/dist/jquery-ui.js',
+            //'./bower_components/jquery/dist/jquery.js',
+            './bower_components/jquery/dist/libs/jquery-1.10.1.js',
             './bower_components/bootstrap/dist/js/bootstrap.js',
             './app/assets/javascript/frontend.js'
             ],   
@@ -75,7 +84,9 @@ module.exports = function(grunt) {
         },
         js_backend: {
           files: [
-            './bower_components/jquery/dist/jquery.js',
+            './bower_components/jquery.ui/dist/jquery-ui.js',
+            //'./bower_components/jquery/dist/jquery.js',
+            './bower_components/jquery/dist/libs/jquery-1.10.1.js',
             './bower_components/bootstrap/dist/js/bootstrap.js',
             './app/assets/javascript/backend.js'
           ],   

@@ -42,11 +42,11 @@ class SessionsController extends \BaseController
     * @param UserRepository $userRepository
     */
    public function __construct(
-      User $user,
-      UserRepository $userRepository
+      User $user                     = null,
+      UserRepository $userRepository = null
    )
    {
-      $this->user = $user;
+      $this->user           = $user;
       $this->userRepository = $userRepository;
    }
 

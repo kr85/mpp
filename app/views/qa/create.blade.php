@@ -4,35 +4,41 @@
 
     <h1>Ask A Question</h1>
 
-    {{ Form::open(array('route' => 'qa.store')) }}
+        <ul>
+            @foreach($errors->all() as $error)
+                <li style="color: red">{{ $error }}</li>
+            @endforeach
+        </ul>
 
-        <p>
-            Questions's title:
-        </p>
-        <p>
-            {{ Form::text('title', Input::old('title'), array()) }}
-        </p>
+        {{ Form::open(array('route' => 'question.store')) }}
 
-        <p>
-            Ask your question:
-        </p>
-        <p>
-            {{ Form::textarea('question', Input::old('question'), array()) }}
-        </p>
+            <p>
+                Questions's title:
+            </p>
+            <p>
+                {{ Form::text('title', Input::old('title'), array()) }}
+            </p>
 
-        <p>
-            Tags: Use commas to split tags (tag1, tag2, ...). <br />
-            To use multiple words in a tag, follow this format (tag-name-1, tag-name-2, ...).
-        </p>
-        <p>
-            {{ Form::text('tags', Input::old('tags'), array()) }}
-        </p>
+            <p>
+                Ask your question:
+            </p>
+            <p>
+                {{ Form::textarea('question', Input::old('question'), array()) }}
+            </p>
 
-        <p>
-            {{ Form::submit('Ask this Question') }}
-        </p>
+            <p>
+                Tags: Use commas to split tags (tag1, tag2, ...). <br />
+                To use multiple words in a tag, follow this format (tag-name-1, tag-name-2, ...).
+            </p>
+            <p>
+                {{ Form::text('tags', Input::old('tags'), array()) }}
+            </p>
 
-    {{ Form::close() }}
+            <p>
+                {{ Form::submit('Submit') }}
+            </p>
+
+        {{ Form::close() }}
 @stop
 
 @section('assets')

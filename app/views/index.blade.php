@@ -2,9 +2,8 @@
 
 @section('content')
 
-    <h3>Index page</h3>
+    Index
 
-    @if(Sentry::check())
-        {{ Sentry::getUser()->username }}
-    @endif
+    {{ FA::icon('star'); }}
+
 @stop

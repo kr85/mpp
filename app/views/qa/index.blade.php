@@ -2,9 +2,9 @@
 
 @section('content')
 
-        {{HTML::linkRoute('qa.create','Ask a question?')}}
+        <a href="{{ URL::route('question.create') }}"><span class="btn btn-large btn-primary">Ask a Question?</span></a>
 
-            <h1>{{$title}}</h1>
+            <h1>{{ $title }}</h1>
 
             @if(count($questions))
 
@@ -12,16 +12,13 @@
 
                     <div class="qwrap">
                         <?php
-                            //does the question have an accepted answer?
-                            $answers 	= $question->answers;
-                            $accepted 	= false; //default false
+                            $answers  = $question->answers;
+                            $accepted = false;
 
-                            //We loop through each answer, and check if there is an accepted answer
-                            if($question->answers!=null) {
+                            if($question->answers != null) {
                                 foreach ($answers as $answer) {
-                                    //If an accepted answer is found, we break the loop
-                                    if($answer->correct==1) {
-                                        $accepted=true;
+                                    if($answer->correct == 1) {
+                                        $accepted = true;
                                         break;
                                     }
                                 }
@@ -30,14 +27,16 @@
 
                         @if($accepted)
                             <div class="cntbox cntgreen">
-                        @else
+                        @elseif(count($answers) == 0)
                             <div class="cntbox cntred">
+                        @else
+                            <div class="cntbox">
                         @endif
                                 <div class="cntcount">
                                     {{ count($answers) }}
                                 </div>
                                 <div class="cnttext">
-                                    @if(count($answers) <= 1)
+                                    @if(count($answers) == 1)
                                         answer
                                     @else
                                         answers
@@ -48,12 +47,12 @@
 
                         <div class="qtext">
                             <div class="qhead">
-                                {{HTML::linkRoute('qa.show',$question->title,array($question->id,Str::slug($question->title)))}}
+                                {{ HTML::linkRoute('question.show', $question->title, array($question->id, Str::slug($question->title))) }}
                             </div>
                             <div class="qinfo">Asked by
                                 <a href="#">
-                                    {{$question->users->first_name.' '.$question->users->last_name}}
-                                </a> at {{date('m/d/Y H:i:s',strtotime($question->created_at))}}
+                                        {{ $question->users->first_name . ' ' . $question->users->last_name }}
+                                </a> at {{ date('m/d/Y H:i:s', strtotime($question->created_at)) }}
                             </div>
                             @if($question->tags != null)
                                 <ul class="qtagul">
@@ -68,11 +67,10 @@
                     </div>
                 @endforeach
 
-                {{-- and lastly, the pagination --}}
-                {{$questions->links()}}
+                {{ $questions->links() }}
 
             @else
-                No questions found. {{HTML::linkRoute('qa.create','Ask a question?')}}
+                <p>No questions found.</p>
             @endif
 
 @stop

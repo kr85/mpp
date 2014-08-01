@@ -14,7 +14,9 @@
 
         <!-- Custom CSS -->
         {{ HTML::style('assets/stylesheets/custom.css') }}
-        {{-- HTML::style('assets/stylesheets/styles.css') --}}
+
+        <!-- FontAwesome -->
+        {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') }}
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +29,7 @@
         @include('menus.main.top')
 
         <div class="container container-color">
-
+            <div class="clear-fix"></div>
             @if (Session::has('success'))
                 <div class="alert alert-success" role="alert">
                     {{ Session::get('success') }}
@@ -42,14 +44,12 @@
 
             @yield('content')
 
-            @include('footers.main.footer')
-
         </div>
+
+        <!--@include('footers.main.footer')-->
 
         <!-- JavaScript -->
         {{ HTML::script('assets/javascript/frontend.js') }}
-        {{ HTML::script('assets/javascript/libs.js') }}
-        {{ HTML::script('assets/javascript/plugins.js') }}
 
         @yield('assets')
 

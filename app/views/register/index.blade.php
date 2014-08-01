@@ -8,7 +8,7 @@
 
             <ul>
                 @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li style="color: red">{{ $error }}</li>
                 @endforeach
             </ul>
 
@@ -20,12 +20,12 @@
                 {{ Session::get('success') }}
             @endif
 
-            <p>{{ Form::text('username', null, array('class'=>'input-text-field', 'placeholder'=>'Username')) }}</p>
-            <p>{{ Form::text('first_name', null, array('class'=>'input-text-field', 'placeholder'=>'First Name')) }}</p>
-            <p>{{ Form::text('last_name', null, array('class'=>'input-text-field', 'placeholder'=>'Last Name')) }}</p>
-            <p>{{ Form::text('email', null, array('class'=>'input-text-field', 'placeholder'=>'Email Address')) }}</p>
-            <p>{{ Form::password('password', array('class'=>'input-text-field', 'placeholder'=>'Password')) }}</p>
-            <p>{{ Form::password('password_confirmation', array('class'=>'input-text-field', 'placeholder'=>'Confirm Password')) }}</p>
+            <p>{{ Form::text('username', null, array('placeholder'=>'Username')) }}</p>
+            <p>{{ Form::text('first_name', null, array('placeholder'=>'First Name')) }}</p>
+            <p>{{ Form::text('last_name', null, array('placeholder'=>'Last Name')) }}</p>
+            <p>{{ Form::text('email', null, array('placeholder'=>'Email Address')) }}</p>
+            <p>{{ Form::password('password', array('placeholder'=>'Password')) }}</p>
+            <p>{{ Form::password('password_confirmation', array('placeholder'=>'Confirm Password')) }}</p>
 
             <p>{{ Form::submit('Register', array('class'=>'btn btn-large btn-primary'))}}</p>
 

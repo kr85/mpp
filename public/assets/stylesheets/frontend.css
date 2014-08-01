@@ -1,6 +1,5 @@
 /*!
 * Bootstrap v3.0.0
-
 *
 * Copyright 2013 Twitter, Inc
 * Licensed under the Apache License v2.0
@@ -602,8 +601,6 @@ ul,
 ol {
   margin-top: 0;
   margin-bottom: 10px;
-  list-style-type: none;
-  padding: 0;
 }
 ul ul,
 ol ul,

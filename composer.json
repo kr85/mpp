@@ -8,7 +8,8 @@
 		"way/generators": "dev-master",
 		"mrjuliuss/syntara": "1.2.*",
 		"barryvdh/laravel-ide-helper": "1.*",
-		"laravelbook/ardent": "dev-master"
+		"laravelbook/ardent": "dev-master",
+        "khill/fontawesomephp" : "1.0.x"
 	},
 	"require-dev": {
 	   "phpunit/phpunit": "3.7.*",
