@@ -11,11 +11,17 @@
 |
 */
 
+/**
+ * Main index page routes.
+ */
 Route::get('/', array(
    'as'   => 'index',
    'uses' => 'HomeController@getIndex'
 ));
 
+/**
+ * Sessions routes.
+ */
 Route::get('login', array(
    'as'     => 'sessions.login',
    'before' => 'isGuest',
@@ -34,6 +40,9 @@ Route::get('logout', array(
    'uses'   => 'SessionsController@destroy'
 ));
 
+/**
+ * Registration routes.
+ */
 Route::get('register', array(
    'as'     => 'register.index',
    'before' => 'isGuest',
@@ -46,6 +55,9 @@ Route::post('register', array(
    'uses'   => 'RegisterController@store'
 ));
 
+/**
+ * Question routes.
+ */
 Route::get('ask', array(
    'as'     => 'question.create',
    'before' => 'user',
@@ -104,11 +116,21 @@ Route::get('question/unlock/{id}', array(
    'uses'   => 'QuestionsController@unlock'
 ))->where('id', '[0-9]+');
 
+
+/**
+ * Answer routes.
+ */
 Route::post('question/{id}/{title}', array(
    'as'     => 'answer.store',
    'before' => 'csrf|user',
    'uses'   => 'AnswersController@store'
 ))->where(array('id' => '[0-9]+', 'title' => '[0-9a-zA-Z\-\_]+'));
+
+Route::patch('answer/update/{id}', array(
+   'as'     => 'answer.update',
+   'before' => 'user|csrf',
+   'uses'   => 'AnswersController@update'
+))->where('id', '[0-9]+');
 
 Route::get('answer/vote/{direction}/{id}', array(
    'as'     => 'answer.vote',
@@ -128,4 +150,22 @@ Route::get('answer/delete/{id}', array(
    'uses'   => 'AnswersController@destroy'
 ))->where('id', '[0-9]+');
 
+Route::get('answer/edit/{id}', array(
+   'as'     => 'answer.edit',
+   'before' => 'user',
+   'uses'   => 'AnswersController@edit'
+))->where('id', '[0-9]+');
+
+/**
+ * User routes.
+ */
+Route::get('user/{id}', array(
+   'as'     => 'user.show',
+   'before' => 'user',
+   'uses'   => 'UsersController@show'
+))->where('id', '[0-9]+');
+
+/**
+ * MPP routes.
+ */
 Route::resource('epps', 'EppsController');

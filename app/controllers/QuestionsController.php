@@ -122,7 +122,7 @@ class QuestionsController extends \BaseController
          }
 
          return Redirect::route('question.index')
-            ->with('success','Your question has been created successfully! '.HTML::linkRoute(
+            ->with('success','Your question has been successfully created! '.HTML::linkRoute(
                   'question.show', 'Click here to see your question',array(
                   'id'=> $questionId,'title' => Str::slug($question->title)
                )));
@@ -221,7 +221,7 @@ class QuestionsController extends \BaseController
          }
 
          return Redirect::back()
-            ->with('success','Your question has been updated successfully! '.HTML::linkRoute(
+            ->with('success','Your question has been successfully updated! '.HTML::linkRoute(
                   'question.show', 'Click here to see your question',array(
                   'id'=> $questionId,'title' => Str::slug($question->title)
                )));
@@ -246,7 +246,7 @@ class QuestionsController extends \BaseController
          $question->delete();
 
          return Redirect::route('question.index')
-            ->with('success', 'Question was deleted successfully!');
+            ->with('success', 'Question was successfully deleted!');
       } else {
          return Redirect::back()
             ->with('error', 'Nothing to delete!');
@@ -269,7 +269,7 @@ class QuestionsController extends \BaseController
          ));
 
          return Redirect::back()
-            ->with('success', 'Question was locked successfully!');
+            ->with('success', 'Question was successfully locked!');
       } else {
          return Redirect::route('question.index')
             ->with('error', 'Question was not found!');
@@ -292,7 +292,7 @@ class QuestionsController extends \BaseController
          ));
 
          return Redirect::back()
-            ->with('success', 'Question was unlocked successfully!');
+            ->with('success', 'Question was successfully unlocked!');
       } else {
          return Redirect::route('question.index')
             ->with('error', 'Question was not found!');

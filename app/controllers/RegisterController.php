@@ -75,6 +75,16 @@ class RegisterController extends \BaseController
 
          $user->addGroup($userGroup);
 
+         $data = array(
+            'first_name' => Input::get('first_name'),
+            'url'        => 'http://www.mpp.com'
+         );
+
+         Mail::send('emails.welcome', $data, function($message) {
+            $message->to(Input::get('email'), Input::get('first_name') . ' ' . Input::get('last_name'))->subject('Welcome to MPP!');
+         });
+
+
          $login = $this->userRepository->storeSession();
 
          if ($login->getId() != null) {

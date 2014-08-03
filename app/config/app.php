@@ -127,6 +127,7 @@ return array(
       'Way\Generators\GeneratorsServiceProvider',
       'MPP\Repositories\RepositoryServiceProvider',
       'Khill\Fontawesome\FontAwesomeServiceProvider',
+      'Bogardo\Mailgun\MailgunServiceProvider',
 
 	),
 

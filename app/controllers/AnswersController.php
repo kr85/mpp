@@ -12,14 +12,15 @@ class AnswersController extends \BaseController
     */
    protected $answer;
 
-   /**
-    * Construct.
-    *
-    * @param Answer $answer
-    */
-   public function __construct(Answer $answer)
+   protected $question;
+
+   public function __construct(
+      Answer $answer,
+      Question $question
+   )
    {
       $this->answer = $answer;
+      $this->question = $question;
    }
 
    /**
@@ -31,7 +32,7 @@ class AnswersController extends \BaseController
     */
    public function store($id, $title)
 	{
-      $question = Question::find($id);
+      $question = $this->question->find($id);
 
       if ($question) {
          $validation = Validator::make(Input::all(), $this->answer->getAnswerRules());
@@ -44,7 +45,7 @@ class AnswersController extends \BaseController
             ));
 
             return Redirect::route('question.show', array($id, $title))
-               ->with('success', 'Answer was submitted successfully!');
+               ->with('success', 'Answer was successfully submitted!');
          } else {
             return Redirect::route('question.show', array($id, $title))
                ->withInput()
@@ -63,7 +64,17 @@ class AnswersController extends \BaseController
 
 	public function edit($id)
 	{
-		//
+		if (Request::ajax()) {
+         $answer = $this->answer->find($id);
+
+         if ($answer) {
+            return $answer->id;
+         } else {
+            Response::make('FAIL', 400);
+         }
+      } else {
+         return Redirect::route('question.index');
+      }
 	}
 
 	public function update($id)
@@ -79,16 +90,16 @@ class AnswersController extends \BaseController
     */
    public function destroy($id)
 	{
-		$answer = Answer::with('questions')->find($id);
+		$answer = $this->answer->with('questions')->find($id);
 
       if ($answer) {
          if (Sentry::getUser()->hasAccess('admin') || Sentry::getUser()->getId() == $answer->user_id) {
-            $delete = Answer::find($id)->delete();
+            $answer->delete();
 
             return Redirect::route('question.show', array(
                   $answer->question_id, Str::slug($answer->questions->title
                )
-            ))->with('success', 'Answer was deleted successfully!');
+            ))->with('success', 'Answer was successfully deleted!');
          } else {
 
          }
@@ -108,7 +119,7 @@ class AnswersController extends \BaseController
    public function getVote($direction, $id)
    {
       if (Request::ajax()) {
-         $answer = Answer::find($id);
+         $answer = $this->answer->find($id);
 
          if ($answer) {
             if ($direction == 'up') {
@@ -138,11 +149,11 @@ class AnswersController extends \BaseController
     */
    public function getChooseBestAnswer($id)
    {
-      $answer = Answer::with('questions')->find($id);
+      $answer = $this->answer->with('questions')->find($id);
 
       if ($answer) {
          if (Sentry::getUser()->hasAccess('admin') || Sentry::getUser()->getId() == $answer->user_id) {
-            Answer::where('question_id', $answer->question_id)->update(array(
+            $this->answer->where('question_id', $answer->question_id)->update(array(
                'correct' => 0
             ));
 
@@ -153,7 +164,7 @@ class AnswersController extends \BaseController
             return Redirect::route('question.show', array(
                   $answer->question_id, Str::slug($answer->questions->title
                )
-            ))->with('success', 'Best answer was chosen successfully!');
+            ))->with('success', 'Best answer was successfully chosen!');
          } else {
             return Redirect::route('question.show', array(
                   $answer->question_id, Str::slug($answer->questions->title

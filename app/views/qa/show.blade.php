@@ -49,7 +49,7 @@
 		@if(Sentry::check())
 			<div class="qwrap">
 				<ul class="fastbar">
-					@if(Sentry::getUser()->hasAccess('admin') && Sentry::getUser()->id == $question->user_id)
+					@if(Sentry::getUser()->hasAccess('admin'))
 					    <li>
 					        <a href="{{ URL::route('question.edit', $question->id) }}">
 					            {{ FA::icon('edit') }} Edit
@@ -88,9 +88,22 @@
 					@endif
 					    <li class="answer">
 					        <a href="#">
-					            {{ FA::icon('comment') }} Answer
+					            {{ FA::icon('comment') }} Answer ( {{ count($question->answers) }} )
 					        </a>
 					    </li>
+					    @if($question)
+					        <li class="like">
+					            <a href="#">
+					                {{ FA::icon('thumbs-up') }} Like ( {{ $question->votes }} )
+					            </a>
+					        </li>
+					    @else
+					        <li class="unlike">
+					            <a href="#">
+					                {{ FA::icon('thumbs-down') }} Unlike ( {{ $question->votes }} )
+					            </a>
+					        </li>
+					    @endif
 				</ul>
 			</div>
 		@endif
@@ -137,13 +150,6 @@
 				<div class="rrepol">
 			@endif
 
-				@if(Sentry::check())
-					<div class="arrowbox">
-						{{ HTML::linkRoute('answer.vote', '', array('up', $answer->id), array('class' => 'like', 'title' => 'Upvote')) }}
-						{{ HTML::linkRoute('answer.vote', '', array('down', $answer->id), array('class' => 'dislike', 'title' => 'Downvote')) }}
-					</div>
-				@endif
-
 				<div class="cntbox">
 					<div class="cntcount">{{ $answer->votes }}</div>
                         @if($answer->votes == 1)
@@ -181,11 +187,35 @@
 							<div class="qwrap">
 								<ul class="fastbar">
 									@if(Sentry::getUser()->hasAccess('admin') || Sentry::getUser()->id == $answer->user_id)
+										<li class="edit">
+                                    	    <a href="{{ URL::route('answer.edit', $answer->id) }}">
+                                                {{ FA::icon('edit') }} Edit
+                                            </a>
+                                    	</li>
 										<li class="delete">
 										    <a href="{{ URL::route('answer.delete', $answer->id) }}">
                                                 {{ FA::icon('trash-o') }} Delete
                                             </a>
 										</li>
+								    @else
+								        @if($question)
+                                    	    <li class="like">
+                                    		    <a href="#">
+                                    			    {{ FA::icon('thumbs-up') }} Like
+                                    			    @if($answer->votes == 0)
+                                    			        ( 0 )
+                                    			    @else
+                                    			        ( {{ $answer->votes }} )
+                                    			    @endif
+                                    			</a>
+                                    	    </li>
+                                    	@else
+                                    		<li class="unlike">
+                                    		    <a href="#">
+                                    			    {{ FA::icon('thumbs-down') }} Unlike ( {{ $answer->votes }} )
+                                    			</a>
+                                    		</li>
+                                    	@endif
 									@endif
 								</ul>
 							</div>
@@ -216,7 +246,6 @@
             $replyarea.hide();
             $('li.answer a').click(function(e) {
                 e.preventDefault();
-
                 if($replyarea.is(':hidden')) {
                     $replyarea.fadeIn('fast');
                 } else {
@@ -246,14 +275,14 @@
 
     @if(Sentry::check() && (Route::currentRouteName() == 'tagged' ||  Route::currentRouteName() == 'question.show'))
         <script type="text/javascript">
-            $('.arrowbox .like, .arrowbox .dislike').click(function(e) {
-            	e.preventDefault();
-            	var $this = $(this);
-            	$.get($(this).attr('href'),function($data) {
-            		$this.parent('.arrowbox').next('.cntbox').find('.cntcount').text($data);
-            	}).fail(function() {
-            		alert('An error has been occurred, please try again later');
-            	});
+            $('.arrowbox .like, .arrowbox .dislike').click(function(e){
+                e.preventDefault();
+                var $this = $(this);
+                $.get($(this).attr('href'),function($data){
+                    $this.parent('.arrowbox').next('.cntbox').find('.cntcount').text($data);
+                }).fail(function(){
+                    alert('An error has been occurred, please try again later');
+                });
             });
         </script>
     @endif

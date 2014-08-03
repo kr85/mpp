@@ -13,14 +13,14 @@
         {{ Form::open(array('route' => 'question.store')) }}
 
             <p>
-                Questions's title:
+                Title:
             </p>
             <p>
                 {{ Form::text('title', Input::old('title'), array()) }}
             </p>
 
             <p>
-                Ask your question:
+                Question:
             </p>
             <p>
                 {{ Form::textarea('question', Input::old('question'), array()) }}
@@ -35,7 +35,7 @@
             </p>
 
             <p>
-                {{ Form::submit('Submit') }}
+                {{ Form::submit('Ask!', array('class' => 'btn btn-large btn-primary')) }}
             </p>
 
         {{ Form::close() }}

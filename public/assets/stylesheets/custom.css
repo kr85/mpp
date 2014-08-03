@@ -200,9 +200,9 @@ ul, ol {
 .fastbar li a {
     color: #747474;
     display: block;
-    padding-left: 19px;
+    padding-left: 10px;
     float: left;
-    margin-right: 10px;
+    margin-right: 5px;
     background-position: left center;
     background-repeat: no-repeat;
 }
@@ -211,7 +211,7 @@ ul, ol {
 .fastbar li a:focus {
     text-decoration: none;
     border-bottom: solid;
-    border-bottom-left-radius: 2em;
+    border-bottom-left-radius: 0.5em;
 }
 
 .fastbar .flag a {
@@ -274,7 +274,7 @@ ul, ol {
 .bestanswer {
     position: absolute;
     top: 125px;
-    left: 55px;
+    left: 20px;
     text-align: center;
     background: url(../../assets/images/content/tick.png) 5px -10px no-repeat;
     padding-top: 30px;
@@ -287,7 +287,7 @@ ul, ol {
 .choosebestanswer {
     position: absolute;
     top: 125px;
-    left: 55px;
+    left: 20px;
     text-align: center;
     background: url(../../assets/images/content/tick.png) 5px -60px no-repeat;
     padding-top: 30px;
@@ -336,6 +336,63 @@ textarea.fullinput {
     font-style: oblique;
 }
 
+.dropdown-menu {
+    background-color: #222222;
+    border-bottom-right-radius: 2.5em;
+    border-bottom-left-radius: 0.5em;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    background-color: #222222;
+    text-decoration: none;
+    border-bottom: solid;
+    border-top: solid;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 3em;
+    border-top-left-radius: 2em;
+    font-weight: 900;
+    text-transform: lowercase;
+    font-family: "Segoe UI Semilight";
+    text-shadow: 5px 5px 5px red;
+    color: #ffffff;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    background-image: none;
+}
+
+.dropdown-menu > li > a {
+    color: #999999
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-top-color: #999999
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
+    border-top-color: #ffffff
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-bottom-color: #999999
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
+    border-bottom-color: #ffffff
+}
+
+.navbar-inverse .navbar-nav > .active >a,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    border-color: #ffffff;
+}
+
 .alert {
     text-align: center;
 }
@@ -343,8 +400,8 @@ textarea.fullinput {
 @media (max-width: 500px) {
     .choosebestanswer {
         position: absolute;
-        top: 125px;
-        left: 55px;
+        top: 35px;
+        left: 120px;
         text-align: center;
         background: url(../../assets/images/content/tick.png) 5px -60px no-repeat;
         padding-top: 30px;
@@ -356,8 +413,8 @@ textarea.fullinput {
 
     .bestanswer {
         position: absolute;
-        top: 125px;
-        left: 55px;
+        top: 35px;
+        left: 120px;
         text-align: center;
         background: url(../../assets/images/content/tick.png) 5px -10px no-repeat;
         padding-top: 30px;
@@ -368,15 +425,30 @@ textarea.fullinput {
     }
 
     #rbox {
-        margin-top: 80px;
+        margin-top: 0;
+    }
+
+    .fastbar li a {
+        width: 115px;
+    }
+
+    .fastbar li a:hover,
+    .fastbar li a:focus {
+        text-decoration: underline;
+        border-bottom: none;
+        border-bottom-left-radius: 0;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: compact;
     }
 }
 
-@media (max-width: 992px) and  (min-width: 501px) {
+@media (max-width: 550px) and  (min-width: 501px) {
     .choosebestanswer {
         position: absolute;
-        top: 125px;
-        left: 55px;
+        top: 35px;
+        left: 120px;
         text-align: center;
         background: url(../../assets/images/content/tick.png) 5px -60px no-repeat;
         padding-top: 30px;
@@ -388,8 +460,8 @@ textarea.fullinput {
 
     .bestanswer {
         position: absolute;
-        top: 125px;
-        left: 55px;
+        top: 35px;
+        left: 120px;
         text-align: center;
         background: url(../../assets/images/content/tick.png) 5px -10px no-repeat;
         padding-top: 30px;
@@ -400,6 +472,16 @@ textarea.fullinput {
     }
 
     #rbox {
-        margin-top: 80px;
+        padding-right: 10px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: compact;
+    }
+}
+
+@media (min-width: 770px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
     }
 }
