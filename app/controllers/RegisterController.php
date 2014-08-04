@@ -88,6 +88,11 @@ class RegisterController extends \BaseController
       }
 	}
 
+   /**
+    * Sends a welcome email to newly registered users.
+    *
+    * @param $data
+    */
    public function  welcomeEmail($data)
    {
       Mail::send('emails.welcome', $data, function($message) {

@@ -95,7 +95,7 @@ Route::patch('question/update/{id}', array(
 ))->where('id', '[0-9]+');
 
 Route::get('question/tagged/{tag}', array(
-   'as'   => 'tagged',
+   'as'   => 'question.tagged',
    'uses' => 'QuestionsController@getTaggedWith'
 ))->where('tag', '[0-9a-zA-Z\-\_]+');
 

@@ -6,6 +6,13 @@
 class Tag extends \Eloquent
 {
    /**
+    * The name of the table.
+    *
+    * @var string
+    */
+   protected $table = 'tags';
+
+   /**
     * Properties that can be mass assigned.
     *
     * @var array

@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.qa')
 
-@section('content')
+@section('qa-content')
 
 
     <h1>Edit A Question</h1>

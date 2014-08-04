@@ -59,7 +59,7 @@ class QuestionsController extends \BaseController
    public function index()
 	{
 		$this->layout->content = View::make('qa.index')
-         ->with('title', 'Questions!')
+         ->with('title', 'All Questions!')
          ->with('questions', $this->question->with('users', 'tags', 'answers')
             ->orderBy('id', 'desc')
             ->paginate(5)

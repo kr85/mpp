@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.qa')
 
-@section('content')
+@section('qa-content')
 
 <h1 id="replyh">{{ $question->title }}</h1>
 
@@ -40,7 +40,7 @@
 			<ul class="qtagul">
 				@foreach($question->tags as $tag)
 					<li>
-					    {{ HTML::linkRoute('tagged', $tag->tag, $tag->tag_name) }}
+					    {{ HTML::linkRoute('question.tagged', $tag->tag, $tag->tag_name) }}
 					</li>
 				@endforeach
 			</ul>
@@ -88,19 +88,19 @@
 					@endif
 					    <li class="answer">
 					        <a href="#">
-					            {{ FA::icon('comment') }} Answer ( {{ count($question->answers) }} )
+					            {{ FA::icon('comment') }} Answer &bull; {{ count($question->answers) }}
 					        </a>
 					    </li>
 					    @if($question)
 					        <li class="like">
 					            <a href="#">
-					                {{ FA::icon('thumbs-up') }} Like ( {{ $question->votes }} )
+					                {{ FA::icon('thumbs-up') }} Like &bull; {{ $question->votes }}
 					            </a>
 					        </li>
 					    @else
 					        <li class="unlike">
 					            <a href="#">
-					                {{ FA::icon('thumbs-down') }} Unlike ( {{ $question->votes }} )
+					                {{ FA::icon('thumbs-down') }} Unlike &bull; {{ $question->votes }}
 					            </a>
 					        </li>
 					    @endif
@@ -150,6 +150,13 @@
 				<div class="rrepol">
 			@endif
 
+			@if(Sentry::check())
+            					<div class="arrowbox">
+            						{{ HTML::linkRoute('answer.vote','',array('up',$answer->id), array('class'=>'like', 'title' => 'Upvote')) }}
+            						{{ HTML::linkRoute('answer.vote','',array('down',$answer->id),array('class'=>'dislike','title'=>'Downvote')) }}
+            					</div>
+            				@endif
+
 				<div class="cntbox">
 					<div class="cntcount">{{ $answer->votes }}</div>
                         @if($answer->votes == 1)
@@ -198,15 +205,15 @@
                                             </a>
 										</li>
 								    @else
-								        @if($question)
+								        <?php $liked = false; ?>
+
+								        @if(!$liked)
                                     	    <li class="like">
                                     		    <a href="#">
-                                    			    {{ FA::icon('thumbs-up') }} Like
-                                    			    @if($answer->votes == 0)
-                                    			        ( 0 )
-                                    			    @else
-                                    			        ( {{ $answer->votes }} )
-                                    			    @endif
+                                    			    {{ FA::icon('thumbs-up') }} {{ HTML::linkRoute('answer.vote','Like',array('up',$answer->id), array('class'=>'like', 'title' => 'Upvote')) }} &bull;
+                                    			        <div class="votes">
+                                    			            {{ $answer->votes }}
+                                    			        </div>
                                     			</a>
                                     	    </li>
                                     	@else
@@ -214,6 +221,7 @@
                                     		    <a href="#">
                                     			    {{ FA::icon('thumbs-down') }} Unlike ( {{ $answer->votes }} )
                                     			</a>
+                                    			<?php $liked = false; ?>
                                     		</li>
                                     	@endif
 									@endif
@@ -273,9 +281,9 @@
 		@endif
 	@endif
 
-    @if(Sentry::check() && (Route::currentRouteName() == 'tagged' ||  Route::currentRouteName() == 'question.show'))
+    @if(Sentry::check() && (Route::currentRouteName() == 'question.tagged' ||  Route::currentRouteName() == 'question.show'))
         <script type="text/javascript">
-            $('.arrowbox .like, .arrowbox .dislike').click(function(e){
+            $('.arrowbox .like').click(function(e){
                 e.preventDefault();
                 var $this = $(this);
                 $.get($(this).attr('href'),function($data){
@@ -284,6 +292,26 @@
                     alert('An error has been occurred, please try again later');
                 });
             });
+
+            $('.arrowbox .dislike').click(function(e){
+                e.preventDefault();
+                var $this = $(this);
+                $.get($(this).attr('href'),function($data) {
+                    $this.parent('.arrowbox').next('.cntbox').find('.cntcount').text($data);
+                }).fail(function() {
+                    alert('An error has been occurred, please try again later');
+                });
+            });
+
+                        $('.like .like').click(function(e){
+                            e.preventDefault();
+                            var $this = $(this);
+                            $.get($(this).attr('href'),function($data) {
+                                $this.parent('.like').find('.votes').text($data);
+                            }).fail(function() {
+                                alert('An error has been occurred, please try again later');
+                            });
+                        });
         </script>
     @endif
 

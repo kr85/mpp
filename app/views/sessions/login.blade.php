@@ -21,7 +21,7 @@
         </div>
         <div class="checkbox checkbox-width">
             <label>
-                <input name="remember" type="checkbox" value="Remember Me" class=""> Remember Me
+                <input name="remember" type="checkbox" value="Remember Me" checked> Remember Me
             </label>
             {{ HTML::linkRoute('password.remind', 'Forgot Password?', array(), array('class' => 'pull-right forgot')) }}
         </div>

@@ -20,7 +20,7 @@ class RemindersController extends Controller {
 	public function postRemind()
 	{
 		switch ($response = Password::remind(Input::only('email'), function($message) {
-         $message->subject('Password Reset!');
+         $message->subject('Password Reset to MPP.com!');
       })) {
 			case Password::INVALID_USER:
 				return Redirect::route('password.remind')

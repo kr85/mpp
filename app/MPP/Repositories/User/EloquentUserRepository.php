@@ -52,7 +52,7 @@ class EloquentUserRepository implements UserRepository
          'password' => \Input::get('password')
       );
 
-       $login = \Sentry::authenticate($credentials, false);
+       $login = \Sentry::authenticateAndRemember($credentials);
 
       return $login;
    }

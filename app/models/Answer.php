@@ -6,6 +6,13 @@
 class Answer extends Eloquent
 {
    /**
+    * The name of the table.
+    *
+    * @var string
+    */
+   protected $table = 'answers';
+
+   /**
     * Properties that can be mass assigned.
     *
     * @var array
@@ -52,5 +59,10 @@ class Answer extends Eloquent
    public function questions()
    {
       return $this->belongsTo('Question', 'question_id');
+   }
+
+   public function votes()
+   {
+      return $this->hasMany('Vote', 'votes');
    }
 }

@@ -6,6 +6,13 @@
 class Question extends \Eloquent
 {
    /**
+    * The name of the table.
+    *
+    * @var string
+    */
+   protected $table = 'questions';
+
+   /**
     * Properties that can be mass assigned.
     *
     * @var array

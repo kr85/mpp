@@ -1,8 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.qa')
 
-@section('content')
-
-        <a href="{{ URL::route('question.create') }}"><span class="btn btn-large btn-primary">Ask a Question?</span></a>
+@section('qa-content')
 
             <h1>{{ $title }}</h1>
 
@@ -58,7 +56,7 @@
                                 <ul class="qtagul">
                                     @foreach($question->tags as $tag)
                                         <li>
-                                            {{ HTML::linkRoute('tagged' ,$tag->tag, $tag->tag_name) }}
+                                            {{ HTML::linkRoute('question.tagged' ,$tag->tag, $tag->tag_name) }}
                                         </li>
                                     @endforeach
                                 </ul>
