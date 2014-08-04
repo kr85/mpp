@@ -20,14 +20,27 @@
                 {{ Session::get('success') }}
             @endif
 
-            <p>{{ Form::text('username', null, array('placeholder'=>'Username')) }}</p>
-            <p>{{ Form::text('first_name', null, array('placeholder'=>'First Name')) }}</p>
-            <p>{{ Form::text('last_name', null, array('placeholder'=>'Last Name')) }}</p>
-            <p>{{ Form::text('email', null, array('placeholder'=>'Email Address')) }}</p>
-            <p>{{ Form::password('password', array('placeholder'=>'Password')) }}</p>
-            <p>{{ Form::password('password_confirmation', array('placeholder'=>'Confirm Password')) }}</p>
-
-            <p>{{ Form::submit('Register', array('class'=>'btn btn-large btn-primary'))}}</p>
+            <div class="form-group">
+                {{ Form::text('username', null, array('class' => 'text-field', 'placeholder'=>'Username')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::text('first_name', null, array('class' => 'text-field', 'placeholder'=>'First Name')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::text('last_name', null, array('class' => 'text-field', 'placeholder'=>'Last Name')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::text('email', null, array('class' => 'text-field', 'placeholder'=>'Email Address')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::password('password', array('class' => 'text-field', 'placeholder'=>'Password')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::password('password_confirmation', array('class' => 'text-field', 'placeholder'=>'Confirm Password')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::submit('Register', array('class'=>'btn btn-block btn-large btn-primary'))}}
+            </div>
 
         {{ Form::close() }}
     </div>

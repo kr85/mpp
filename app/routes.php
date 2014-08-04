@@ -78,6 +78,7 @@ Route::get('qa', array(
 
 Route::get('question/{id}/{title}', array(
    'as' => 'question.show',
+   'before' => 'user',
    'uses' => 'QuestionsController@show'
 ))->where(array('id' => '[0-9]+', 'title' => '[0-9a-zA-Z\-\_]+'));
 
@@ -164,6 +165,33 @@ Route::get('user/{id}', array(
    'before' => 'user',
    'uses'   => 'UsersController@show'
 ))->where('id', '[0-9]+');
+
+/**
+ * Password Reminder routes.
+ */
+Route::get('password/reset', array(
+   'as'     => 'password.remind',
+   'before' => 'isGuest',
+   'uses'   => 'RemindersController@getRemind'
+));
+
+Route::post('password/reset', array(
+   'as' => 'password.request',
+   'before' => 'isGuest',
+   'uses' => 'RemindersController@postRemind'
+));
+
+Route::get('password/reset/{token}', array(
+   'as'     => 'password.reset',
+   'before' => 'isGuest',
+   'uses'   => 'RemindersController@getReset'
+));
+
+Route::post('password/reset/{token}', array(
+   'as'     => 'password.update',
+   'before' => 'isGuest',
+   'uses'   => 'RemindersController@postReset'
+));
 
 /**
  * MPP routes.

@@ -485,3 +485,46 @@ textarea.fullinput {
         display: block;
     }
 }
+
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+    width: 300px;
+}
+
+.text-field {
+    width: 300px;
+}
+
+.checkbox-width {
+    width: 300px;
+}
+
+.remind-header {
+    margin-left: -10px;
+}
+
+@media (max-width: 600px) {
+    .text-field {
+        width: 200px;
+    }
+
+    .checkbox-width {
+        width: 200px;
+    }
+
+    .forgot {
+        float: left !important;
+    }
+
+    input[type="submit"].btn-block,
+    input[type="reset"].btn-block,
+    input[type="button"].btn-block {
+        width: 200px;
+    }
+
+    .remind-header {
+        margin-left: -10px;
+        font-size: 12px;
+    }
+}

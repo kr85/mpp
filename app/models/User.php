@@ -1,6 +1,8 @@
 <?php
 
-class User extends Cartalyst\Sentry\Users\Eloquent\User
+use Illuminate\Auth\Reminders\RemindableInterface;
+
+class User extends Cartalyst\Sentry\Users\Eloquent\User implements  RemindableInterface
 {
    public static $registerRules = array(
       'username'              => 'required|unique:users|between:4,16',

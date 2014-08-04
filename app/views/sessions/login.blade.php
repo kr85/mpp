@@ -13,12 +13,21 @@
 
         {{ Form::open(array('route' => 'sessions.store')) }}
 
-            <p>
-                {{ Form::text('email', null, array('placeholder' => 'Email')) }}
-            </p>
-            <p>{{ Form::password('password', array('placeholder' => 'Password')) }}</p>
-
-            <p>{{ Form::submit('Login', array('class' => 'btn btn-large btn-primary')) }}</p>
+        <div class="form-group">
+            {{ Form::text('email', null, array('class' => 'text-field', 'placeholder' => 'Email')) }}
+        </div>
+        <div class="form-group">
+            {{ Form::password('password', array('class' => 'text-field', 'placeholder' => 'Password')) }}
+        </div>
+        <div class="checkbox checkbox-width">
+            <label>
+                <input name="remember" type="checkbox" value="Remember Me" class=""> Remember Me
+            </label>
+            {{ HTML::linkRoute('password.remind', 'Forgot Password?', array(), array('class' => 'pull-right forgot')) }}
+        </div>
+        <div class="form-group">
+             {{ Form::submit('Login', array('class' => 'btn btn-block btn-large btn-primary')) }}
+        </div>
 
         {{ Form::close() }}
     </div>

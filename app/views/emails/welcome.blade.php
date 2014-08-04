@@ -12,6 +12,9 @@
     <body>
         <h1>Hi {{ $first_name }},</h1>
 
-        <p>Welcome to MMP and thank you for registering!</p>
+        <p>Thank you for registering and welcome to MPP!</p>
+        <br />
+        <p>Best,</p>
+        <p>MPP Team</p>
     </body>
 </html>

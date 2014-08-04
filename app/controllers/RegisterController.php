@@ -62,7 +62,7 @@ class RegisterController extends \BaseController
     */
    public function store()
 	{
-		$validation = Validator::make(Input::all(), $this->user->getRegisterRules());
+		$validation = Validator::make($data = Input::all(), $this->user->getRegisterRules());
 
       if ($validation->fails()) {
          return Redirect::back()
@@ -70,20 +70,10 @@ class RegisterController extends \BaseController
             ->withErrors($validation);
       } else {
          $user = $this->userRepository->storeRegister();
-
          $userGroup = $this->sentry->findGroupById(2);
-
          $user->addGroup($userGroup);
 
-         $data = array(
-            'first_name' => Input::get('first_name'),
-            'url'        => 'http://www.mpp.com'
-         );
-
-         Mail::send('emails.welcome', $data, function($message) {
-            $message->to(Input::get('email'), Input::get('first_name') . ' ' . Input::get('last_name'))->subject('Welcome to MPP!');
-         });
-
+         $this->welcomeEmail($data);
 
          $login = $this->userRepository->storeSession();
 
@@ -97,4 +87,12 @@ class RegisterController extends \BaseController
          }
       }
 	}
+
+   public function  welcomeEmail($data)
+   {
+      Mail::send('emails.welcome', $data, function($message) {
+         $message->to(Input::get('email'), Input::get('first_name') . ' ' . Input::get('last_name'));
+         $message->subject('Welcome to MPP!');
+      });
+   }
 }
