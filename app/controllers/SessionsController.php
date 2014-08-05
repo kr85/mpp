@@ -55,7 +55,7 @@ class SessionsController extends \BaseController
     */
    public function create()
 	{
-      $this->layout->content = View::make('sessions.login');
+      return $this->layout->content = View::make('sessions.login');
 	}
 
    /**

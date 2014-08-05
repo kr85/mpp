@@ -16,14 +16,14 @@
                 Title:
             </p>
             <p>
-                {{ Form::text('title', Input::old('title'), array()) }}
+                {{ Form::text('title', Input::old('title'), array('class' => 'title-fullinput')) }}
             </p>
 
             <p>
                 Question:
             </p>
             <p>
-                {{ Form::textarea('question', Input::old('question'), array()) }}
+                {{ Form::textarea('question', Input::old('question'), array('class' => 'fullinput')) }}
             </p>
 
             <p>
@@ -31,7 +31,7 @@
                 To use multiple words in a tag, follow this format (tag-name-1, tag-name-2, ...).
             </p>
             <p>
-                {{ Form::text('tags', Input::old('tags'), array()) }}
+                {{ Form::text('tags', Input::old('tags'), array('class' => 'title-fullinput')) }}
             </p>
 
             <p>

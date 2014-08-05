@@ -25,10 +25,10 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body>
+    <body class="animated_bg">
         @include('menus.main.top')
 
-        <div class="container container-color">
+        <div class="container container-body container-color">
             <div class="clear-fix"></div>
             @if (Session::has('success'))
                 <div class="alert alert-success" role="alert">
@@ -52,6 +52,5 @@
         {{ HTML::script('assets/javascript/frontend.js') }}
 
         @yield('assets')
-
     </body>
 </html>

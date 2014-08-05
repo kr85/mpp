@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="col-xs-5 col-sm-6 col-md-6 col-lg-6 col-xs-offset-2 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+    <div class="col-xs-5 col-sm-6 col-md-6 col-lg-6 col-xs-offset-2 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 register-form">
         {{ Form::open(array('route' => 'register.store')) }}
             <h2>Register</h2>
 

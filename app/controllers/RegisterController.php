@@ -52,7 +52,7 @@ class RegisterController extends \BaseController
     */
    public function create()
 	{
-		$this->layout->content = View::make('register.index');
+		return $this->layout->content = View::make('register.index');
 	}
 
    /**

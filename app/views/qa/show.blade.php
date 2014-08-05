@@ -127,7 +127,7 @@
                         {{ Form::textarea('answer', Input::old('answer'), array('class' => 'fullinput')) }}
                     </p>
                     <p>
-                        {{ Form::submit('Answer the Question!', array('class' => 'btn btn-large btn-primary')) }}
+                        {{ Form::submit('Answer', array('class' => 'btn btn-large btn-primary')) }}
                     </p>
                 {{Form::close()}}
             </div>

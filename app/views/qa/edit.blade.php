@@ -17,14 +17,14 @@
             Title:
         </p>
         <p>
-            {{ Form::text('title', Input::old('title'), array()) }}
+            {{ Form::text('title', Input::old('title'), array('class' => 'title-fullinput')) }}
         </p>
 
         <p>
             Question:
         </p>
         <p>
-            {{ Form::textarea('question', Input::old('question'), array()) }}
+            {{ Form::textarea('question', Input::old('question'), array('class' => 'fullinput')) }}
         </p>
         <p>
             {{ Form::submit('Edit!', array('class' => 'btn btn-large btn-primary')) }}
