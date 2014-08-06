@@ -28,7 +28,7 @@
     <body class="animated_bg">
         @include('menus.main.top')
 
-        <div class="container container-body container-color">
+        <div class="container container-color fill">
             <div class="clear-fix"></div>
             @if (Session::has('success'))
                 <div class="alert alert-success" role="alert">

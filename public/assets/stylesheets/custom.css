@@ -8,11 +8,11 @@
 and (min-device-width : 320px)
 and (max-device-width : 480px) {
   .container-body {
-    height: 95%;
+
   }
 
   .login-form {
-    margin-top: 10%;
+    margin-top: 5%;
   }
 
   .register-form {
@@ -24,7 +24,7 @@ and (max-device-width : 480px) {
 @media only screen
 and (min-width : 321px) {
   .container-body {
-    height: 95%;
+
   }
 
   .login-form {
@@ -40,7 +40,7 @@ and (min-width : 321px) {
 @media only screen
 and (max-width : 320px) {
   .container-body {
-    height: 95%;
+
   }
 
   .login-form {
@@ -57,7 +57,7 @@ and (max-width : 320px) {
 and (min-device-width : 768px)
 and (max-device-width : 1024px) {
   .container-body {
-    height: 95%;
+
   }
 
   .login-form {
@@ -75,7 +75,7 @@ and (min-device-width : 768px)
 and (max-device-width : 1024px)
 and (orientation : landscape) {
   .container-body {
-    height: 95%;
+
   }
 
   .login-form {
@@ -93,7 +93,6 @@ and (min-device-width : 768px)
 and (max-device-width : 1024px)
 and (orientation : portrait) {
   .container-body {
-    height: 95%;
   }
 
   .login-form {
@@ -109,17 +108,39 @@ and (orientation : portrait) {
 @media only screen
 and (min-width : 1224px) {
   .container-body {
-    min-height: 95%;
-    padding-top: 50px;
-    overflow: auto;
   }
 
   .login-form {
-    margin-top: 10%;
+    margin-top: 20%;
   }
 
   .register-form {
     margin-top: 5%;
+  }
+
+  input[type=search] {
+    background: #fefefe url("../images/content/search-3.png") no-repeat 9px center;
+    border: solid 2px #ccc;
+    padding: 9px 15px 9px 42px;
+    width: 120px;
+
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+  }
+
+  input[type=search]:focus {
+    width: 295px;
+    background-color: #fff;
+    border-color: #cc757f;
+
+    -webkit-box-shadow: 0 0 20px rgba(198, 0, 3, 0.31);
+    -moz-box-shadow: 0 0 20px rgba(198, 0, 3, 0.31);
+    box-shadow: 0 0 20px rgba(198, 0, 3, 0.31);
   }
 }
 
@@ -127,7 +148,6 @@ and (min-width : 1224px) {
 @media only screen
 and (min-width : 1824px) {
   .container-body {
-    height: 95%;
   }
 
   .login-form {
@@ -144,7 +164,6 @@ and (min-width : 1824px) {
 only screen and (-webkit-min-device-pixel-ratio : 1.5),
 only screen and (min-device-pixel-ratio : 1.5) {
   .container-body {
-    height: 95%;
   }
 
   .login-form {
@@ -170,8 +189,17 @@ ul, ol {
   list-style-type: none;
 }
 
+.search-bar {
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
 .container-color {
   background-color: #ffffff;
+}
+
+.qa-main {
+  margin-left: 15px;
 }
 
 .qa-sidebar {
@@ -185,6 +213,17 @@ ul, ol {
 
 #sidebar-header {
   border-bottom: 1px solid #bebebe;
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
 }
 
 .modal-title {
@@ -726,6 +765,7 @@ input[type="button"].btn-block {
     width: 130px;
 }
 
-. btn {
-    color: #00ff00;
+.fill {
+  min-height: 100%;
+  height: auto;
 }

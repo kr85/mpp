@@ -15,7 +15,12 @@ class EloquentQuestionRepository implements QuestionRepository
 
    public function all()
    {
-      // TODO: Implement all() method.
+      return Question::all();
+   }
+
+   public function latestTen()
+   {
+      $this->question->orderBy('id', 'desc')->get(10);
    }
 
    public function find($id, array $with = array())

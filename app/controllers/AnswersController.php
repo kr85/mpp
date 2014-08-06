@@ -27,10 +27,9 @@ class AnswersController extends \BaseController
     * Stores an answer to the database and displays it.
     *
     * @param $id
-    * @param $title
     * @return \Illuminate\Http\RedirectResponse
     */
-   public function store($id, $title)
+   public function store($id)
 	{
       $question = $this->question->find($id);
 
@@ -44,10 +43,10 @@ class AnswersController extends \BaseController
                'answer'      => Input::get('answer')
             ));
 
-            return Redirect::route('question.show', array($id, $title))
+            return Redirect::route('question.show', array($id))
                ->with('success', 'Answer was successfully submitted!');
          } else {
-            return Redirect::route('question.show', array($id, $title))
+            return Redirect::route('question.show', array($id))
                ->withInput()
                ->withErrors($validation);
          }
@@ -97,8 +96,7 @@ class AnswersController extends \BaseController
             $answer->delete();
 
             return Redirect::route('question.show', array(
-                  $answer->question_id, Str::slug($answer->questions->title
-               )
+                  $answer->question_id
             ))->with('success', 'Answer was successfully deleted!');
          } else {
 
@@ -162,13 +160,11 @@ class AnswersController extends \BaseController
             ));
 
             return Redirect::route('question.show', array(
-                  $answer->question_id, Str::slug($answer->questions->title
-               )
+                  $answer->question_id
             ))->with('success', 'Best answer was successfully chosen!');
          } else {
             return Redirect::route('question.show', array(
-                  $answer->question_id, Str::slug($answer->questions->title
-               )
+                  $answer->question_id
             ))->with('error', 'You don\'t have permissions to choose best answer!');
          }
       } else {

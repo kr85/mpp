@@ -33,7 +33,7 @@ class QuestionsController extends \BaseController
     *
     * @var string
     */
-   protected $layout = 'layouts.master';
+   protected $layout = 'layouts.qa';
 
    /**
     * Construct.
@@ -58,7 +58,7 @@ class QuestionsController extends \BaseController
     */
    public function index()
 	{
-		$this->layout->content = View::make('qa.index')
+		return $this->layout->content = View::make('qa.index')
          ->with('title', 'All Questions!')
          ->with('questions', $this->question->with('users', 'tags', 'answers')
             ->orderBy('id', 'desc')
@@ -71,7 +71,7 @@ class QuestionsController extends \BaseController
     */
    public function create()
 	{
-		$this->layout->content = View::make('qa.create');
+		return $this->layout->content = View::make('qa.create');
 	}
 
    /**
@@ -124,7 +124,7 @@ class QuestionsController extends \BaseController
          return Redirect::route('question.index')
             ->with('success','Your question has been successfully created! '.HTML::linkRoute(
                   'question.show', 'Click here to see your question',array(
-                  'id'=> $questionId,'title' => Str::slug($question->title)
+                  'id'=> $questionId
                )));
 
       } else {
@@ -172,7 +172,7 @@ class QuestionsController extends \BaseController
          return $this->layout->content = View::make('qa.edit')
             ->with('question', $question);
       } else {
-         return Redirect::back()
+         return Redirect::route('question.index')
             ->with('error', 'Question was not found!');
       }
 	}
@@ -223,7 +223,7 @@ class QuestionsController extends \BaseController
          return Redirect::back()
             ->with('success','Your question has been successfully updated! '.HTML::linkRoute(
                   'question.show', 'Click here to see your question',array(
-                  'id'=> $questionId,'title' => Str::slug($question->title)
+                  'id'=> $questionId
                )));
       } else {
          return Redirect::back()

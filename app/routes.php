@@ -76,11 +76,11 @@ Route::get('qa', array(
    'uses'   => 'QuestionsController@index'
 ));
 
-Route::get('question/{id}/{title}', array(
+Route::get('question/{id}', array(
    'as' => 'question.show',
    'before' => 'user',
    'uses' => 'QuestionsController@show'
-))->where(array('id' => '[0-9]+', 'title' => '[0-9a-zA-Z\-\_]+'));
+))->where('id', '[0-9]+');
 
 Route::get('question/edit/{id}', array(
    'as'     => 'question.edit',
@@ -121,11 +121,11 @@ Route::get('question/unlock/{id}', array(
 /**
  * Answer routes.
  */
-Route::post('question/{id}/{title}', array(
+Route::post('question/{id}', array(
    'as'     => 'answer.store',
    'before' => 'csrf|user',
    'uses'   => 'AnswersController@store'
-))->where(array('id' => '[0-9]+', 'title' => '[0-9a-zA-Z\-\_]+'));
+))->where('id', '[0-9]+');
 
 Route::patch('answer/update/{id}', array(
    'as'     => 'answer.update',

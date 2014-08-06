@@ -4,6 +4,8 @@ interface QuestionRepository
 {
    public function all();
 
+   public function latestTen();
+
    public function find($id, array $with);
 
    public function show($id);

@@ -2,7 +2,7 @@
 
 	$.fn.animatedBG = function(options){
 		var defaults = {
-				colorSet: ['#eae6e6', '#e3c2c2', '#dfdbdb', '#d3d3e3', '#eacaca'],
+				colorSet: ['#eae6e6', '#D9E0EA', '#E4E0E0', '#FCEEEE', '#E8E4E8'],
 				speed: 6000
 			},
 			settings = $.extend({}, defaults, options);
