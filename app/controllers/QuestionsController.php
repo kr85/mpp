@@ -348,18 +348,11 @@ class QuestionsController extends \BaseController
 
    public function getUnanswered()
    {
-      $questions = $this->question->all();
-
-      foreach ($questions as $question) {
-        // print_r($question->answers());
-         if (count($question->answers()) != 0) {
-            return $this->layout->content = View::make('qa.index')
-               ->with('title', 'Unanswered Questions!')
-               ->with('questions', $this->question->with('users', 'tags', 'answers')
-                     ->orderBy('id', 'desc')
-                     ->paginate(4)
-               );
-         }
-      }
+      return $this->layout->content = View::make('qa.index')
+         ->with('title', 'Unanswered Questions!')
+         ->with('questions', $this->question->with('users', 'tags', 'answers')->where('answered', 0)
+            ->orderBy('id', 'desc')
+            ->paginate(4)
+      );
    }
 }

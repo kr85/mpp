@@ -43,10 +43,14 @@ class AnswersController extends \BaseController
                'answer'      => Input::get('answer')
             ));
 
-            return Redirect::route('question.show', array($id))
+            $question->update(array(
+               'answered' => 1
+            ));
+
+            return Redirect::route('question.show', $id)
                ->with('success', 'Answer was successfully submitted!');
          } else {
-            return Redirect::route('question.show', array($id))
+            return Redirect::route('question.show', $id)
                ->withInput()
                ->withErrors($validation);
          }
@@ -93,11 +97,20 @@ class AnswersController extends \BaseController
 
       if ($answer) {
          if (Sentry::getUser()->hasAccess('admin') || Sentry::getUser()->getId() == $answer->user_id) {
+            $questionId = $answer->question_id;
+
+            $question = $this->question->find($questionId);
+
             $answer->delete();
 
-            return Redirect::route('question.show', array(
-                  $answer->question_id
-            ))->with('success', 'Answer was successfully deleted!');
+            if (count($question->answers) == 0) {
+               $question->update(array(
+                  'answered' => 0
+               ));
+            }
+
+            return Redirect::route('question.show', $answer->question_id)
+               ->with('success', 'Answer was successfully deleted!');
          } else {
 
          }

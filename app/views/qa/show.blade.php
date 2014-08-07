@@ -9,22 +9,53 @@
 	    Viewed {{ $question->viewed }} time{{ $question->viewed > 0 ? 's':'' }}
 	</div>
 
-	@if(count($question->answers) == 0)
-		<div class="cntbox cntred">
-		    <div class="cntcount">{{ count($question->answers) }}</div>
-            <div class="cnttext">answers</div>
-        </div>
-	@elseif(count($question->answers) == 1)
-		<div class="cntbox cntgreen">
-		    <div class="cntcount">{{ count($question->answers) }}</div>
-            <div class="cnttext">answer</div>
-        </div>
-	@else
-		<div class="cntbox cntgreen">
-		    <div class="cntcount">{{ count($question->answers) }}</div>
-        	<div class="cnttext">answers</div>
-        </div>
-	@endif
+    <?php
+        $answers  = $question->answers;
+        $accepted = false;
+
+             print(count($question->answers));
+
+
+        if($answers != null) {
+            foreach ($answers as $answer) {
+                if($answer->correct == 1) {
+                    $accepted = true;
+                    break;
+                }
+            }
+        }
+    ?>
+
+    @if($accepted)
+    	@if(count($question->answers) == 1)
+    		<div class="cntbox cntgreen">
+    		    <div class="cntcount">{{ count($question->answers) }}</div>
+                <div class="cnttext">answer</div>
+            </div>
+    	@else
+    		<div class="cntbox cntgreen">
+    		    <div class="cntcount">{{ count($question->answers) }}</div>
+            	<div class="cnttext">answers</div>
+            </div>
+    	@endif
+    @else
+    	@if(count($question->answers) == 0)
+    		<div class="cntbox cntred">
+    		    <div class="cntcount">{{ count($question->answers) }}</div>
+                <div class="cnttext">answers</div>
+            </div>
+    	@elseif(count($question->answers) == 1)
+    		<div class="cntbox">
+    		    <div class="cntcount">{{ count($question->answers) }}</div>
+                <div class="cnttext">answer</div>
+            </div>
+    	@else
+    		<div class="cntbox">
+    		    <div class="cntcount">{{ count($question->answers) }}</div>
+            	<div class="cnttext">answers</div>
+            </div>
+    	@endif
+    @endif
 
 	<div class="rblock">
 		<div class="rbox">

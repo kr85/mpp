@@ -20,7 +20,7 @@ class Question extends \Eloquent
    protected $fillable = array(
       'title',    'question', 'user_id',
       'answered', 'viewed',   'votes',
-      'closed'
+      'closed',   'answered'
    );
 
    /**
