@@ -62,7 +62,7 @@ class QuestionsController extends \BaseController
          ->with('title', 'All Questions!')
          ->with('questions', $this->question->with('users', 'tags', 'answers')
             ->orderBy('id', 'desc')
-            ->paginate(5)
+            ->paginate(4)
          );
 	}
 
@@ -177,7 +177,13 @@ class QuestionsController extends \BaseController
       }
 	}
 
-	public function update($id)
+   /**
+    * Updates a question.
+    *
+    * @param $id
+    * @return $this
+    */
+   public function update($id)
 	{
       $question = $this->question->find($id);
 
@@ -220,11 +226,10 @@ class QuestionsController extends \BaseController
             }
          }
 
-         return Redirect::back()
-            ->with('success','Your question has been successfully updated! '.HTML::linkRoute(
-                  'question.show', 'Click here to see your question',array(
-                  'id'=> $questionId
-               )));
+         return $this->layout->content = View::make('qa.show')
+            ->with('title', $question->title)
+            ->with('question', $question)
+            ->with('success','Your question has been successfully updated!');
       } else {
          return Redirect::back()
             ->withInput()
@@ -241,9 +246,15 @@ class QuestionsController extends \BaseController
    public function destroy($id)
 	{
 		$question = $this->question->find($id);
+      $tags = $question->tags;
 
       if ($question) {
          $question->delete();
+         foreach ($tags as $tag) {
+            if (count($tag->questions) == 0) {
+               $tag->delete();
+            }
+         }
 
          return Redirect::route('question.index')
             ->with('success', 'Question was successfully deleted!');
@@ -300,6 +311,20 @@ class QuestionsController extends \BaseController
    }
 
    /**
+    * Gets all the tags.
+    *
+    * @return $this
+    */
+   public function getTags()
+   {
+      $tags = $this->tag->with('questions')->get();
+
+      return $this->layout->content = View::make('qa.tags')
+         ->with('title', 'All Tags')
+         ->with('tags', $tags);
+   }
+
+   /**
     * Displays questions by tag name.
     *
     * @param $tag
@@ -314,10 +339,27 @@ class QuestionsController extends \BaseController
             ->with('title', 'Questions Tagged With: ' . $tag->tag)
             ->with('questions', $tag->questions()
                ->with('users', 'tags', 'answers')
-               ->paginate(5));
+               ->paginate(4));
       } else {
          return Redirect::route('question.index')
             ->with('error', 'Tag was not found!');
+      }
+   }
+
+   public function getUnanswered()
+   {
+      $questions = $this->question->all();
+
+      foreach ($questions as $question) {
+        // print_r($question->answers());
+         if (count($question->answers()) != 0) {
+            return $this->layout->content = View::make('qa.index')
+               ->with('title', 'Unanswered Questions!')
+               ->with('questions', $this->question->with('users', 'tags', 'answers')
+                     ->orderBy('id', 'desc')
+                     ->paginate(4)
+               );
+         }
       }
    }
 }

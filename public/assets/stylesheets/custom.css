@@ -226,7 +226,7 @@ input::-webkit-search-cancel-button {
   display: none;
 }
 
-.modal-title {
+#title {
     text-align: center;
 }
 

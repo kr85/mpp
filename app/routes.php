@@ -88,16 +88,11 @@ Route::get('question/edit/{id}', array(
    'uses'   => 'QuestionsController@edit'
 ))->where('id', '[0-9]+');
 
-Route::patch('question/update/{id}', array(
+Route::patch('question/{id}', array(
    'as'     => 'question.update',
    'before' => 'user|csrf',
    'uses'   => 'QuestionsController@update'
 ))->where('id', '[0-9]+');
-
-Route::get('question/tagged/{tag}', array(
-   'as'   => 'question.tagged',
-   'uses' => 'QuestionsController@getTaggedWith'
-))->where('tag', '[0-9a-zA-Z\-\_]+');
 
 Route::get('question/delete/{id}', array(
    'as'     => 'question.delete',
@@ -117,6 +112,21 @@ Route::get('question/unlock/{id}', array(
    'uses'   => 'QuestionsController@unlock'
 ))->where('id', '[0-9]+');
 
+Route::get('question/tagged/{tag}', array(
+   'as'   => 'question.tagged',
+   'uses' => 'QuestionsController@getTaggedWith'
+))->where('tag', '[0-9a-zA-Z\-\_]+');
+
+Route::get('question/tags', array(
+   'as'   => 'question.tags',
+   'uses' => 'QuestionsController@getTags'
+));
+
+Route::get('qa/unanswered', array(
+   'as'     => 'question.unanswered',
+   'before' => 'user',
+   'uses'   => 'QuestionsController@getUnanswered'
+));
 
 /**
  * Answer routes.
