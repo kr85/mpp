@@ -1,6 +1,6 @@
 <?php namespace MPP\Composers;
 
-use MPP\Repositories\Question\QuestionRepository;
+use MPP\Repository\Question\QuestionRepository;
 
 /**
  * Class QuestionsListComposer
@@ -9,18 +9,26 @@ use MPP\Repositories\Question\QuestionRepository;
  */
 class QuestionsListComposer
 {
-   //protected $questionRepository;
+   protected $questionRepository;
 
-   /*public function __construct(QuestionRepository $questionRepository)
+   public function __construct(QuestionRepository $questionRepository = null)
    {
-      $this->questionRepository = $questionRepository;
-   }*/
+      //$this->questionRepository = $questionRepository;
+   }
 
    /**
     * Compose.
     *
     * @param $view
     */
+   /*public function compose($view)
+   {
+      $recentQuestions = $this->questionRepository->getLatestQuestions();
+      $view->with('recentQuestions', $recentQuestions);
+   }*/
+
+
+
    public function compose($view)
    {
       $recentQuestions = \Question::with('users', 'answers', 'tags')->take(10)->orderBy('id', 'desc')->get();

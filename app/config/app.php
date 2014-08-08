@@ -125,7 +125,7 @@ return array(
 		'Mrjuliuss\Syntara\SyntaraServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
       'Way\Generators\GeneratorsServiceProvider',
-      'MPP\Repositories\RepositoryServiceProvider',
+      'MPP\Repository\RepositoryServiceProvider',
       'Khill\Fontawesome\FontAwesomeServiceProvider',
       'Bogardo\Mailgun\MailgunServiceProvider',
       'MPP\Composers\ComposerServiceProvider',

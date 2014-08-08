@@ -1,4 +1,4 @@
-<?php namespace MPP\Repositories\User;
+<?php namespace MPP\Repository\User;
 
 use User;
 

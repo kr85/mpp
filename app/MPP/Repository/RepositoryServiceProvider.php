@@ -1,13 +1,13 @@
-<?php namespace MPP\Repositories;
+<?php namespace MPP\Repository;
 
 use Illuminate\Support\ServiceProvider;
-use MPP\Repositories\Question\EloquentQuestionRepository;
-use MPP\Repositories\User\EloquentUserRepository;
+use MPP\Repository\Question\EloquentQuestionRepository;
+use MPP\Repository\User\EloquentUserRepository;
 
 /**
  * Class RepositoryServiceProvider
  *
- * @package MPP\Repositories
+ * @package app\MPP\Repositories
  */
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class RepositoryServiceProvider extends ServiceProvider
     */
    public function register()
    {
-      $this->registerUserRepository();
+      //$this->registerUserRepository();
       $this->registerQuestionRepository();
    }
 
@@ -25,7 +25,7 @@ class RepositoryServiceProvider extends ServiceProvider
     */
    public function registerUserRepository()
    {
-      $this->app->bind('MPP\Repositories\User\UserRepository', function($app) {
+      $this->app->bind('MPP\Repository\User\UserRepository', function($app) {
          return new EloquentUserRepository(new \User());
       });
    }
@@ -35,7 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
     */
    public function registerQuestionRepository()
    {
-      $this->app->bind('app\MPP\Repository\Question\QuestionRepository', function($app) {
+      $this->app->bind('MPP\Repository\Question\QuestionRepository', function($app) {
          return new EloquentQuestionRepository(new \Question());
       });
    }

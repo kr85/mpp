@@ -1,4 +1,4 @@
-<?php namespace MPP\Repositories\Question;
+<?php namespace MPP\Repository\Question;
 
 use Question;
 
@@ -13,37 +13,30 @@ class EloquentQuestionRepository implements QuestionRepository
       $this->data = array();
    }
 
-   public function all()
+   public function all(array $with = array())
    {
-      return Question::all();
-   }
+      $questions = $this->question->with($with);
 
-   public function latestTen()
-   {
-      $this->question->orderBy('id', 'desc')->get(10);
+      return $questions;
    }
 
    public function find($id, array $with = array())
    {
-      //$entity = $this->make($with);
-
-      //return $entity->find($id);
-
       $question = $this->question->with($with)->find($id);
 
       return $question;
    }
 
-   public function make(array $with = array())
+   /*public function make(array $with = array())
    {
       return $this->question->with($with);
-   }
+   }*/
 
    public function with(array $data)
    {
       $this->data = $data;
 
-      return $this;
+      return $this->data;
    }
 
    public function show($id)
@@ -53,18 +46,27 @@ class EloquentQuestionRepository implements QuestionRepository
       return $question;
    }
 
-   public function create($input)
+   public function create(array $data)
    {
-      // TODO: Implement create() method.
+      return $this->question->create($data);
    }
 
-   public function update($data)
+   public function update(array $data)
    {
-      // TODO: Implement update() method.
+      return $this->question->update($data);
    }
 
    public function destroy($id)
    {
-      // TODO: Implement destroy() method.
+      $question = $this->find($id);
+
+      if ($question) {
+         return $question->delete();
+      }
+   }
+
+   public function getLatestQuestions()
+   {
+      return $this->question->with('users', 'answers', 'tags')->take(10)->orderBy('id', 'desc')->get();
    }
 }

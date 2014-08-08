@@ -1,6 +1,6 @@
 <?php
 
-use MPP\Repositories\Question\QuestionRepository;
+use MPP\Repository\Question\QuestionRepository;
 
 /**
  * Class QuestionsController
@@ -17,7 +17,7 @@ class QuestionsController extends \BaseController
    /**
     * Question repository.
     *
-    * @var MPP\Repositories\Question\QuestionRepository
+    * @var MPP\Repository\Question\QuestionRepository
     */
    protected $questionRepository;
 
@@ -43,9 +43,9 @@ class QuestionsController extends \BaseController
     * @param Tag $tag
     */
    public function __construct(
-      Question $question = null,
-      QuestionRepository $questionRepository = null,
-      Tag $tag = null
+      Question $question,
+      QuestionRepository $questionRepository,
+      Tag $tag
    )
    {
       $this->question = $question;
@@ -58,11 +58,11 @@ class QuestionsController extends \BaseController
     */
    public function index()
 	{
-      $questions = $this->question->with('users', 'tags', 'answers', 'votes')->orderBy('id', 'desc')->paginate(4);
+      $questions = $this->questionRepository->all(array('users', 'tags', 'answers', 'votes'));
 
 		return $this->layout->content = View::make('qa.index')
          ->with('title', 'All Questions!')
-         ->with('questions', $questions);
+         ->with('questions', $questions->orderBy('id', 'desc')->paginate(4));
 	}
 
    /**
@@ -83,7 +83,7 @@ class QuestionsController extends \BaseController
 		$validation = Validator::make(Input::all(), $this->question->getQuestionRules());
 
       if ($validation->passes()) {
-         $question = $this->question->create(array(
+         $question = $this->questionRepository->create(array(
             'user_id'  => Sentry::getUser()->getId(),
             'title'    => Input::get('title'),
             'question' => Input::get('question')
@@ -139,7 +139,8 @@ class QuestionsController extends \BaseController
     */
    public function show($id)
 	{
-		$question = $this->question->with('users', 'tags', 'answers', 'votes')->find($id);
+		//$question = $this->question->with('users', 'tags', 'answers', 'votes')->find($id);
+      $question = $this->questionRepository->find($id, array('users', 'tags', 'answers', 'votes'));
 
       if ($question) {
          $question->update(array(
@@ -163,7 +164,7 @@ class QuestionsController extends \BaseController
     */
    public function edit($id)
 	{
-		$question = $this->question->find($id);
+		$question = $this->questionRepository->find($id, array('users', 'tags', 'answers', 'votes'));
 
       if ($question) {
          return $this->layout->content = View::make('qa.edit')
@@ -182,7 +183,7 @@ class QuestionsController extends \BaseController
     */
    public function update($id)
 	{
-      $question = $this->question->find($id);
+      $question = $this->questionRepository->find($id, array('users', 'tags', 'answers', 'votes'));
 
       $validation = Validator::make(Input::all(), $this->question->getQuestionRules());
 
@@ -242,7 +243,7 @@ class QuestionsController extends \BaseController
     */
    public function destroy($id)
 	{
-		$question = $this->question->find($id);
+		$question = $this->questionRepository->find($id, array('users', 'tags', 'answers', 'votes'));
 
       if ($question) {
          $tags = $question->tags;
@@ -269,7 +270,7 @@ class QuestionsController extends \BaseController
     */
    public function lock($id)
    {
-      $question = $this->question->find($id);
+      $question = $this->questionRepository->find($id, array('users', 'tags', 'answers', 'votes'));
 
       if ($question) {
          $question->update(array(
@@ -292,7 +293,7 @@ class QuestionsController extends \BaseController
     */
    public function unlock($id)
    {
-      $question = $this->question->find($id);
+      $question = $this->questionRepository->find($id, array('users', 'tags', 'answers', 'votes'));
 
       if ($question) {
          $question->update(array(
@@ -344,10 +345,10 @@ class QuestionsController extends \BaseController
 
    public function getUnanswered()
    {
-      $questions = $this->question->with('users', 'tags', 'answers', 'votes')->where('answered', 0)->orderBy('id', 'desc')->paginate(4);
+      $questions = $this->questionRepository->all(array('users', 'tags', 'answers', 'votes'))->where('answered', 0);
 
       return $this->layout->content = View::make('qa.index')
          ->with('title', 'Unanswered Questions!')
-         ->with('questions', $questions);
+         ->with('questions', $questions->orderBy('id', 'desc')->paginate(4));
    }
 }
