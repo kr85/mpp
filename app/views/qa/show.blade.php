@@ -234,27 +234,28 @@
                                                 {{ FA::icon('trash-o') }} Delete
                                             </a>
 										</li>
-								    @else
-								        <?php $liked = false; ?>
+								    @endif
+                                        <?php
+                                            $exists = DB::table('answers_votes')->where(array(
+                                                        'user_id' => Sentry::getUser()->getId(),
+                                                        'answer_id' => $answer->id,
+                                                        'vote_id' => 1
+                                                     ))->count();
+                                        ?>
 
-								        @if(!$liked)
-                                    	    <li class="like">
-                                    		    <a href="#">
-                                    			    {{ FA::icon('thumbs-up') }} {{ HTML::linkRoute('answer.vote','Like',array('up',$answer->id), array('class'=>'like', 'title' => 'Upvote')) }} &bull;
-                                    			        <div class="votes">
-                                    			            {{ $answer->votes }}
-                                    			        </div>
-                                    			</a>
-                                    	    </li>
+								        @if($exists == 0)
+                                            <li class="like">
+                                                <a href="{{ URL::route('answer.like', $answer->id) }}">
+                                                    {{ FA::icon('thumbs-up') }} Like &bull; {{ $answer->votes }}
+                                                </a>
+                                            </li>
                                     	@else
                                     		<li class="unlike">
-                                    		    <a href="#">
-                                    			    {{ FA::icon('thumbs-down') }} Unlike ( {{ $answer->votes }} )
+                                    		    <a href="{{ URL::route('answer.unlike', $answer->id) }}">
+                                    			    {{ FA::icon('thumbs-down') }} Unlike &bull; {{ $answer->votes }}
                                     			</a>
-                                    			<?php $liked = false; ?>
                                     		</li>
                                     	@endif
-									@endif
 								</ul>
 							</div>
 						@endif

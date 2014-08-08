@@ -108,4 +108,100 @@ class VotesController extends \BaseController
             ->with('error', 'Question was not found!');
       }
    }
+
+   public function likeAnswer($id)
+   {
+      $answer = $this->answer->find($id);
+
+      if ($answer) {
+         $voteCheck = $this->vote->where('name', 'like');
+
+         if ($voteCheck->count() == 0) {
+            $voteInfo = $this->vote->create(array(
+               'name' => 'like'
+            ));
+         } else {
+            $voteInfo = $voteCheck->first();
+         }
+
+         $exists = DB::table('answers_votes')->where(array(
+            'user_id' => Sentry::getUser()->getId(),
+            'answer_id' => $id,
+            'vote_id' => $voteInfo->id
+         ))->count();
+
+         if ($exists == 0) {
+            DB::table('answers_votes')->insert(array(
+               'user_id' => Sentry::getUser()->getId(),
+               'answer_id' => $id,
+               'vote_id' => $voteInfo->id
+            ));
+
+            $answer->votes()->sync(array(
+               'vote_id' => $voteInfo->id
+            ));
+
+            $likes = $answer->votes + 1;
+
+            $answer->update(array(
+               'votes' => $likes
+            ));
+
+            return Redirect::back()
+               ->with('success', 'Liked the answer successfully!');
+         } else {
+            return Redirect::back()
+               ->with('error', 'Already liked the answer!');
+         }
+      } else {
+         return Redirect::route('question.index')
+            ->with('error', 'Answer was not found!');
+      }
+   }
+
+   public function unlikeAnswer($id)
+   {
+      $answer = $this->answer->find($id);
+
+      if ($answer) {
+         $voteCheck = $this->vote->where('name', 'like');
+
+         if ($voteCheck->count() == 0) {
+            $voteInfo = $this->vote->create(array(
+               'name' => 'like'
+            ));
+         } else {
+            $voteInfo = $voteCheck->first();
+         }
+
+         $exists = DB::table('answers_votes')->where(array(
+            'user_id' => Sentry::getUser()->getId(),
+            'answer_id' => $id,
+            'vote_id' => $voteInfo->id
+         ))->count();
+
+         if ($exists != 0) {
+            DB::table('answers_votes')->where(array(
+               'user_id' => Sentry::getUser()->getId(),
+               'answer_id' => $id,
+               'vote_id' => $voteInfo->id
+            ))->delete();
+
+            $likes = $answer->votes - 1;
+
+            $answer->update(array(
+               'votes' => $likes
+            ));
+
+            return Redirect::back()
+               ->with('success', 'Unliked the answer successfully!');
+         } else {
+            return Redirect::back()
+               ->with('error', 'Already unliked the answer!');
+         }
+      } else {
+         return Redirect::route('question.index')
+            ->with('error', 'Answer was not found!');
+      }
+   }
 }

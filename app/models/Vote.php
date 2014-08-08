@@ -11,11 +11,16 @@ class Vote extends Eloquent
 
    public function users()
    {
-      return $this->belongsTo('User', 'questions_votes');
+      return $this->belongsTo('User', 'questions_votes', 'answers_votes');
    }
 
    public function questions()
    {
       return $this->belongsToMany('Question', 'questions_votes');
+   }
+
+   public function answers()
+   {
+      return $this->belongsToMany('Answer', 'answers_votes');
    }
 }

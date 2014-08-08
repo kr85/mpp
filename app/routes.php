@@ -182,6 +182,18 @@ Route::get('question/unlike/{id}', array(
    'uses'   => 'VotesController@unlikeQuestion'
 ))->where('id', '[0-9]+');
 
+Route::get('answer/like/{id}', array(
+   'as'     => 'answer.like',
+   'before' => 'user',
+   'uses'   => 'VotesController@likeAnswer'
+))->where('id', '[0-9]+');
+
+Route::get('answer/unlike/{id}', array(
+   'as'     => 'answer.unlike',
+   'before' => 'user',
+   'uses'   => 'VotesController@unlikeAnswer'
+))->where('id', '[0-9]+');
+
 /**
  * User routes.
  */

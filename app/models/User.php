@@ -128,6 +128,6 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User implements  RemindableIn
 
    public function votes()
    {
-      return $this->belongsToMany('Vote', 'questions_votes');
+      return $this->belongsToMany('Vote', 'questions_votes', 'answers_votes');
    }
 }
