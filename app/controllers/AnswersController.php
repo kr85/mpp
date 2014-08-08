@@ -12,8 +12,19 @@ class AnswersController extends \BaseController
     */
    protected $answer;
 
+   /**
+    * Question model.
+    *
+    * @var
+    */
    protected $question;
 
+   /**
+    * Construct.
+    *
+    * @param Answer $answer
+    * @param Question $question
+    */
    public function __construct(
       Answer $answer,
       Question $question
@@ -97,10 +108,7 @@ class AnswersController extends \BaseController
 
       if ($answer) {
          if (Sentry::getUser()->hasAccess('admin') || Sentry::getUser()->getId() == $answer->user_id) {
-            $questionId = $answer->question_id;
-
-            $question = $this->question->find($questionId);
-
+            $question = $this->question->find($answer->question_id);
             $answer->delete();
 
             if (count($question->answers) == 0) {
@@ -172,13 +180,11 @@ class AnswersController extends \BaseController
                'correct' => 1
             ));
 
-            return Redirect::route('question.show', array(
-                  $answer->question_id
-            ))->with('success', 'Best answer was successfully chosen!');
+            return Redirect::route('question.show', $answer->question_id)
+               ->with('success', 'Best answer was successfully chosen!');
          } else {
-            return Redirect::route('question.show', array(
-                  $answer->question_id
-            ))->with('error', 'You don\'t have permissions to choose best answer!');
+            return Redirect::route('question.show', $answer->question_id)
+               ->with('error', 'You don\'t have permissions to choose best answer!');
          }
       } else {
          return Redirect::route('question.index')

@@ -11,7 +11,7 @@
             <a class="navbar-brand" href="/">MPP</a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" id="nav-header-margin">
                 <li><a href="#home">HOME</a></li>
                 <li><a href="#blog">BLOG</a></li>
                 <li><a href="#forum">FORUM</a></li>

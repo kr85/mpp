@@ -1,7 +1,7 @@
 <?php
 
 // Composer: "fzaninotto/faker": "v1.4.0"
-use Faker\Factory as Faker;
+//use Faker\Factory as Faker;
 
 class EppsTableSeeder extends Seeder {
 

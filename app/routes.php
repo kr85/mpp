@@ -168,6 +168,21 @@ Route::get('answer/edit/{id}', array(
 ))->where('id', '[0-9]+');
 
 /**
+ * Vote routes.
+ */
+Route::get('question/like/{id}', array(
+   'as'     => 'question.like',
+   'before' => 'user',
+   'uses'   => 'VotesController@likeQuestion'
+))->where('id', '[0-9]+');
+
+Route::get('question/unlike/{id}', array(
+   'as'     => 'question.unlike',
+   'before' => 'user',
+   'uses'   => 'VotesController@unlikeQuestion'
+))->where('id', '[0-9]+');
+
+/**
  * User routes.
  */
 Route::get('user/{id}', array(

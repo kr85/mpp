@@ -5,22 +5,17 @@
  */
 class Vote extends Eloquent
 {
-   /**
-    * The name of the table.
-    *
-    * @var string
-    */
    protected $table = 'votes';
 
-   protected $fillable = array('user_id, answer_id');
+   protected $fillable = array('name');
 
    public function users()
    {
-      return $this->belongsTo('User', 'vote');
+      return $this->belongsTo('User', 'questions_votes');
    }
 
-   public function answers()
+   public function questions()
    {
-      return $this->belongsTo('Answer', 'vote');
+      return $this->belongsToMany('Question', 'questions_votes');
    }
 }

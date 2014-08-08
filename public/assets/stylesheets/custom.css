@@ -110,6 +110,10 @@ and (min-width : 1224px) {
   .container-body {
   }
 
+  #nav-header-margin {
+    margin-left: 20%;
+  }
+
   .login-form {
     margin-top: 20%;
   }

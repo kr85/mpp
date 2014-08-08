@@ -13,9 +13,6 @@
         $answers  = $question->answers;
         $accepted = false;
 
-             print(count($question->answers));
-
-
         if($answers != null) {
             foreach ($answers as $answer) {
                 if($answer->correct == 1) {
@@ -122,15 +119,24 @@
 					            {{ FA::icon('comment') }} Answer &bull; {{ count($question->answers) }}
 					        </a>
 					    </li>
-					    @if($question)
+
+					    <?php
+					        $exists = DB::table('questions_votes')->where(array(
+                                        'user_id' => Sentry::getUser()->getId(),
+                                        'question_id' => $question->id,
+                                        'vote_id' => 1
+                                     ))->count();
+					    ?>
+
+					    @if($exists == 0)
 					        <li class="like">
-					            <a href="#">
+					            <a href="{{ URL::route('question.like', $question->id) }}">
 					                {{ FA::icon('thumbs-up') }} Like &bull; {{ $question->votes }}
 					            </a>
 					        </li>
 					    @else
 					        <li class="unlike">
-					            <a href="#">
+					            <a href="{{ URL::route('question.unlike', $question->id) }}">
 					                {{ FA::icon('thumbs-down') }} Unlike &bull; {{ $question->votes }}
 					            </a>
 					        </li>
@@ -180,13 +186,6 @@
 			@else
 				<div class="rrepol">
 			@endif
-
-			@if(Sentry::check())
-            					<div class="arrowbox">
-            						{{ HTML::linkRoute('answer.vote','',array('up',$answer->id), array('class'=>'like', 'title' => 'Upvote')) }}
-            						{{ HTML::linkRoute('answer.vote','',array('down',$answer->id),array('class'=>'dislike','title'=>'Downvote')) }}
-            					</div>
-            				@endif
 
 				<div class="cntbox">
 					<div class="cntcount">{{ $answer->votes }}</div>

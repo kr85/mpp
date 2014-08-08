@@ -55,13 +55,23 @@ class Question extends \Eloquent
    }
 
    /**
-    * Question has answers.
+    * Question has many answers.
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
    public function answers()
    {
       return $this->hasMany('Answer', 'question_id');
+   }
+
+   /**
+    * Question has many votes.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function votes()
+   {
+      return $this->belongsToMany('Vote', 'questions_votes');
    }
 
    /**

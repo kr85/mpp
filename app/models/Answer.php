@@ -60,9 +60,4 @@ class Answer extends Eloquent
    {
       return $this->belongsTo('Question', 'question_id');
    }
-
-   public function votes()
-   {
-      return $this->hasMany('Vote', 'votes');
-   }
 }

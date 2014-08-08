@@ -29,7 +29,7 @@ class QuestionsController extends \BaseController
    protected $tag;
 
    /**
-    * Master layout.
+    * Questions/Answers layout.
     *
     * @var string
     */
@@ -58,12 +58,11 @@ class QuestionsController extends \BaseController
     */
    public function index()
 	{
+      $questions = $this->question->with('users', 'tags', 'answers', 'votes')->orderBy('id', 'desc')->paginate(4);
+
 		return $this->layout->content = View::make('qa.index')
          ->with('title', 'All Questions!')
-         ->with('questions', $this->question->with('users', 'tags', 'answers')
-            ->orderBy('id', 'desc')
-            ->paginate(4)
-         );
+         ->with('questions', $questions);
 	}
 
    /**
@@ -123,9 +122,7 @@ class QuestionsController extends \BaseController
 
          return Redirect::route('question.index')
             ->with('success','Your question has been successfully created! '.HTML::linkRoute(
-                  'question.show', 'Click here to see your question',array(
-                  'id'=> $questionId
-               )));
+                  'question.show', 'Click here to see your question', $questionId));
 
       } else {
          return Redirect::back()
@@ -142,7 +139,7 @@ class QuestionsController extends \BaseController
     */
    public function show($id)
 	{
-		$question = $this->question->with('users', 'tags', 'answers')->find($id);
+		$question = $this->question->with('users', 'tags', 'answers', 'votes')->find($id);
 
       if ($question) {
          $question->update(array(
@@ -246,9 +243,9 @@ class QuestionsController extends \BaseController
    public function destroy($id)
 	{
 		$question = $this->question->find($id);
-      $tags = $question->tags;
 
       if ($question) {
+         $tags = $question->tags;
          $question->delete();
          foreach ($tags as $tag) {
             if (count($tag->questions) == 0) {
@@ -317,7 +314,7 @@ class QuestionsController extends \BaseController
     */
    public function getTags()
    {
-      $tags = $this->tag->with('questions')->get();
+      $tags = $this->tag->with('questions')->orderBy('tag_name', 'asc')->get();
 
       return $this->layout->content = View::make('qa.tags')
          ->with('title', 'All Tags')
@@ -333,13 +330,12 @@ class QuestionsController extends \BaseController
    public function getTaggedWith($tag)
    {
       $tag = $this->tag->where('tag_name', $tag)->first();
+      $questions = $tag->questions()->with('users', 'tags', 'answers', 'votes')->paginate(4);
 
       if ($tag) {
          return View::make('qa.index')
             ->with('title', 'Questions Tagged With: ' . $tag->tag)
-            ->with('questions', $tag->questions()
-               ->with('users', 'tags', 'answers')
-               ->paginate(4));
+            ->with('questions', $questions);
       } else {
          return Redirect::route('question.index')
             ->with('error', 'Tag was not found!');
@@ -348,11 +344,10 @@ class QuestionsController extends \BaseController
 
    public function getUnanswered()
    {
+      $questions = $this->question->with('users', 'tags', 'answers', 'votes')->where('answered', 0)->orderBy('id', 'desc')->paginate(4);
+
       return $this->layout->content = View::make('qa.index')
          ->with('title', 'Unanswered Questions!')
-         ->with('questions', $this->question->with('users', 'tags', 'answers')->where('answered', 0)
-            ->orderBy('id', 'desc')
-            ->paginate(4)
-      );
+         ->with('questions', $questions);
    }
 }
