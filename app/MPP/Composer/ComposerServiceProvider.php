@@ -24,9 +24,6 @@ class ComposerServiceProvider extends ServiceProvider
    public function registerQuestionsListComposer()
    {
       $this->app->view->composer('menus.qa.sidebar', 'MPP\Composer\QuestionsListComposer');
-      /*$this->app->bind('MPP\Composer\QuestionsListComposer', function($app) {
-         new QuestionsListComposer($this->app->make('MPP\Repository\Question\QuestionRepository'));
-      });*/
    }
 
    /**
@@ -42,6 +39,7 @@ class ComposerServiceProvider extends ServiceProvider
     */
    public function boot()
    {
-      $this->app->view->composer('menus.qa.sidebar', $this->app->make('MPP\Composer\QuestionsListComposer'));
+      //$this->app->view->composer('menus.qa.sidebar', $this->app->make('MPP\Composer\QuestionsListComposer'));
+      //$this->app->view->composer('menus.qa.sidebar', $this->app->make('MPP\Composer\AnswersListComposer'));
    }
 }

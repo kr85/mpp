@@ -1,5 +1,7 @@
 <?php namespace MPP\Composer;
 
+use MPP\Repository\Answer\AnswerRepository;
+
 /**
  * Class AnswersListComposer
  *
@@ -7,6 +9,13 @@
  */
 class AnswersListComposer
 {
+   protected $answerRepository;
+
+   public function __construct(AnswerRepository $answerRepository)
+   {
+      $this->answerRepository = $answerRepository;
+   }
+
    /**
     * Compose.
     *
@@ -14,7 +23,7 @@ class AnswersListComposer
     */
    public function compose($view)
    {
-      $recentAnswers = \Answer::with('questions')->take(10)->orderBy('id', 'desc')->get();
+      $recentAnswers = $this->answerRepository->getLatestAnswers(array('questions'), 'id', 'desc', 10);
       $view->with('recentAnswers', $recentAnswers);
    }
 }
