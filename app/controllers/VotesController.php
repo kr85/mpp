@@ -1,21 +1,61 @@
 <?php
 
+use MPP\Repository\Question\QuestionRepository;
+use MPP\Repository\Answer\AnswerRepository;
+
+/**
+ * Class VotesController
+ */
 class VotesController extends \BaseController
 {
-   protected $question;
-   protected $answer;
+   /**
+    * Vote model.
+    *
+    * @var Vote
+    */
    protected $vote;
 
-   public function __construct(Question $question, Answer $answer, Vote $vote)
+   /**
+    * Question repository.
+    *
+    * @var MPP\Repository\Question\QuestionRepository
+    */
+   protected $questionRepository;
+
+   /**
+    * Answer repository.
+    *
+    * @var MPP\Repository\Answer\AnswerRepository
+    */
+   protected $answerRepository;
+
+   /**
+    * Construct.
+    *
+    * @param Vote $vote
+    * @param QuestionRepository $questionRepository
+    * @param AnswerRepository $answerRepository
+    */
+   public function __construct(
+      Vote               $vote,
+      QuestionRepository $questionRepository,
+      AnswerRepository   $answerRepository
+   )
    {
-      $this->question = $question;
-      $this->answer = $answer;
-      $this->vote = $vote;
+      $this->vote               = $vote;
+      $this->questionRepository = $questionRepository;
+      $this->answerRepository   = $answerRepository;
    }
 
+   /**
+    * Like a question.
+    *
+    * @param $id
+    * @return \Illuminate\Http\RedirectResponse
+    */
    public function likeQuestion($id)
    {
-      $question = $this->question->find($id);
+      $question = $this->questionRepository->find($id, array());
 
       if ($question) {
          $voteCheck = $this->vote->where('name', 'like');
@@ -63,9 +103,15 @@ class VotesController extends \BaseController
       }
    }
 
+   /**
+    * Unlike a question.
+    *
+    * @param $id
+    * @return \Illuminate\Http\RedirectResponse
+    */
    public function unlikeQuestion($id)
    {
-      $question = $this->question->find($id);
+      $question = $this->questionRepository->find($id, array());
 
       if ($question) {
          $voteCheck = $this->vote->where('name', 'like');
@@ -109,9 +155,15 @@ class VotesController extends \BaseController
       }
    }
 
+   /**
+    * Like an answer.
+    *
+    * @param $id
+    * @return \Illuminate\Http\RedirectResponse
+    */
    public function likeAnswer($id)
    {
-      $answer = $this->answer->find($id);
+      $answer = $this->answerRepository->find($id, array());
 
       if ($answer) {
          $voteCheck = $this->vote->where('name', 'like');
@@ -159,9 +211,15 @@ class VotesController extends \BaseController
       }
    }
 
+   /**
+    * Unlike an answer.
+    *
+    * @param $id
+    * @return \Illuminate\Http\RedirectResponse
+    */
    public function unlikeAnswer($id)
    {
-      $answer = $this->answer->find($id);
+      $answer = $this->answerRepository->find($id, array());
 
       if ($answer) {
          $voteCheck = $this->vote->where('name', 'like');

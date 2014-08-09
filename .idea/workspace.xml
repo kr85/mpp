@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2c51222-b084-4c17-977f-cf55de2ad177" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php" afterPath="$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Composer/ComposerServiceProvider.php" afterPath="$PROJECT_DIR$/app/MPP/Composer/ComposerServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/BaseController.php" afterPath="$PROJECT_DIR$/app/controllers/BaseController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/RemindersController.php" afterPath="$PROJECT_DIR$/app/controllers/RemindersController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/VotesController.php" afterPath="$PROJECT_DIR$/app/controllers/VotesController.php" />
     </list>
     <ignored path="mpp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,54 +30,28 @@
     <favorites_list name="mpp" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.25680932">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/routes.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="143" column="26" selection-start="3498" selection-end="3498" vertical-scroll-proportion="-83.75" vertical-offset="0" max-vertical-offset="3390">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AnswersListComposer.php" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="25" column="81" selection-start="505" selection-end="505" vertical-scroll-proportion="0.43554008" vertical-offset="0" max-vertical-offset="861">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="QuestionsListComposer.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/MPP/Composer/QuestionsListComposer.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="5" selection-start="376" selection-end="376" vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="510">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RepositoryServiceProvider.php" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="53" column="33" selection-start="1391" selection-end="1391" vertical-scroll-proportion="0.909611" vertical-offset="0" max-vertical-offset="1005">
-                  <folding>
-                    <element signature="e#33#72#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="QuestionsListComposer.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/MPP/Composer/QuestionsListComposer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="5" selection-start="376" selection-end="376" vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="510">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RepositoryServiceProvider.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="33" selection-start="1391" selection-end="1391" vertical-scroll-proportion="0.909611" vertical-offset="0" max-vertical-offset="1005">
+              <folding>
+                <element signature="e#33#72#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -89,8 +64,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_023635_rename_votes_table.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_030600_create_questions_votes_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_030737_create_answers_votes_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_145350_create_votes_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_151154_add_vote_id_to_questions_votes_table.php" />
@@ -102,7 +75,6 @@
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_174404_add_vote_id_to_answers_votes_table.php" />
         <option value="$PROJECT_DIR$/app/models/Answer.php" />
         <option value="$PROJECT_DIR$/app/models/Vote.php" />
-        <option value="$PROJECT_DIR$/app/controllers/VotesController.php" />
         <option value="$PROJECT_DIR$/app/views/qa/show.blade.php" />
         <option value="$PROJECT_DIR$/app/config/cache.php" />
         <option value="$PROJECT_DIR$/app/MPP/Cache/CacheInterface.php" />
@@ -140,6 +112,9 @@
         <option value="$PROJECT_DIR$/app/MPP/Repository/Answer/EloquentAnswerRepository.php" />
         <option value="$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php" />
         <option value="$PROJECT_DIR$/app/MPP/Composer/ComposerServiceProvider.php" />
+        <option value="$PROJECT_DIR$/app/controllers/RemindersController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/BaseController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/VotesController.php" />
       </list>
     </option>
   </component>
@@ -900,21 +875,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/qa/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="257" column="46" selection-start="9302" selection-end="9302" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5310" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.04452055" vertical-offset="39" max-vertical-offset="915" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/qa.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="5" selection-start="395" selection-end="395" vertical-scroll-proportion="0.25684932" vertical-offset="0" max-vertical-offset="876" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="156" column="33" selection-start="4453" selection-end="4453" vertical-scroll-proportion="2.6773455" vertical-offset="0" max-vertical-offset="3540" />
@@ -994,11 +954,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/password/reset.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="43" selection-start="825" selection-end="825" vertical-scroll-proportion="0.33407572" vertical-offset="0" max-vertical-offset="898" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/RemindersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="17.333334" vertical-offset="416" max-vertical-offset="1290" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/MPP/Repository/User/UserRepository.php">
@@ -1083,15 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="164" column="69" selection-start="4871" selection-end="4871" vertical-scroll-proportion="-10.166667" vertical-offset="1991" max-vertical-offset="10890">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="93" selection-start="2028" selection-end="2028" vertical-scroll-proportion="0.7723112" vertical-offset="630" max-vertical-offset="1770">
-          <folding>
-            <element signature="e#7#46#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1180,16 +1126,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
+    <entry file="file://$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="26" selection-start="3498" selection-end="3498" vertical-scroll-proportion="-83.75" vertical-offset="0" max-vertical-offset="3390">
+        <state line="25" column="81" selection-start="505" selection-end="505" vertical-scroll-proportion="0.43554008" vertical-offset="0" max-vertical-offset="861">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php">
+    <entry file="file://$PROJECT_DIR$/app/MPP/Composer/ComposerServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="81" selection-start="505" selection-end="505" vertical-scroll-proportion="0.43554008" vertical-offset="0" max-vertical-offset="861">
+        <state line="2" column="39" selection-start="70" selection-end="70" vertical-scroll-proportion="0.034324944" vertical-offset="0" max-vertical-offset="874">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/RemindersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="1" selection-start="54" selection-end="54" vertical-scroll-proportion="-0.3604119" vertical-offset="360" max-vertical-offset="1290">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="143" column="26" selection-start="3498" selection-end="3498" vertical-scroll-proportion="2.3344948" vertical-offset="0" max-vertical-offset="3390">
           <folding />
         </state>
       </provider>
@@ -1201,10 +1161,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Composer/ComposerServiceProvider.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="39" selection-start="70" selection-end="70" vertical-scroll-proportion="0.034324944" vertical-offset="0" max-vertical-offset="874">
+        <state line="18" column="4" selection-start="284" selection-end="284" vertical-scroll-proportion="0.3089245" vertical-offset="0" max-vertical-offset="874">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="898">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="93" selection-start="2028" selection-end="2028" vertical-scroll-proportion="0.4679634" vertical-offset="881" max-vertical-offset="1755">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/VotesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="214" column="23" selection-start="5613" selection-end="5613" vertical-scroll-proportion="3.6727688" vertical-offset="0" max-vertical-offset="4050">
+          <folding>
+            <element signature="e#7#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
