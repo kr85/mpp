@@ -128,7 +128,7 @@ return array(
       'MPP\Repository\RepositoryServiceProvider',
       'Khill\Fontawesome\FontAwesomeServiceProvider',
       'Bogardo\Mailgun\MailgunServiceProvider',
-      'MPP\Composers\ComposerServiceProvider',
+      'MPP\Composer\ComposerServiceProvider',
 
 	),
 

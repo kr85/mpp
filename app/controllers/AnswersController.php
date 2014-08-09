@@ -1,5 +1,8 @@
 <?php
 
+use MPP\Repository\Answer\AnswerRepository;
+use MPP\Repository\Question\QuestionRepository;
+
 /**
  * Class AnswersController
  */
@@ -20,18 +23,38 @@ class AnswersController extends \BaseController
    protected $question;
 
    /**
+    * Answer repository.
+    *
+    * @var MPP\Repository\Answer\AnswerRepository
+    */
+   protected $answerRepository;
+
+   /**
+    * Question repository.
+    *
+    * @var MPP\Repository\Question\QuestionRepository
+    */
+   protected $questionRepository;
+
+   /**
     * Construct.
     *
     * @param Answer $answer
     * @param Question $question
+    * @param AnswerRepository $answerRepository
+    * @param QuestionRepository $questionRepository
     */
    public function __construct(
       Answer $answer,
-      Question $question
+      Question $question,
+      AnswerRepository $answerRepository,
+      QuestionRepository $questionRepository
    )
    {
       $this->answer = $answer;
       $this->question = $question;
+      $this->answerRepository = $answerRepository;
+      $this->questionRepository = $questionRepository;
    }
 
    /**
@@ -42,13 +65,13 @@ class AnswersController extends \BaseController
     */
    public function store($id)
 	{
-      $question = $this->question->find($id);
+      $question = $this->questionRepository->find($id, array());
 
       if ($question) {
          $validation = Validator::make(Input::all(), $this->answer->getAnswerRules());
 
          if ($validation->passes()) {
-            $this->answer->create(array(
+            $this->answerRepository->create(array(
                'question_id' => $question->id,
                'user_id'     => Sentry::getUser()->getId(),
                'answer'      => Input::get('answer')
@@ -104,11 +127,11 @@ class AnswersController extends \BaseController
     */
    public function destroy($id)
 	{
-		$answer = $this->answer->with('questions')->find($id);
+		$answer = $this->answerRepository->find($id, array('questions', 'votes'));
 
       if ($answer) {
          if (Sentry::getUser()->hasAccess('admin') || Sentry::getUser()->getId() == $answer->user_id) {
-            $question = $this->question->find($answer->question_id);
+            $question = $this->questionRepository->find($answer->question_id, array('users', 'tags', 'answers', 'votes'));
             $answer->delete();
 
             if (count($question->answers) == 0) {
@@ -129,38 +152,6 @@ class AnswersController extends \BaseController
 	}
 
    /**
-    * Updates the votes of an answer.
-    *
-    * @param $direction
-    * @param $id
-    * @return \Illuminate\Http\RedirectResponse|mixed
-    */
-   public function getVote($direction, $id)
-   {
-      if (Request::ajax()) {
-         $answer = $this->answer->find($id);
-
-         if ($answer) {
-            if ($direction == 'up') {
-               $vote = $answer->votes + 1;
-            } else {
-               $vote = $answer->votes - 1;
-            }
-
-            $answer->update(array(
-               'votes' => $vote
-            ));
-
-            return $vote;
-         } else {
-            Response::make('FAIL', 400);
-         }
-      } else {
-         return Redirect::route('question.index');
-      }
-   }
-
-   /**
     * Selects a best answer.
     *
     * @param $id
@@ -168,7 +159,7 @@ class AnswersController extends \BaseController
     */
    public function getChooseBestAnswer($id)
    {
-      $answer = $this->answer->with('questions')->find($id);
+      $answer = $this->answerRepository->find($id, array('questions'));
 
       if ($answer) {
          if (Sentry::getUser()->hasAccess('admin') || Sentry::getUser()->getId() == $answer->user_id) {

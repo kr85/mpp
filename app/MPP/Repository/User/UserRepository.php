@@ -7,45 +7,26 @@
 interface UserRepository
 {
    /**
-    * Display all users.
+    * Store user's session.
     *
+    * @param $credentials
+    * @param $remember
     * @return mixed
     */
-   public function all();
+   public function storeSession($credentials, $remember);
 
    /**
-    * Display a single user by id.
-    *
-    * @param $id
-    * @return mixed
-    */
-   public function find($id);
-
-   public function create($input);
-
-   public function update($data);
-
-
-   public function destroy($id);
-
-   /**
-    * Store session.
-    *
-    * @return mixed
-    */
-   public function storeSession();
-
-   /**
-    * Destroy session.
+    * Destroy a session.
     *
     * @return mixed
     */
    public function destroySession();
 
    /**
-    * Store new user/register.
+    * Register,
     *
+    * @param $info
     * @return mixed
     */
-   public function storeRegister();
+   public function storeRegister($info);
 }

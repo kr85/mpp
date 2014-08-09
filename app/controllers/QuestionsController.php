@@ -343,6 +343,11 @@ class QuestionsController extends \BaseController
       }
    }
 
+   /**
+    * Get questions with zero answers.
+    *
+    * @return $this
+    */
    public function getUnanswered()
    {
       $questions = $this->questionRepository->all(array('users', 'tags', 'answers', 'votes'))->where('answered', 0);

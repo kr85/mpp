@@ -1,11 +1,11 @@
-<?php namespace MPP\Composers;
+<?php namespace MPP\Composer;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class ComposerServiceProvider
  *
- * @package MPP\Composers
+ * @package MPP\Composer
  */
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -23,9 +23,9 @@ class ComposerServiceProvider extends ServiceProvider
     */
    public function registerQuestionsListComposer()
    {
-      $this->app->view->composer('menus.qa.sidebar', 'MPP\Composers\QuestionsListComposer');
-      /*$this->app->bind('MPP\Composers\QuestionsListComposer', function($app) {
-         new QuestionsListComposer($this->app->make('MPP\Repositories\Question\QuestionRepository'));
+      $this->app->view->composer('menus.qa.sidebar', 'MPP\Composer\QuestionsListComposer');
+      /*$this->app->bind('MPP\Composer\QuestionsListComposer', function($app) {
+         new QuestionsListComposer($this->app->make('MPP\Repository\Question\QuestionRepository'));
       });*/
    }
 
@@ -34,7 +34,7 @@ class ComposerServiceProvider extends ServiceProvider
     */
    public function registerAnswersListComposer()
    {
-      $this->app->view->composer('menus.qa.sidebar', 'MPP\Composers\AnswersListComposer');
+      $this->app->view->composer('menus.qa.sidebar', 'MPP\Composer\AnswersListComposer');
    }
 
    /**
@@ -42,6 +42,6 @@ class ComposerServiceProvider extends ServiceProvider
     */
    public function boot()
    {
-      //$this->app->view->composer(array('menus.qa.sidebar'), $this->app->make('MPP\Composers\QuestionsListComposer'));
+      $this->app->view->composer('menus.qa.sidebar', $this->app->make('MPP\Composer\QuestionsListComposer'));
    }
 }

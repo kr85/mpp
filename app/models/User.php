@@ -15,6 +15,13 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User implements  RemindableIn
    protected $table = 'users';
 
    /**
+    * Properties that are hidden.
+    *
+    * @var array
+    */
+   protected $hidden = array('remember_token');
+
+   /**
     * User registration validation rules.
     *
     * @var array
@@ -114,6 +121,21 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User implements  RemindableIn
    public function getRegisterRules()
    {
       return $this::$registerRules;
+   }
+
+   public function getRememberToken()
+   {
+      return $this->remember_token;
+   }
+
+   public function setRememberToken($value)
+   {
+      $this->remember_token = $value;
+   }
+
+   public function getRememberTokenName()
+   {
+      return 'remember_token';
    }
 
    /**

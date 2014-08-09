@@ -1,6 +1,6 @@
 <?php
 
-use MPP\Repositories\User\UserRepository;
+use MPP\Repository\User\UserRepository;
 use Cartalyst\Sentry\Sentry as Sentry;
 
 /**
@@ -18,7 +18,7 @@ class RegisterController extends \BaseController
    /**
     * User repository.
     *
-    * @var MPP\Repositories\User\UserRepository
+    * @var MPP\Repository\User\UserRepository
     */
    protected $userRepository;
 
@@ -37,9 +37,9 @@ class RegisterController extends \BaseController
    protected $layout = 'layouts.master';
 
    public function __construct(
-      User $user                     = null,
-      UserRepository $userRepository = null,
-      Sentry $sentry                 = null
+      User $user,
+      UserRepository $userRepository,
+      Sentry $sentry
    )
    {
       $this->user           = $user;
@@ -69,13 +69,23 @@ class RegisterController extends \BaseController
             ->withInput()
             ->withErrors($validation);
       } else {
-         $user = $this->userRepository->storeRegister();
+         $info = array(
+            'username'     => \Input::get('username'),
+            'email'        => \Input::get('email'),
+            'password'     => \Input::get('password'),
+            'first_name'   => \Input::get('first_name'),
+            'last_name'    => \Input::get('last_name'),
+            'permissions'  => array('general-user' => 1),
+            'activated_at' => new \DateTime()
+         );
+
+         $user = $this->userRepository->storeRegister($info);
          $userGroup = $this->sentry->findGroupById(2);
          $user->addGroup($userGroup);
 
          $this->welcomeEmail($data);
 
-         $login = $this->userRepository->storeSession();
+         $login = $this->userRepository->storeSession(Input::only('email', 'password'), false);
 
          if ($login->getId() != null) {
             return Redirect::route('index')

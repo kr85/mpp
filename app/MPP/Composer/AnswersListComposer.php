@@ -1,9 +1,9 @@
-<?php namespace MPP\Composers;
+<?php namespace MPP\Composer;
 
 /**
  * Class AnswersListComposer
  *
- * @package MPP\Composers
+ * @package MPP\Composer
  */
 class AnswersListComposer
 {

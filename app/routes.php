@@ -143,12 +143,6 @@ Route::patch('answer/update/{id}', array(
    'uses'   => 'AnswersController@update'
 ))->where('id', '[0-9]+');
 
-Route::get('answer/vote/{direction}/{id}', array(
-   'as'     => 'answer.vote',
-   'before' => 'user',
-   'uses'   => 'AnswersController@getVote'
-))->where(array('direction' => '(up|down)', 'id' => '[0-9+]'));
-
 Route::get('answer/choose/{id}', array(
    'as'     => 'choose.best.answer',
    'before' => 'user',

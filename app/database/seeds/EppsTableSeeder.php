@@ -11,9 +11,9 @@ class EppsTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			Epp::create([
+			//Epp::create([
 
-			]);
+			//]);
 		}
 	}
 

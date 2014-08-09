@@ -1,80 +1,131 @@
 <?php namespace MPP\Repository\User;
 
+use MPP\Repository\Repository;
 use User;
 
-class EloquentUserRepository implements UserRepository
+/**
+ * Class EloquentUserRepository
+ *
+ * @package MPP\Repository\User
+ */
+class EloquentUserRepository implements Repository, UserRepository
 {
+   /**
+    * User model.
+    *
+    * @var \User
+    */
    protected $user;
 
+   /**
+    * Construct.
+    *
+    * @param User $user
+    */
    public function __construct(User $user)
    {
       $this->user = $user;
    }
 
-   public function all()
+   /**
+    * Get all users.
+    *
+    * @param array $with
+    * @return \Illuminate\Database\Eloquent\Builder|static
+    */
+   public function all(array $with = array())
    {
-      return $this->user->all();
+      $users = $this->user->with($with);
+
+      return $users;
    }
 
-   public function find($id)
+   /**
+    * Find a user by id.
+    *
+    * @param $id
+    * @param array $with
+    * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
+    */
+   public function find($id, array $with = array())
    {
-      return $this->user->find($id);
+      $user = $this->user->with($with)->find($id);
+
+      return $user;
    }
 
-   public function create($input)
+   /**
+    * Create a user.
+    *
+    * @param array $data
+    * @return static
+    */
+   public function create(array $data)
    {
-      return $this->user->create($input);
+      return $this->user->create($data);
    }
 
-   public function update($data)
+   /**
+    * Update a user.
+    *
+    * @param array $data
+    * @return bool|int
+    */
+   public function update(array $data)
    {
-      //$user = $this->user->find($id);
-
-      //$user->save(\Input::all());
-
-      //return $user;
+      return $this->user->update($data);
    }
 
+   /**
+    * Delete a user.
+    *
+    * @param $id
+    * @return bool|null
+    */
    public function destroy($id)
    {
-      $user = $this->user->find($id);
+      $user = $this->find($id);
 
       if ($user)
       {
-         $user->delete();
+         return $user->delete();
       }
    }
 
-   public function storeSession()
+   /**
+    * Store user's session.
+    *
+    * @param $credentials
+    * @param $remember
+    * @return \Cartalyst\Sentry\Users\UserInterface|mixed
+    */
+   public function storeSession($credentials, $remember)
    {
-      $credentials = array(
-         'email'    => \Input::get('email'),
-         'password' => \Input::get('password')
-      );
-
-       $login = \Sentry::authenticateAndRemember($credentials);
+      $login = \Sentry::authenticate($credentials, $remember);
 
       return $login;
    }
 
+   /**
+    * Destroy user's session.
+    *
+    * @return mixed|void
+    */
    public function destroySession()
    {
       \Sentry::logout();
 
    }
 
-   public function storeRegister()
+   /**
+    * Register a new user.
+    *
+    * @param $info
+    * @return \Cartalyst\Sentry\Users\UserInterface|mixed
+    */
+   public function storeRegister($info)
    {
-      $user = \Sentry::getUserProvider()->create(array(
-         'username'     => \Input::get('username'),
-         'email'        => \Input::get('email'),
-         'password'     => \Input::get('password'),
-         'first_name'   => \Input::get('first_name'),
-         'last_name'    => \Input::get('last_name'),
-         'permissions'  => array('general-user' => 1),
-         'activated'    => 1,
-         'activated_at' => new \DateTime()
-      ));
+      $user = \Sentry::register($info, true);
 
       return $user;
    }

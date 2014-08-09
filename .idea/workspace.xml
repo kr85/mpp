@@ -2,16 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2c51222-b084-4c17-977f-cf55de2ad177" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/MPP/Repository/Question/QuestionRepository.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/MPP/Repositories/Question/QuestionRepository.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/MPP/Repositories/Question/EloquentQuestionRepository.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/Question/EloquentQuestionRepository.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/MPP/Repositories/RepositoryServiceProvider.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/MPP/Repositories/User/EloquentUserRepository.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/User/EloquentUserRepository.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/MPP/Repositories/User/UserRepository.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/User/UserRepository.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/MPP/Composers/AnswersListComposer.php" afterPath="$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/MPP/Composers/ComposerServiceProvider.php" afterPath="$PROJECT_DIR$/app/MPP/Composer/ComposerServiceProvider.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/MPP/Composers/QuestionsListComposer.php" afterPath="$PROJECT_DIR$/app/MPP/Composer/QuestionsListComposer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/Question/AbstractQuestionDecorator.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/Question/AbstractQuestionDecorator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/AnswersController.php" afterPath="$PROJECT_DIR$/app/controllers/AnswersController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/Question/CacheDecorator.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/Question/CacheDecorator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/Question/EloquentQuestionRepository.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/Question/EloquentQuestionRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/User/EloquentUserRepository.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/User/EloquentUserRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/seeds/EppsTableSeeder.php" afterPath="$PROJECT_DIR$/app/database/seeds/EppsTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/Question/QuestionRepository.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/Question/QuestionRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/QuestionsController.php" afterPath="$PROJECT_DIR$/app/controllers/QuestionsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Composers/QuestionsListComposer.php" afterPath="$PROJECT_DIR$/app/MPP/Composers/QuestionsListComposer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/RegisterController.php" afterPath="$PROJECT_DIR$/app/controllers/RegisterController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/SessionsController.php" afterPath="$PROJECT_DIR$/app/controllers/SessionsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/User.php" afterPath="$PROJECT_DIR$/app/models/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/User/UserRepository.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/User/UserRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/seeds/UsersTableSeeder.php" afterPath="$PROJECT_DIR$/app/database/seeds/UsersTableSeeder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/app.php" afterPath="$PROJECT_DIR$/app/config/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/cache.php" afterPath="$PROJECT_DIR$/app/config/cache.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sessions/login.blade.php" afterPath="$PROJECT_DIR$/app/views/sessions/login.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mpp.iws" />
@@ -38,55 +48,52 @@
     <favorites_list name="mpp" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="QuestionsController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/QuestionsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="11" selection-start="283" selection-end="283" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="5385">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuestionRepository.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Question/QuestionRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="16" selection-start="16" selection-end="16" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="420">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/app.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="7" selection-start="4570" selection-end="4570" vertical-scroll-proportion="-21.25" vertical-offset="1395" max-vertical-offset="3150">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EloquentQuestionRepository.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Question/EloquentQuestionRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="16" selection-start="16" selection-end="16" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1170">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RepositoryServiceProvider.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="4" selection-start="392" selection-end="392" vertical-scroll-proportion="0.29176202" vertical-offset="0" max-vertical-offset="874">
-              <folding>
-                <element signature="e#33#72#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/routes.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="143" column="26" selection-start="3498" selection-end="3498" vertical-scroll-proportion="-83.75" vertical-offset="0" max-vertical-offset="3390">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AnswersListComposer.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="5" column="24" selection-start="91" selection-end="91" vertical-scroll-proportion="0.08581236" vertical-offset="0" max-vertical-offset="874">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="QuestionsListComposer.php" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/MPP/Composer/QuestionsListComposer.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="20" column="5" selection-start="376" selection-end="376" vertical-scroll-proportion="0.34843206" vertical-offset="0" max-vertical-offset="861">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ComposerServiceProvider.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/MPP/Composer/ComposerServiceProvider.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="44" column="6" selection-start="1057" selection-end="1057" vertical-scroll-proportion="-27.5" vertical-offset="0" max-vertical-offset="795">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -99,21 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/SessionsController.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Composers/AnswersListComposer.php" />
-        <option value="$PROJECT_DIR$/app/views/sessions/login.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/qa/tags.php" />
-        <option value="$PROJECT_DIR$/app/views/menus/qa/top.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/qa/tags.blade.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_08_06_204548_add_answered_to_questions_table.php" />
-        <option value="$PROJECT_DIR$/app/views/menus/qa/sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/qa/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/layouts/qa.blade.php" />
-        <option value="$PROJECT_DIR$/app/controllers/AnswersController.php" />
-        <option value="$PROJECT_DIR$/app/views/menus/main/top.blade.php" />
-        <option value="$PROJECT_DIR$/public/assets/stylesheets/custom.css" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_010952_add_question_id_to_votes_table.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_023932_remove_answer_id_from_questions_votes_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_023635_rename_votes_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_030600_create_questions_votes_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_030737_create_answers_votes_table.php" />
@@ -124,32 +116,47 @@
         <option value="$PROJECT_DIR$/app/database/seeds/VotesTableSeeder.php" />
         <option value="$PROJECT_DIR$/app/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/app/models/Question.php" />
-        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_08_07_174404_add_vote_id_to_answers_votes_table.php" />
         <option value="$PROJECT_DIR$/app/models/Answer.php" />
         <option value="$PROJECT_DIR$/app/models/Vote.php" />
-        <option value="$PROJECT_DIR$/app/models/User.php" />
         <option value="$PROJECT_DIR$/app/controllers/VotesController.php" />
         <option value="$PROJECT_DIR$/app/views/qa/show.blade.php" />
         <option value="$PROJECT_DIR$/app/config/cache.php" />
         <option value="$PROJECT_DIR$/app/MPP/Cache/CacheInterface.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Cache/LaravelCache.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repositories/Question/CacheDecorator.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repositories/Question/AbstractQuestionDecorator.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Composers/ComposerServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repositories/Question/QuestionRepository.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repositories/Question/EloquentQuestionRepository.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repositories/RepositoryServiceProvider.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Repository/Question/AbstractQuestionDecorator.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Repository/Question/CacheDecorator.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Repository/User/EloquentUserRepository.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Repository/User/UserRepository.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Repository/Question/EloquentQuestionRepository.php" />
-        <option value="$PROJECT_DIR$/app/config/app.php" />
         <option value="$PROJECT_DIR$/app/MPP/Composers/QuestionsListComposer.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Composers/ComposerServiceProvider.php" />
+        <option value="$PROJECT_DIR$/app/config/app.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Composer/QuestionsListComposer.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Composer/ComposerServiceProvider.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Cache/CacheValidatorError.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Cache/LaravelCache.php" />
+        <option value="$PROJECT_DIR$/app/views/qa/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_08_08_012351_add_remember_token_to_users_table.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repository/Question/QuestionRepository.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/Repository.php" />
         <option value="$PROJECT_DIR$/app/controllers/QuestionsController.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/Question/CacheDecorator.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/Question/AbstractQuestionDecorator.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/User/UserRepository.php" />
+        <option value="$PROJECT_DIR$/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Sentry.php" />
+        <option value="$PROJECT_DIR$/app/views/sessions/login.blade.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_08_08_031801_add_token_to_users_table.php" />
+        <option value="$PROJECT_DIR$/app/controllers/SessionsController.php" />
+        <option value="$PROJECT_DIR$/app/models/User.php" />
+        <option value="$PROJECT_DIR$/app/controllers/RegisterController.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/User/EloquentUserRepository.php" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/Question/EloquentQuestionRepository.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php" />
+        <option value="$PROJECT_DIR$/app/controllers/AnswersController.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/Answer/AnswerRepository.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/Answer/EloquentAnswerRepository.php" />
       </list>
     </option>
   </component>
@@ -268,6 +275,178 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cartalyst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cartalyst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cartalyst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cartalyst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cartalyst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cartalyst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cartalyst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cartalyst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sentry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sessions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -362,7 +541,51 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
+              <option name="myItemId" value="sessions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qa" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="password" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -458,7 +681,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Composers" />
+              <option name="myItemId" value="Repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Answer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -479,6 +706,32 @@
               <option name="myItemId" value="MPP" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Composer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MPP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cache" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -495,6 +748,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -646,362 +917,318 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/packages/cartalyst/sentry/config.php">
+    <entry file="file://$PROJECT_DIR$/app/views/qa/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.604119" vertical-offset="2276" max-vertical-offset="3150">
-          <folding />
-        </state>
+        <state line="257" column="46" selection-start="9302" selection-end="9302" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5310" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/packages/mrjuliuss/syntara/views.php">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/master.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="898">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.04452055" vertical-offset="39" max-vertical-offset="915" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/menus/qa/top.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/qa.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="6" selection-start="2845" selection-end="2845" vertical-scroll-proportion="0.43429846" vertical-offset="0" max-vertical-offset="898">
-          <folding />
-        </state>
+        <state line="15" column="5" selection-start="395" selection-end="395" vertical-scroll-proportion="0.25684932" vertical-offset="0" max-vertical-offset="876" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/qa/tags.blade.php">
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="23" selection-start="296" selection-end="296" vertical-scroll-proportion="0.21714923" vertical-offset="0" max-vertical-offset="898">
-          <folding />
-        </state>
+        <state line="156" column="33" selection-start="4453" selection-end="4453" vertical-scroll-proportion="2.6773455" vertical-offset="0" max-vertical-offset="3540" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="19" selection-start="4734" selection-end="4734" vertical-scroll-proportion="-17.375" vertical-offset="1533" max-vertical-offset="3150" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/menus/qa/sidebar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="24" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
+        <state line="8" column="20" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Cache/MemcachedStore.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.5704225" vertical-offset="1338" max-vertical-offset="2190" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Cache/CacheInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="1" selection-start="54" selection-end="54" vertical-scroll-proportion="0.051487416" vertical-offset="0" max-vertical-offset="874" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Cache/LaravelCache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="4" selection-start="379" selection-end="379" vertical-scroll-proportion="0.3089245" vertical-offset="0" max-vertical-offset="874">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/qa/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="35" selection-start="459" selection-end="459" vertical-scroll-proportion="0.2505568" vertical-offset="0" max-vertical-offset="1950">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_31_231735_add_closed_to_questions_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="9" selection-start="493" selection-end="522" vertical-scroll-proportion="0.49771166" vertical-offset="0" max-vertical-offset="874">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/stylesheets/frontend.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="953" column="16" selection-start="14593" selection-end="14608" vertical-scroll-proportion="-17.25926" vertical-offset="13829" max-vertical-offset="92655">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/sessions/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="115" selection-start="149" selection-end="164" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/menus/main/top.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="60" selection-start="684" selection-end="684" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/stylesheets/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="18" selection-start="1677" selection-end="1677" vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="11700">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/AnswersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="1181" selection-end="1181" vertical-scroll-proportion="51.083332" vertical-offset="2111" max-vertical-offset="2985">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_28_031617_create_answers_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="876">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_04_004046_create_password_reminders_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="876">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_07_26_213859_create_tags_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="876">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_06_204548_add_answered_to_questions_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="9" selection-start="300" selection-end="342" vertical-scroll-proportion="0.26408452" vertical-offset="0" max-vertical-offset="852">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/seeds/UsersTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="2" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0528169" vertical-offset="0" max-vertical-offset="852">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/seeds/EppsTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="2" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0528169" vertical-offset="0" max-vertical-offset="852">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="8" selection-start="200" selection-end="200" vertical-scroll-proportion="0.24647887" vertical-offset="0" max-vertical-offset="852">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/seeds/VotesTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="42" selection-start="271" selection-end="271" vertical-scroll-proportion="0.2112676" vertical-offset="0" max-vertical-offset="852">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_07_030600_create_questions_votes_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="5" selection-start="701" selection-end="701" vertical-scroll-proportion="0.4633867" vertical-offset="0" max-vertical-offset="874">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_07_145350_create_votes_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="505" selection-end="505" vertical-scroll-proportion="0.56636155" vertical-offset="0" max-vertical-offset="874">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Tag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="28" selection-start="93" selection-end="93" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="585">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_07_174404_add_vote_id_to_answers_votes_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="25" selection-start="535" selection-end="535" vertical-scroll-proportion="0.45774648" vertical-offset="0" max-vertical-offset="852">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_07_151154_add_vote_id_to_questions_votes_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="609" selection-end="683" vertical-scroll-proportion="0.52816904" vertical-offset="0" max-vertical-offset="852">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_07_030737_create_answers_votes_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="4" selection-start="226" selection-end="226" vertical-scroll-proportion="0.20594966" vertical-offset="0" max-vertical-offset="874">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Question.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="1357" selection-end="1455" vertical-scroll-proportion="-23.291666" vertical-offset="506" max-vertical-offset="1380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Answer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="50" selection-start="1150" selection-end="1150" vertical-scroll-proportion="-31.416666" vertical-offset="221" max-vertical-offset="1095">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="75" selection-start="2357" selection-end="2357" vertical-scroll-proportion="-31.416666" vertical-offset="1196" max-vertical-offset="2070">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Vote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="71" selection-start="235" selection-end="235" vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="465">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="44" selection-start="4889" selection-end="4889" vertical-scroll-proportion="-28.916666" vertical-offset="2066" max-vertical-offset="3480">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/VotesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="35" selection-start="5790" selection-end="5790" vertical-scroll-proportion="-30.791666" vertical-offset="2306" max-vertical-offset="3180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/cache.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="25" selection-start="526" selection-end="526" vertical-scroll-proportion="12.333333" vertical-offset="551" max-vertical-offset="1425">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/qa/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="257" column="46" selection-start="9302" selection-end="9302" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5310">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Cache/LaravelCache.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="71" selection-start="648" selection-end="648" vertical-scroll-proportion="-17.5" vertical-offset="0" max-vertical-offset="615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Cache/CacheInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="1" selection-start="54" selection-end="54" vertical-scroll-proportion="0.051487416" vertical-offset="0" max-vertical-offset="874">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/User/EloquentUserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="30" selection-start="30" selection-end="30" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1290">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/User/UserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="30" selection-start="30" selection-end="30" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="840">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.04452055" vertical-offset="39" max-vertical-offset="915">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/qa.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="5" selection-start="395" selection-end="395" vertical-scroll-proportion="0.25684932" vertical-offset="0" max-vertical-offset="876">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Composers/AnswersListComposer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="876">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Composers/ComposerServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="6" selection-start="486" selection-end="486" vertical-scroll-proportion="0.42906177" vertical-offset="0" max-vertical-offset="874">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="33" selection-start="4453" selection-end="4453" vertical-scroll-proportion="2.6773455" vertical-offset="0" max-vertical-offset="3540">
-          <folding />
-        </state>
+        <state line="8" column="30" selection-start="215" selection-end="215" vertical-scroll-proportion="0.13363029" vertical-offset="0" max-vertical-offset="1950" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Question/CacheDecorator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="30" selection-start="30" selection-end="30" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="990">
+        <state line="74" column="17" selection-start="1419" selection-end="1419" vertical-scroll-proportion="1.2700229" vertical-offset="0" max-vertical-offset="1560">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Question/AbstractQuestionDecorator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="18" selection-start="60" selection-end="60" vertical-scroll-proportion="0.034324944" vertical-offset="0" max-vertical-offset="874">
+        <state line="74" column="13" selection-start="1379" selection-end="1379" vertical-scroll-proportion="1.2700229" vertical-offset="0" max-vertical-offset="1335" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Users/ProviderInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.1967963" vertical-offset="1046" max-vertical-offset="1920" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Users/Exceptions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="898" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Users/Eloquent/Provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.4226682" vertical-offset="2052" max-vertical-offset="5235" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/password/remind.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="898" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/password/reset.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="43" selection-start="825" selection-end="825" vertical-scroll-proportion="0.33407572" vertical-offset="0" max-vertical-offset="898" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/RemindersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="17.333334" vertical-offset="416" max-vertical-offset="1290" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/User/UserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="27" selection-start="169" selection-end="169" vertical-scroll-proportion="0.15446225" vertical-offset="0" max-vertical-offset="874">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/app.php">
+    <entry file="file://$PROJECT_DIR$/app/filters.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="7" selection-start="4570" selection-end="4570" vertical-scroll-proportion="-21.25" vertical-offset="1395" max-vertical-offset="3150">
+        <state line="85" column="44" selection-start="2105" selection-end="2125" vertical-scroll-proportion="0.48512587" vertical-offset="716" max-vertical-offset="1950" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_08_08_012351_add_remember_token_to_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="43" selection-start="506" selection-end="506" vertical-scroll-proportion="0.49771166" vertical-offset="0" max-vertical-offset="874" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrjuliuss/syntara/src/controllers/BaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="898" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrjuliuss/syntara/src/controllers/DashboardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="13" selection-start="1463" selection-end="1463" vertical-scroll-proportion="-20.625" vertical-offset="135" max-vertical-offset="1350" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/sessions/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="35" selection-start="825" selection-end="825" vertical-scroll-proportion="0.38418707" vertical-offset="0" max-vertical-offset="898" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrjuliuss/syntara/src/views/dashboard/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Users/UserInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="33" selection-start="180" selection-end="182" vertical-scroll-proportion="-3.7992916" vertical-offset="3338" max-vertical-offset="4185">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/QuestionsController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Users/Eloquent/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="11" selection-start="283" selection-end="283" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="5385">
+        <state line="75" column="27" selection-start="1706" selection-end="1708" vertical-scroll-proportion="0.33293977" vertical-offset="738" max-vertical-offset="14610">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Composers/QuestionsListComposer.php">
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/UserInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="4" selection-start="36" selection-end="36" vertical-scroll-proportion="0.034324944" vertical-offset="0" max-vertical-offset="874">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="898" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/Reminders/ReminderServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1860" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/UserProviderInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="24" selection-start="44" selection-end="65" vertical-scroll-proportion="0.034324944" vertical-offset="0" max-vertical-offset="874" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/SessionsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="0" selection-start="1705" selection-end="1705" vertical-scroll-proportion="0.36842105" vertical-offset="818" max-vertical-offset="2115" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Sessions/SessionInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Question/QuestionRepository.php">
+    <entry file="file://$PROJECT_DIR$/vendor/cartalyst/sentry/src/Cartalyst/Sentry/Sentry.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="16" selection-start="16" selection-end="16" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="420">
+        <state line="164" column="69" selection-start="4871" selection-end="4871" vertical-scroll-proportion="-10.166667" vertical-offset="1991" max-vertical-offset="10890">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Question/EloquentQuestionRepository.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="16" selection-start="16" selection-end="16" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1170">
+        <state line="87" column="93" selection-start="2028" selection-end="2028" vertical-scroll-proportion="0.7723112" vertical-offset="630" max-vertical-offset="1770">
+          <folding>
+            <element signature="e#7#46#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/User/EloquentUserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="62" selection-start="1863" selection-end="1863" vertical-scroll-proportion="1.7677345" vertical-offset="0" max-vertical-offset="2055">
+          <folding>
+            <element signature="e#38#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="33" selection-start="310" selection-end="310" vertical-scroll-proportion="-0.1201373" vertical-offset="360" max-vertical-offset="2400">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="0" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.708238" vertical-offset="506" max-vertical-offset="1380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Answer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.2528604" vertical-offset="221" max-vertical-offset="1095">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="4" selection-start="392" selection-end="392" vertical-scroll-proportion="0.29176202" vertical-offset="0" max-vertical-offset="874">
+        <state line="53" column="33" selection-start="1391" selection-end="1391" vertical-scroll-proportion="0.9330986" vertical-offset="0" max-vertical-offset="1005">
           <folding>
             <element signature="e#33#72#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Question/QuestionRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="10" selection-start="334" selection-end="426" vertical-scroll-proportion="0.3089245" vertical-offset="0" max-vertical-offset="874">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Answer/AnswerRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="25" selection-start="177" selection-end="177" vertical-scroll-proportion="0.17605634" vertical-offset="0" max-vertical-offset="852">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Repository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="1" selection-start="117" selection-end="117" vertical-scroll-proportion="0.13729978" vertical-offset="0" max-vertical-offset="874">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/AnswersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="16" selection-start="633" selection-end="633" vertical-scroll-proportion="-1.630662" vertical-offset="1989" max-vertical-offset="2850">
+          <folding>
+            <element signature="e#7#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Answer/EloquentAnswerRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="29" selection-start="1651" selection-end="1651" vertical-scroll-proportion="1.5505227" vertical-offset="0" max-vertical-offset="1620">
+          <folding>
+            <element signature="e#40#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/QuestionsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="158" column="6" selection-start="4027" selection-end="4027" vertical-scroll-proportion="-2.5888503" vertical-offset="4599" max-vertical-offset="5460">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Question/EloquentQuestionRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="6" selection-start="254" selection-end="254" vertical-scroll-proportion="0.20905924" vertical-offset="0" max-vertical-offset="1695">
+          <folding>
+            <element signature="e#42#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="143" column="26" selection-start="3498" selection-end="3498" vertical-scroll-proportion="-83.75" vertical-offset="0" max-vertical-offset="3390">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Composer/AnswersListComposer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="24" selection-start="91" selection-end="91" vertical-scroll-proportion="0.08581236" vertical-offset="0" max-vertical-offset="874">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Composer/ComposerServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="6" selection-start="1057" selection-end="1057" vertical-scroll-proportion="-27.5" vertical-offset="0" max-vertical-offset="795">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Composer/QuestionsListComposer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="5" selection-start="376" selection-end="376" vertical-scroll-proportion="0.34843206" vertical-offset="0" max-vertical-offset="861">
+          <folding />
         </state>
       </provider>
     </entry>

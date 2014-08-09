@@ -1,6 +1,6 @@
 <?php
 
-use MPP\Repositories\User\UserRepository;
+use MPP\Repository\User\UserRepository;
 use Cartalyst\Sentry\Users\LoginRequiredException;
 use Cartalyst\Sentry\Users\PasswordRequiredException;
 use Cartalyst\Sentry\Users\WrongPasswordException;
@@ -24,7 +24,7 @@ class SessionsController extends \BaseController
    /**
     * User repository.
     *
-    * @var MPP\Repositories\User\UserRepository
+    * @var MPP\Repository\User\UserRepository
     */
    protected $userRepository;
 
@@ -42,8 +42,8 @@ class SessionsController extends \BaseController
     * @param UserRepository $userRepository
     */
    public function __construct(
-      User $user                     = null,
-      UserRepository $userRepository = null
+      User $user,
+      UserRepository $userRepository
    )
    {
       $this->user           = $user;
@@ -65,7 +65,7 @@ class SessionsController extends \BaseController
     */
    public function store()
 	{
-      $validation = \Validator::make(\Input::all(), $this->user->getSessionRules());
+      $validation = \Validator::make(Input::all(), $this->user->getSessionRules());
 
       if ($validation->fails()) {
          return Redirect::route('sessions.login')
@@ -73,8 +73,14 @@ class SessionsController extends \BaseController
             ->withErrors($validation);
       } else {
          try {
+            $remember = (Input::has('remember')) ? true : false;
 
-            $login = $this->userRepository->storeSession();
+            $credentials = array(
+               'email' => Input::get('email'),
+               'password' => Input::get('password'),
+            );
+
+            $login = $this->userRepository->storeSession($credentials, $remember);
 
             if ($login->getId() == null) {
                return Redirect::route('sessions.login');
