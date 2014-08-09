@@ -9,8 +9,18 @@ use MPP\Repository\Answer\AnswerRepository;
  */
 class AnswersListComposer
 {
+   /**
+    * Answer repository.
+    *
+    * @var \MPP\Repository\Answer\AnswerRepository
+    */
    protected $answerRepository;
 
+   /**
+    * Construct.
+    *
+    * @param AnswerRepository $answerRepository
+    */
    public function __construct(AnswerRepository $answerRepository)
    {
       $this->answerRepository = $answerRepository;

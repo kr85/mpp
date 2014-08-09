@@ -9,8 +9,18 @@ use MPP\Repository\Question\QuestionRepository;
  */
 class QuestionsListComposer
 {
+   /**
+    * Question repository.
+    *
+    * @var \MPP\Repository\Question\QuestionRepository
+    */
    protected $questionRepository;
 
+   /**
+    * Construct.
+    *
+    * @param QuestionRepository $questionRepository
+    */
    public function __construct(QuestionRepository $questionRepository)
    {
       $this->questionRepository = $questionRepository;
