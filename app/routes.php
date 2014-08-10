@@ -15,8 +15,8 @@
  * Main index page routes.
  */
 Route::get('/', array(
-   'as'   => 'index',
-   'uses' => 'HomeController@getIndex'
+   'as'     => 'index',
+   'uses'   => 'HomeController@getIndex'
 ));
 
 /**
@@ -77,9 +77,9 @@ Route::get('qa', array(
 ));
 
 Route::get('question/{id}', array(
-   'as' => 'question.show',
+   'as'     => 'question.show',
    'before' => 'user',
-   'uses' => 'QuestionsController@show'
+   'uses'   => 'QuestionsController@show'
 ))->where('id', '[0-9]+');
 
 Route::get('question/edit/{id}', array(
@@ -113,13 +113,15 @@ Route::get('question/unlock/{id}', array(
 ))->where('id', '[0-9]+');
 
 Route::get('question/tagged/{tag}', array(
-   'as'   => 'question.tagged',
-   'uses' => 'QuestionsController@getTaggedWith'
+   'as'     => 'question.tagged',
+   'before' => 'user',
+   'uses'   => 'QuestionsController@getTaggedWith'
 ))->where('tag', '[0-9a-zA-Z\-\_]+');
 
 Route::get('question/tags', array(
-   'as'   => 'question.tags',
-   'uses' => 'QuestionsController@getTags'
+   'as'     => 'question.tags',
+   'before' => 'user',
+   'uses'   => 'QuestionsController@getTags'
 ));
 
 Route::get('qa/unanswered', array(
@@ -207,9 +209,9 @@ Route::get('password/reset', array(
 ));
 
 Route::post('password/reset', array(
-   'as' => 'password.request',
+   'as'     => 'password.request',
    'before' => 'isGuest',
-   'uses' => 'RemindersController@postRemind'
+   'uses'   => 'RemindersController@postRemind'
 ));
 
 Route::get('password/reset/{token}', array(

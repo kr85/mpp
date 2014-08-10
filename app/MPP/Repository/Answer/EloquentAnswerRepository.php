@@ -1,6 +1,6 @@
 <?php namespace MPP\Repository\Answer;
 
-use MPP\Repository\Repository;
+use MPP\Repository\AbstractEloquentRepository;
 use Answer;
 
 /**
@@ -8,82 +8,19 @@ use Answer;
  *
  * @package MPP\Repository\Answer
  */
-class EloquentAnswerRepository implements Repository, AnswerRepository
+class EloquentAnswerRepository extends AbstractEloquentRepository implements AnswerRepository
 {
    /**
     * Answer model.
     *
-    * @var \Answer
+    * @var Answer
     */
    protected $answer;
 
    public function __construct(Answer $answer)
    {
+      parent::__construct($answer);
       $this->answer = $answer;
-   }
-
-   /**
-    * Get all answers.
-    *
-    * @param array $with
-    * @return \Illuminate\Database\Eloquent\Builder|mixed|static
-    */
-   public function all(array $with = array())
-   {
-      $answers = $this->answer->with($with);
-
-      return $answers;
-   }
-
-   /**
-    * Find an answer by id.
-    *
-    * @param $id
-    * @param array $with
-    * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|mixed|null|static
-    */
-   public function find($id, array $with)
-   {
-      $answer = $this->answer->with($with)->find($id);
-
-      return $answer;
-   }
-
-   /**
-    * Create an answer.
-    *
-    * @param array $data
-    * @return mixed|static
-    */
-   public function create(array $data)
-   {
-      return $this->answer->create($data);
-   }
-
-   /**
-    * Update an answer.
-    *
-    * @param array $data
-    * @return bool|int|mixed
-    */
-   public function update(array $data)
-   {
-      return $this->answer->update($data);
-   }
-
-   /**
-    * Delete an answer.
-    *
-    * @param $id
-    * @return bool|mixed|null
-    */
-   public function destroy($id)
-   {
-      $answer = $this->find($id, array());
-
-      if ($answer) {
-         return $answer->delete();
-      }
    }
 
    /**

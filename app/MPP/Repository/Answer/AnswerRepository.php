@@ -1,11 +1,13 @@
 <?php namespace MPP\Repository\Answer;
 
+use MPP\Repository\Repository;
+
 /**
  * Interface AnswerRepository
  *
  * @package MPP\Repository\Answer
  */
-interface AnswerRepository
+interface AnswerRepository extends Repository
 {
    /**
     * Get latest answers.

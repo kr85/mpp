@@ -42,7 +42,7 @@ class SessionsController extends \BaseController
     * @param UserRepository $userRepository
     */
    public function __construct(
-      User $user,
+      User           $user,
       UserRepository $userRepository
    )
    {

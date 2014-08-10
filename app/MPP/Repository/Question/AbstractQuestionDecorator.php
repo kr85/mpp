@@ -1,6 +1,6 @@
 <?php namespace MPP\Repository\Question;
 
-use MPP\Repository\Question\QuestionRepository;
+use Question;
 
 /**
  * Class AbstractQuestionDecorator
@@ -17,13 +17,16 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
    protected $questionRepository;
 
    /**
-    * Construct.
+    * Question model.
     *
-    * @param QuestionRepository $questionRepository
+    * @var Question
     */
-   public function __construct(QuestionRepository $questionRepository)
+   protected $question;
+
+   public function __construct(QuestionRepository $questionRepository, Question $question)
    {
       $this->questionRepository = $questionRepository;
+      $this->question = $question;
    }
 
    /**
@@ -81,4 +84,37 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
    {
       return $this->questionRepository->destroy($id);
    }
+
+   /**
+    * Make.
+    *
+    * @param array $with
+    * @return \Illuminate\Database\Eloquent\Builder|mixed|static
+    */
+   public function make(array $with = array())
+   {
+      return $this->question->with($with);
+   }
+
+   /**
+    * Make with a condition.
+    *
+    * @param array $with
+    * @param $key
+    * @param $value
+    * @return $this|mixed
+    */
+   public function makeWhere(array $with = array(), $key, $value)
+   {
+      return $this->question->with($with)->where($key, '=', $value);
+   }
+
+   /**
+    * Unimplemented methods,
+    */
+   public function getByPage($page, $limit, array $with = array(), $columnName, $columnDirection){}
+   public function getByPageWhere($key, $value, $page, $limit, array $with, $columnName, $columnDirection){}
+   public function getOneWhere($key, $value, array $with = array()){}
+   public function getManyWhere($key, $value, array $with = array()){}
+   public function orderBy(array $with = array(), $columnName, $columnDirection){}
 }

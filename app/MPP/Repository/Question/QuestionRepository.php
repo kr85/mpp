@@ -1,11 +1,13 @@
 <?php namespace MPP\Repository\Question;
 
+use MPP\Repository\Repository;
+
 /**
  * Interface QuestionRepository
  *
  * @package MPP\Repository\Question
  */
-interface QuestionRepository
+interface QuestionRepository extends Repository
 {
    /**
     * Get latest added questions.

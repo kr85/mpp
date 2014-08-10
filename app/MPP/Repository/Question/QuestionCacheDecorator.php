@@ -1,13 +1,14 @@
 <?php namespace MPP\Repository\Question;
 
 use MPP\Cache\CacheInterface;
+use Question;
 
 /**
  * Class CacheDecorator
  *
  * @package MPP\Repository\Question
  */
-class CacheDecorator extends AbstractQuestionDecorator
+class QuestionCacheDecorator extends AbstractQuestionDecorator
 {
    /**
     * Cache interface.
@@ -16,15 +17,9 @@ class CacheDecorator extends AbstractQuestionDecorator
     */
    protected $cache;
 
-   /**
-    * Construct.
-    *
-    * @param QuestionRepository $questionRepository
-    * @param CacheInterface $cache
-    */
-   public function __construct(QuestionRepository $questionRepository, CacheInterface $cache)
+   public function __construct(QuestionRepository $questionRepository, CacheInterface $cache, Question $question)
    {
-      parent::__construct($questionRepository);
+      parent::__construct($questionRepository, $question);
       $this->cache = $cache;
    }
 

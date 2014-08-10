@@ -1,5 +1,7 @@
 <?php namespace MPP\Repository\Question;
 
+use Illuminate\Database\Eloquent\Model;
+use MPP\Repository\AbstractEloquentRepository;
 use MPP\Repository\Repository;
 use Question;
 
@@ -8,7 +10,7 @@ use Question;
  *
  * @package MPP\Repository\Question
  */
-class EloquentQuestionRepository implements Repository, QuestionRepository
+class EloquentQuestionRepository extends AbstractEloquentRepository implements QuestionRepository
 {
    /**
     * Question model.
@@ -24,71 +26,8 @@ class EloquentQuestionRepository implements Repository, QuestionRepository
     */
    public function __construct(Question $question)
    {
+      parent::__construct($question);
       $this->question = $question;
-   }
-
-   /**
-    * Get all questions.
-    *
-    * @param array $with
-    * @return \Illuminate\Database\Eloquent\Builder|static
-    */
-   public function all(array $with = array())
-   {
-      $questions = $this->question->with($with);
-
-      return $questions;
-   }
-
-   /**
-    * Find a question.
-    *
-    * @param $id
-    * @param array $with
-    * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
-    */
-   public function find($id, array $with = array())
-   {
-      $question = $this->question->with($with)->find($id);
-
-      return $question;
-   }
-
-   /**
-    * Create a question.
-    *
-    * @param array $data
-    * @return static
-    */
-   public function create(array $data)
-   {
-      return $this->question->create($data);
-   }
-
-   /**
-    * Update a question.
-    *
-    * @param array $data
-    * @return bool|int
-    */
-   public function update(array $data)
-   {
-      return $this->question->update($data);
-   }
-
-   /**
-    * Delete a question.
-    *
-    * @param $id
-    * @return bool|null
-    */
-   public function destroy($id)
-   {
-      $question = $this->find($id);
-
-      if ($question) {
-         return $question->delete();
-      }
    }
 
    /**

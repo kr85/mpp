@@ -3,9 +3,12 @@
 use Illuminate\Support\ServiceProvider;
 use MPP\Cache\LaravelCache;
 use MPP\Repository\Answer\EloquentAnswerRepository;
-use MPP\Repository\Question\CacheDecorator;
+use MPP\Repository\Question\QuestionCacheDecorator;
 use MPP\Repository\Question\EloquentQuestionRepository;
 use MPP\Repository\User\EloquentUserRepository;
+use User;
+use Question;
+use Answer;
 
 /**
  * Class RepositoryServiceProvider
@@ -30,7 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
    public function registerUserRepository()
    {
       $this->app->bind('MPP\Repository\User\UserRepository', function($app) {
-         return new EloquentUserRepository(new \User());
+         return new EloquentUserRepository(new User());
       });
    }
 
@@ -40,11 +43,12 @@ class RepositoryServiceProvider extends ServiceProvider
    public function registerQuestionRepository()
    {
       $this->app->bind('MPP\Repository\Question\QuestionRepository', function($app) {
-         $questionRepository =  new EloquentQuestionRepository(new \Question());
+         $questionRepository =  new EloquentQuestionRepository(new Question());
 
-         /*return new CacheDecorator(
+         /*return new QuestionCacheDecorator(
             $questionRepository,
-            new LaravelCache($app['cache'], 'question')
+            new LaravelCache($app['cache'], 'question'),
+            new Question()
          );*/
          return $questionRepository;
       });
@@ -56,7 +60,7 @@ class RepositoryServiceProvider extends ServiceProvider
    public function registerAnswerRepository()
    {
       $this->app->bind('MPP\Repository\Answer\AnswerRepository', function($app) {
-         return new EloquentAnswerRepository(new \Answer());
+         return new EloquentAnswerRepository(new Answer());
       });
    }
 }

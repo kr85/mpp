@@ -45,15 +45,15 @@ class AnswersController extends \BaseController
     * @param QuestionRepository $questionRepository
     */
    public function __construct(
-      Answer $answer,
-      Question $question,
-      AnswerRepository $answerRepository,
+      Answer             $answer,
+      Question           $question,
+      AnswerRepository   $answerRepository,
       QuestionRepository $questionRepository
    )
    {
-      $this->answer = $answer;
-      $this->question = $question;
-      $this->answerRepository = $answerRepository;
+      $this->answer             = $answer;
+      $this->question           = $question;
+      $this->answerRepository   = $answerRepository;
       $this->questionRepository = $questionRepository;
    }
 
@@ -131,8 +131,8 @@ class AnswersController extends \BaseController
 
       if ($answer) {
          if (Sentry::getUser()->hasAccess('admin') || Sentry::getUser()->getId() == $answer->user_id) {
-            $question = $this->questionRepository->find($answer->question_id, array('users', 'tags', 'answers', 'votes'));
             $answer->delete();
+            $question = $this->questionRepository->find($answer->question_id, array('users', 'tags', 'answers', 'votes'));
 
             if (count($question->answers) == 0) {
                $question->update(array(

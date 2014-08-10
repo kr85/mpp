@@ -1,10 +1,12 @@
 <?php namespace MPP\Repository\User;
 
+use MPP\Repository\Repository;
+
 /**
  * Interface UserRepository
  * @package MPP\Repositories\User
  */
-interface UserRepository
+interface UserRepository extends Repository
 {
    /**
     * Store user's session.

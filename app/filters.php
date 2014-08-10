@@ -131,3 +131,13 @@ Route::filter('accessCheck', function($route, $request, $right)
    }
 });
 
+/*
+ * -------------------------------------------------------------------------------
+ * Cache Filters
+ * -------------------------------------------------------------------------------
+ *
+ */
+
+Route::filter('cache.fetch', 'MPP\Filter\CacheFilter@fetch');
+
+Route::filter('cache.put', 'MPP\Filter\CacheFilter@put');

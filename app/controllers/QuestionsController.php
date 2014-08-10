@@ -36,6 +36,13 @@ class QuestionsController extends \BaseController
    protected $layout = 'layouts.qa';
 
    /**
+    * Number of items displayed on the page.
+    *
+    * @var int
+    */
+   private static $pageLimit = 4;
+
+   /**
     * Construct.
     *
     * @param Question $question
@@ -43,14 +50,14 @@ class QuestionsController extends \BaseController
     * @param Tag $tag
     */
    public function __construct(
-      Question $question,
+      Question           $question,
       QuestionRepository $questionRepository,
-      Tag $tag
+      Tag                $tag
    )
    {
-      $this->question = $question;
+      $this->question           = $question;
       $this->questionRepository = $questionRepository;
-      $this->tag = $tag;
+      $this->tag                = $tag;
    }
 
    /**
@@ -58,11 +65,13 @@ class QuestionsController extends \BaseController
     */
    public function index()
 	{
-      $questions = $this->questionRepository->all(array('users', 'tags', 'answers', 'votes'));
+      $page = Input::get('page', 1);
+      $data = $this->questionRepository->getByPage($page, QuestionsController::$pageLimit, array('users', 'tags', 'answers', 'votes'), 'id', 'desc');
+      $questions = Paginator::make($data->items, $data->totalItems, QuestionsController::$pageLimit);
 
 		return $this->layout->content = View::make('qa.index')
          ->with('title', 'All Questions!')
-         ->with('questions', $questions->orderBy('id', 'desc')->paginate(4));
+         ->with('questions', $questions);
 	}
 
    /**
@@ -139,7 +148,6 @@ class QuestionsController extends \BaseController
     */
    public function show($id)
 	{
-		//$question = $this->question->with('users', 'tags', 'answers', 'votes')->find($id);
       $question = $this->questionRepository->find($id, array('users', 'tags', 'answers', 'votes'));
 
       if ($question) {
@@ -350,10 +358,12 @@ class QuestionsController extends \BaseController
     */
    public function getUnanswered()
    {
-      $questions = $this->questionRepository->all(array('users', 'tags', 'answers', 'votes'))->where('answered', 0);
+      $page = Input::get('page', 1);
+      $data = $this->questionRepository->getByPageWhere('answered', 0, $page, QuestionsController::$pageLimit, array('users', 'tags', 'answers', 'votes'), 'id', 'desc');;
+      $questions = Paginator::make($data->items, $data->totalItems, 4);
 
       return $this->layout->content = View::make('qa.index')
          ->with('title', 'Unanswered Questions!')
-         ->with('questions', $questions->orderBy('id', 'desc')->paginate(4));
+         ->with('questions', $questions);
    }
 }

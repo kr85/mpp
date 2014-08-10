@@ -1,19 +1,20 @@
 <?php namespace MPP\Repository\User;
 
-use MPP\Repository\Repository;
+use MPP\Repository\AbstractEloquentRepository;
 use User;
+use Sentry;
 
 /**
  * Class EloquentUserRepository
  *
  * @package MPP\Repository\User
  */
-class EloquentUserRepository implements Repository, UserRepository
+class EloquentUserRepository extends AbstractEloquentRepository implements UserRepository
 {
    /**
     * User model.
     *
-    * @var \User
+    * @var User
     */
    protected $user;
 
@@ -24,72 +25,8 @@ class EloquentUserRepository implements Repository, UserRepository
     */
    public function __construct(User $user)
    {
+      parent::__construct($user);
       $this->user = $user;
-   }
-
-   /**
-    * Get all users.
-    *
-    * @param array $with
-    * @return \Illuminate\Database\Eloquent\Builder|static
-    */
-   public function all(array $with = array())
-   {
-      $users = $this->user->with($with);
-
-      return $users;
-   }
-
-   /**
-    * Find a user by id.
-    *
-    * @param $id
-    * @param array $with
-    * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
-    */
-   public function find($id, array $with = array())
-   {
-      $user = $this->user->with($with)->find($id);
-
-      return $user;
-   }
-
-   /**
-    * Create a user.
-    *
-    * @param array $data
-    * @return static
-    */
-   public function create(array $data)
-   {
-      return $this->user->create($data);
-   }
-
-   /**
-    * Update a user.
-    *
-    * @param array $data
-    * @return bool|int
-    */
-   public function update(array $data)
-   {
-      return $this->user->update($data);
-   }
-
-   /**
-    * Delete a user.
-    *
-    * @param $id
-    * @return bool|null
-    */
-   public function destroy($id)
-   {
-      $user = $this->find($id);
-
-      if ($user)
-      {
-         return $user->delete();
-      }
    }
 
    /**
@@ -101,7 +38,7 @@ class EloquentUserRepository implements Repository, UserRepository
     */
    public function storeSession($credentials, $remember)
    {
-      $login = \Sentry::authenticate($credentials, $remember);
+      $login = Sentry::authenticate($credentials, $remember);
 
       return $login;
    }
@@ -113,7 +50,7 @@ class EloquentUserRepository implements Repository, UserRepository
     */
    public function destroySession()
    {
-      \Sentry::logout();
+      Sentry::logout();
 
    }
 
@@ -125,7 +62,7 @@ class EloquentUserRepository implements Repository, UserRepository
     */
    public function storeRegister($info)
    {
-      $user = \Sentry::register($info, true);
+      $user = Sentry::register($info, true);
 
       return $user;
    }
