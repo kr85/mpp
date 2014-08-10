@@ -1,32 +1,38 @@
-<?php namespace MPP\Repository\Question;
+<?php namespace MPP\Repository\Answer;
 
-use Question;
+use Answer;
 
 /**
- * Class AbstractQuestionDecorator
+ * Class AbstractAnswerDecorator
  *
- * @package MPP\Repository\Question
+ * @package MPP\Repository\Answer
  */
-abstract class AbstractQuestionDecorator implements QuestionRepository
+abstract class AbstractAnswerDecorator implements AnswerRepository
 {
    /**
-    * Question repository.
+    * Answer repository.
     *
-    * @var QuestionRepository
+    * @var AnswerRepository
     */
-   protected $questionRepository;
+   protected $answerRepository;
 
    /**
-    * Question model.
+    * Answer model.
     *
-    * @var Question
+    * @var Answer
     */
-   protected $question;
+   protected $answer;
 
-   public function __construct(QuestionRepository $questionRepository, Question $question)
+   /**
+    * Construct.
+    *
+    * @param AnswerRepository $answerRepository
+    * @param Answer $answer
+    */
+   public function __construct(AnswerRepository $answerRepository, Answer $answer)
    {
-      $this->questionRepository = $questionRepository;
-      $this->question           = $question;
+      $this->$answerRepository = $answerRepository;
+      $this->answer            = $answer;
    }
 
    /**
@@ -37,7 +43,7 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
     */
    public function all(array $with = array())
    {
-      return $this->questionRepository->all($with);
+      return $this->answerRepository->all($with);
    }
 
    /**
@@ -49,7 +55,7 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
     */
    public function find($id, array $with = array())
    {
-      return $this->questionRepository->find($id, $with);
+      return $this->answerRepository->find($id, $with);
    }
 
    /**
@@ -60,7 +66,7 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
     */
    public function create(array $data)
    {
-      return $this->questionRepository->create($data);
+      return $this->answerRepository->create($data);
    }
 
    /**
@@ -71,7 +77,7 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
     */
    public function update(array $data)
    {
-      return $this->questionRepository->update($data);
+      return $this->answerRepository->update($data);
    }
 
    /**
@@ -82,7 +88,7 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
     */
    public function destroy($id)
    {
-      return $this->questionRepository->destroy($id);
+      return $this->answerRepository->destroy($id);
    }
 
    /**
@@ -93,7 +99,7 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
     */
    public function make(array $with = array())
    {
-      return $this->question->with($with);
+      return $this->answer->with($with);
    }
 
    /**
@@ -106,7 +112,7 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
     */
    public function makeWhere(array $with = array(), $key, $value)
    {
-      return $this->question->with($with)->where($key, '=', $value);
+      return $this->answer->with($with)->where($key, '=', $value);
    }
 
    /**

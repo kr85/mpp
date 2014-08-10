@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use MPP\Cache\LaravelCache;
+use MPP\Repository\Answer\AnswerCacheDecorator;
 use MPP\Repository\Answer\EloquentAnswerRepository;
 use MPP\Repository\Question\QuestionCacheDecorator;
 use MPP\Repository\Question\EloquentQuestionRepository;
@@ -60,7 +61,14 @@ class RepositoryServiceProvider extends ServiceProvider
    public function registerAnswerRepository()
    {
       $this->app->bind('MPP\Repository\Answer\AnswerRepository', function($app) {
-         return new EloquentAnswerRepository(new Answer());
+         $answerRepository = new EloquentAnswerRepository(new Answer());
+
+         /*return new AnswerCacheDecorator(
+            $answerRepository,
+            new LaravelCache($app['cache'], 'answer'),
+            new Answer()
+         );*/
+         return $answerRepository;
       });
    }
 }

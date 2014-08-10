@@ -53,7 +53,7 @@ class QuestionCacheDecorator extends AbstractQuestionDecorator
     */
    public function find($id, array $with = array())
    {
-      $key = md5('id.' . $id);
+      $key = md5('question.id.' . $id);
 
       if ($this->cache->has($key)) {
          return $this->cache->get($key);
