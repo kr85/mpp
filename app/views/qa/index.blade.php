@@ -48,7 +48,7 @@
                             <div class="qinfo">Asked by
                                 <a href="#">
                                         {{ $question->users->first_name . ' ' . $question->users->last_name }}
-                                </a> at {{ date('m/d/Y H:i:s', strtotime($question->created_at)) }}
+                                </a> on {{ date('m/d/Y \a\t\ H:i:s', strtotime($question->created_at)) }}
                             </div>
                             @if($question->tags != null)
                                 <ul class="qtagul">
@@ -100,7 +100,7 @@
                     <div class="qinfo">Asked by
                         <a href="#">
                             {{ $question->users->first_name . ' ' . $question->users->last_name }}
-                        </a> at {{ date('m/d/Y H:i:s', strtotime($question->created_at)) }}
+                        </a> on {{ date('m/d/Y \a\t\ H:i:s', strtotime($question->created_at)) }}
                     </div>
                     @if($question->tags != null)
                         <ul class="qtagul">

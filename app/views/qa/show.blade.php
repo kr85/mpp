@@ -61,7 +61,7 @@
 		<div class="qinfo">Asked by
 		    <a href="#">
 		        {{ $question->users->first_name . ' ' . $question->users->last_name }}
-		    </a> on {{ date('m/d/Y H:i:s', strtotime($question->created_at)) }}
+		    </a> on {{ date('m/d/Y \a\t\ H:i:s', strtotime($question->created_at)) }}
 		</div>
 
 		@if($question->tags != null)
@@ -217,7 +217,7 @@
 						<p>Answered by
 						    <a href="#">
 						        {{ $answer->users->first_name . ' ' . $answer->users->last_name }}
-						    </a> on {{ date('m/d/Y H:i:s', strtotime($answer->created_at)) }}
+						    </a> on {{ date('m/d/Y \a\t\ H:i:s', strtotime($answer->created_at)) }}
 						</p>
 
 						@if(Sentry::check())
