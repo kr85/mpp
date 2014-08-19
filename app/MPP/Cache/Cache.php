@@ -3,11 +3,11 @@
 use Illuminate\Cache\CacheManager;
 
 /**
- * Class LaravelCache
+ * Class Cache
  *
  * @package MPP\Cache
  */
-class LaravelCache implements CacheInterface
+class Cache implements CacheInterface
 {
    /**
     * Cache manager.

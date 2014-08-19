@@ -40,7 +40,7 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User implements  RemindableIn
     */
    public static $sessionRules = array(
       'email'                 => 'required|email|exists:users',
-      'password'              => 'required|min:8',
+      'password'              => 'required|min:8'
    );
 
    /**

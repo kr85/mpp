@@ -8,8 +8,7 @@ class Epp extends \Eloquent
 		// 'title' => 'required'
 	];
 
-	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = array();
 
    public function getExplosivePowerId()
    {

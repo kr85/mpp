@@ -1,8 +1,8 @@
 <?php namespace MPP\Repository;
 
 use Illuminate\Support\ServiceProvider;
-use MPP\Cache\LaravelCache;
-use MPP\Repository\Answer\AnswerCacheDecorator;
+use MPP\Cache\Cache;
+use MPP\Cache\Answer\AnswerCacheDecorator;
 use MPP\Repository\Answer\EloquentAnswerRepository;
 use MPP\Repository\Question\QuestionCacheDecorator;
 use MPP\Repository\Question\EloquentQuestionRepository;
@@ -48,7 +48,7 @@ class RepositoryServiceProvider extends ServiceProvider
 
          /*return new QuestionCacheDecorator(
             $questionRepository,
-            new LaravelCache($app['cache'], 'question'),
+            new Cache($app['cache'], 'question'),
             new Question()
          );*/
          return $questionRepository;
@@ -65,7 +65,7 @@ class RepositoryServiceProvider extends ServiceProvider
 
          /*return new AnswerCacheDecorator(
             $answerRepository,
-            new LaravelCache($app['cache'], 'answer'),
+            new Cache($app['cache'], 'answer'),
             new Answer()
          );*/
          return $answerRepository;

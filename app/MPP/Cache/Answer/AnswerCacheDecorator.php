@@ -1,6 +1,8 @@
-<?php namespace MPP\Repository\Answer;
+<?php namespace MPP\Cache\Answer;
 
 use MPP\Cache\CacheInterface;
+use MPP\Repository\Answer\AbstractAnswerDecorator;
+use MPP\Repository\Answer\AnswerRepository;
 use Answer;
 
 /**
