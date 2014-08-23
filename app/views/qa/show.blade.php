@@ -152,6 +152,15 @@
 	        {{ count($question->answers) }} answers
 	    @endif
 	</div>
+    <div id="error">
+        @if(count($errors->all()))
+        <ul>
+            @foreach($errors->all() as $error)
+                <li style="color: red">{{ $error }}</li>
+            @endforeach
+        </ul>
+        @endif
+    </div>
 
 	@if(Sentry::check())
 	    @if($question->closed == 0)

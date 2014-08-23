@@ -12,7 +12,8 @@
         "guzzle/guzzle": "3.9.*@dev",
         "mailgun/mailgun-php": "1.7.*",
         "bogardo/mailgun": "dev-master",
-        "solarium/solarium": "dev-develop"
+        "solarium/solarium": "dev-develop",
+        "fedeisas/laravel-js-routes": "1.*"
 	},
 	"require-dev": {
 	   "phpunit/phpunit": "3.7.*",

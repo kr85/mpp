@@ -111,7 +111,7 @@ Route::filter('user', function($route, $request)
    if (Sentry::check()) {
       // The user is logged in.
    } else {
-      return Redirect::route('index')
+      return Redirect::route('sessions.login')
          ->with('error', 'You need to login first!');
    }
 });
@@ -126,7 +126,7 @@ Route::filter('accessCheck', function($route, $request, $right)
             ->with('error', 'You don\'t have permissions to access this page.');
       }
    } else {
-      return Redirect::route('index')
+      return Redirect::route('sessions.login')
          ->with('error', 'You need to login first!');
    }
 });

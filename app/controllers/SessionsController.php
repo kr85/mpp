@@ -1,6 +1,8 @@
 <?php
 
-use MPP\Repository\User\UserRepository;
+use MPP\Repository\Session\SessionRepository;
+use MPP\Validation\ValidationInterface;
+use MPP\Validation\Session\SessionFormValidator;
 use Cartalyst\Sentry\Users\LoginRequiredException;
 use Cartalyst\Sentry\Users\PasswordRequiredException;
 use Cartalyst\Sentry\Users\WrongPasswordException;
@@ -15,18 +17,11 @@ use Cartalyst\Sentry\Throttling\UserBannedException;
 class SessionsController extends \BaseController
 {
    /**
-    * User model.
+    * Session repository.
     *
-    * @var User
+    * @var MPP\Repository\Session\SessionRepository
     */
-   protected $user;
-
-   /**
-    * User repository.
-    *
-    * @var MPP\Repository\User\UserRepository
-    */
-   protected $userRepository;
+   protected $sessionRepository;
 
    /**
     * Master layout.
@@ -36,18 +31,25 @@ class SessionsController extends \BaseController
    protected $layout = 'layouts.master';
 
    /**
-    * Construct.
+    * Session form validator.
     *
-    * @param User $user
-    * @param UserRepository $userRepository
+    * @var MPP\Validation\Session\SessionFormValidator
+    */
+   protected $validator;
+
+   /**
+    * Constructor.
+    *
+    * @param SessionRepository $sessionRepository
+    * @param SessionFormValidator $sessionFormValidator
     */
    public function __construct(
-      User           $user,
-      UserRepository $userRepository
+      SessionRepository    $sessionRepository,
+      SessionFormValidator $sessionFormValidator
    )
    {
-      $this->user           = $user;
-      $this->userRepository = $userRepository;
+      $this->sessionRepository = $sessionRepository;
+      $this->validator         = $sessionFormValidator;
    }
 
    /**
@@ -65,12 +67,13 @@ class SessionsController extends \BaseController
     */
    public function store()
 	{
-      $validation = \Validator::make(Input::all(), $this->user->getSessionRules());
+      $input = Input::all();
+      $validator = $this->validator->with($input);
 
-      if ($validation->fails()) {
+      if (!$validator->passes()) {
          return Redirect::route('sessions.login')
             ->withInput()
-            ->withErrors($validation);
+            ->withErrors($validator->errors());
       } else {
          try {
             $remember = (Input::has('remember')) ? true : false;
@@ -80,7 +83,7 @@ class SessionsController extends \BaseController
                'password' => Input::get('password'),
             );
 
-            $login = $this->userRepository->storeSession($credentials, $remember);
+            $login = $this->sessionRepository->store($credentials, $remember);
 
             if ($login->getId() == null) {
                return Redirect::route('sessions.login');
@@ -127,10 +130,9 @@ class SessionsController extends \BaseController
     */
    public function destroy()
 	{
-		$this->userRepository->destroySession();
+		$this->sessionRepository->destroy();
 
       return Redirect::route('index')
          ->with('success', 'You\'ve successfully logged out!');
 	}
-
 }

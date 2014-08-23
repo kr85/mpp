@@ -1,5 +1,7 @@
 <?php namespace MPP\Repository\Question;
 
+use MPP\Repository\Crudable;
+use MPP\Repository\Panigable;
 use MPP\Repository\Repository;
 
 /**
@@ -7,7 +9,7 @@ use MPP\Repository\Repository;
  *
  * @package MPP\Repository\Question
  */
-interface QuestionRepository extends Repository
+interface QuestionRepository extends Repository, Crudable, Panigable
 {
    /**
     * Get latest added questions.

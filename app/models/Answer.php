@@ -61,6 +61,11 @@ class Answer extends Eloquent
       return $this->belongsTo('Question', 'question_id');
    }
 
+   /**
+    * Belongs to many.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
    public function votes()
    {
       return $this->belongsToMany('Vote', 'answers_votes');

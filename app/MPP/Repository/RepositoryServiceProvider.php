@@ -4,8 +4,10 @@ use Illuminate\Support\ServiceProvider;
 use MPP\Cache\Cache;
 use MPP\Cache\Answer\AnswerCacheDecorator;
 use MPP\Repository\Answer\EloquentAnswerRepository;
-use MPP\Repository\Question\QuestionCacheDecorator;
+use MPP\Cache\Question\QuestionCacheDecorator;
 use MPP\Repository\Question\EloquentQuestionRepository;
+use MPP\Repository\Register\EloquentRegisterRepository;
+use MPP\Repository\Session\EloquentSessionRepository;
 use MPP\Repository\User\EloquentUserRepository;
 use User;
 use Question;
@@ -23,15 +25,37 @@ class RepositoryServiceProvider extends ServiceProvider
     */
    public function register()
    {
+      $this->registerSessionRepository();
+      $this->registerRegisterRepository();
       $this->registerUserRepository();
       $this->registerQuestionRepository();
       $this->registerAnswerRepository();
    }
 
    /**
+    * Register session repository.
+    */
+   protected function registerSessionRepository()
+   {
+      $this->app->bind('MPP\Repository\Session\SessionRepository', function($app) {
+         return new EloquentSessionRepository();
+      });
+   }
+
+   /**
+    * Register register repository.
+    */
+   protected function registerRegisterRepository()
+   {
+      $this->app->bind('MPP\Repository\Register\RegisterRepository', function($app) {
+         return new EloquentRegisterRepository();
+      });
+   }
+
+   /**
     * Register user repository.
     */
-   public function registerUserRepository()
+   protected function registerUserRepository()
    {
       $this->app->bind('MPP\Repository\User\UserRepository', function($app) {
          return new EloquentUserRepository(new User());
@@ -41,12 +65,14 @@ class RepositoryServiceProvider extends ServiceProvider
    /**
     * Register question repository.
     */
-   public function registerQuestionRepository()
+   protected function registerQuestionRepository()
    {
       $this->app->bind('MPP\Repository\Question\QuestionRepository', function($app) {
          $questionRepository =  new EloquentQuestionRepository(new Question());
 
-         /*return new QuestionCacheDecorator(
+         /* Uncomment to use cache for questions.
+
+         return new QuestionCacheDecorator(
             $questionRepository,
             new Cache($app['cache'], 'question'),
             new Question()
@@ -58,12 +84,14 @@ class RepositoryServiceProvider extends ServiceProvider
    /**
     * Register answer repository.
     */
-   public function registerAnswerRepository()
+   protected function registerAnswerRepository()
    {
       $this->app->bind('MPP\Repository\Answer\AnswerRepository', function($app) {
          $answerRepository = new EloquentAnswerRepository(new Answer());
 
-         /*return new AnswerCacheDecorator(
+         /* Uncomment to use cache for answers.
+
+         return new AnswerCacheDecorator(
             $answerRepository,
             new Cache($app['cache'], 'answer'),
             new Answer()

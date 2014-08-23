@@ -1,13 +1,22 @@
 <?php namespace MPP\Validation\Session;
 
-use MPP\Validation\AbstractValidator;
+use MPP\Validation\LaravelValidator;
+use MPP\Validation\ValidationInterface;
 
-class SessionFormValidator extends AbstractValidator
+/**
+ * Class SessionFormValidator
+ *
+ * @package MPP\Validation\Session
+ */
+class SessionFormValidator extends LaravelValidator implements ValidationInterface
 {
+   /**
+    * Validation for creating a new session.
+    *
+    * @var array
+    */
    protected $rules = array(
-      'email'                 => 'required|email|exists:users',
-      'password'              => 'required|min:8'
+      'email'    => 'required|email|exists:users',
+      'password' => 'required|min:8'
    );
-
-   protected $messages = array();
 }

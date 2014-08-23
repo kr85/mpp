@@ -4,11 +4,13 @@
 
     <h1>Ask A Question</h1>
 
+        @if(count($errors->all()))
         <ul>
             @foreach($errors->all() as $error)
                 <li style="color: red">{{ $error }}</li>
             @endforeach
         </ul>
+        @endif
 
         {{ Form::open(array('route' => 'question.store')) }}
 

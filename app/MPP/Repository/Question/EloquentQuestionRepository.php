@@ -1,8 +1,6 @@
 <?php namespace MPP\Repository\Question;
 
-use Illuminate\Database\Eloquent\Model;
 use MPP\Repository\AbstractEloquentRepository;
-use MPP\Repository\Repository;
 use Question;
 
 /**
@@ -20,7 +18,7 @@ class EloquentQuestionRepository extends AbstractEloquentRepository implements Q
    protected $question;
 
    /**
-    * Construct.
+    * Constructor.
     *
     * @param Question $question
     */

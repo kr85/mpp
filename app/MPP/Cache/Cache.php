@@ -31,7 +31,7 @@ class Cache implements CacheInterface
    protected $minutes;
 
    /**
-    * Construct.
+    * Constructor.
     *
     * @param CacheManager $cache
     * @param $tag

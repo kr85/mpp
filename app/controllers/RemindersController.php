@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class RemindersController
+ */
 class RemindersController extends Controller
 {
 	/**

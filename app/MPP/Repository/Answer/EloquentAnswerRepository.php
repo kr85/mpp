@@ -17,6 +17,11 @@ class EloquentAnswerRepository extends AbstractEloquentRepository implements Ans
     */
    protected $answer;
 
+   /**
+    * Constructor.
+    *
+    * @param Answer $answer
+    */
    public function __construct(Answer $answer)
    {
       parent::__construct($answer);

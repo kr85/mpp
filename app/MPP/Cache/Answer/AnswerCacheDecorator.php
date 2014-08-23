@@ -10,7 +10,7 @@ use Answer;
  *
  * @package MPP\Repository\Answer
  */
-class AnswerCacheDecorator extends  AbstractAnswerDecorator
+class AnswerCacheDecorator extends AbstractAnswerDecorator
 {
    /**
     * Cache interface.
@@ -20,7 +20,7 @@ class AnswerCacheDecorator extends  AbstractAnswerDecorator
    protected $cache;
 
    /**
-    * Construct.
+    * Constructor.
     *
     * @param AnswerRepository $answerRepository
     * @param CacheInterface $cache

@@ -1,6 +1,7 @@
 <?php
 
 use MPP\Repository\Question\QuestionRepository;
+use MPP\Validation\Question\QuestionFormValidator;
 
 /**
  * Class QuestionsController
@@ -29,6 +30,13 @@ class QuestionsController extends \BaseController
    protected $tag;
 
    /**
+    * Question form validator.
+    *
+    * @var MPP\Validation\Question\QuestionFormValidator
+    */
+   protected $validator;
+
+   /**
     * Questions/Answers layout.
     *
     * @var string
@@ -43,21 +51,24 @@ class QuestionsController extends \BaseController
    private static $pageLimit = 4;
 
    /**
-    * Construct.
+    * Constructor.
     *
     * @param Question $question
     * @param QuestionRepository $questionRepository
     * @param Tag $tag
+    * @param QuestionFormValidator $questionFormValidator
     */
    public function __construct(
-      Question           $question,
-      QuestionRepository $questionRepository,
-      Tag                $tag
+      Question              $question,
+      QuestionRepository    $questionRepository,
+      Tag                   $tag,
+      QuestionFormValidator $questionFormValidator
    )
    {
       $this->question           = $question;
       $this->questionRepository = $questionRepository;
       $this->tag                = $tag;
+      $this->validator          = $questionFormValidator;
    }
 
    /**
@@ -89,45 +100,18 @@ class QuestionsController extends \BaseController
     */
    public function store()
 	{
-		$validation = Validator::make(Input::all(), $this->question->getQuestionRules());
+      $input = Input::all();
+      $validation = $this->validator->with($input);
 
       if ($validation->passes()) {
          $question = $this->questionRepository->create(array(
             'user_id'  => Sentry::getUser()->getId(),
-            'title'    => Input::get('title'),
-            'question' => Input::get('question')
+            'title'    => trim(Input::get('title')),
+            'question' => trim(Input::get('question'))
          ));
 
          $questionId = $question->id;
-
-         $question = $this->question->find($questionId);
-
-         if (Str::length(Input::get('tags'))) {
-            $tagsArray = explode(',', Input::get('tags'));
-
-            if (count($tagsArray)) {
-               foreach ($tagsArray as $tag) {
-                  $tag = trim($tag);
-
-                  if (Str::length(Str::slug($tag))) {
-                     $tagName = Str::slug($tag);
-
-                     $tagCheck = $this->tag->where('tag_name', $tagName);
-
-                     if ($tagCheck->count() == 0) {
-                        $tagInfo = $this->tag->create(array(
-                           'tag'      => $tag,
-                           'tag_name' => $tagName
-                        ));
-                     } else {
-                        $tagInfo = $tagCheck->first();
-                     }
-                  }
-
-                  $question->tags()->attach($tagInfo->id);
-               }
-            }
-         }
+         $this->handleTags($questionId);
 
          return Redirect::route('question.index')
             ->with('success','Your question has been successfully created! '.HTML::linkRoute(
@@ -136,9 +120,46 @@ class QuestionsController extends \BaseController
       } else {
          return Redirect::back()
             ->withInput()
-            ->withErrors($validation);
+            ->withErrors($validation->errors());
       }
 	}
+
+   /**
+    * Helper function. Handles tags.
+    *
+    * @param $questionId
+    */
+   protected function handleTags($questionId)
+   {
+      $question = $this->question->find($questionId);
+
+      if (Str::length(Input::get('tags'))) {
+         $tagsArray = explode(',', Input::get('tags'));
+
+         if (count($tagsArray)) {
+            foreach ($tagsArray as $tag) {
+               $tag = trim($tag);
+
+               if (Str::length(Str::slug($tag))) {
+                  $tagName = Str::slug($tag);
+
+                  $tagCheck = $this->tag->where('tag_name', $tagName);
+
+                  if ($tagCheck->count() == 0) {
+                     $tagInfo = $this->tag->create(array(
+                        'tag'      => $tag,
+                        'tag_name' => $tagName
+                     ));
+                  } else {
+                     $tagInfo = $tagCheck->first();
+                  }
+               }
+
+               $question->tags()->attach($tagInfo->id);
+            }
+         }
+      }
+   }
 
    /**
     * Displays a question by id.
@@ -192,45 +213,14 @@ class QuestionsController extends \BaseController
    public function update($id)
 	{
       $question = $this->questionRepository->find($id, array('users', 'tags', 'answers', 'votes'));
-
-      $validation = Validator::make(Input::all(), $this->question->getQuestionRules());
+      $input = Input::all();
+      $validation = $this->validator->with($input);
 
       if ($validation->passes()) {
          $question->update(array(
-            'title'    => Input::get('title'),
-            'question' => Input::get('question')
+            'title'    => trim(Input::get('title')),
+            'question' => trim(Input::get('question'))
          ));
-
-         $questionId = $question->id;
-
-         $question = $this->question->find($questionId);
-
-         if (Str::length(Input::get('tags'))) {
-            $tagsArray = explode(',', Input::get('tags'));
-
-            if (count($tagsArray)) {
-               foreach ($tagsArray as $tag) {
-                  $tag = trim($tag);
-
-                  if (Str::length(Str::slug($tag))) {
-                     $tagName = Str::slug($tag);
-
-                     $tagCheck = $this->tag->where('tag_name', $tagName);
-
-                     if ($tagCheck->count() == 0) {
-                        $tagInfo = $this->tag->update(array(
-                           'tag'      => $tag,
-                           'tag_name' => $tagName
-                        ));
-                     } else {
-                        $tagInfo = $tagCheck->first();
-                     }
-                  }
-
-                  $question->tags()->attach($tagInfo->id);
-               }
-            }
-         }
 
          return $this->layout->content = View::make('qa.show')
             ->with('title', $question->title)
@@ -239,7 +229,7 @@ class QuestionsController extends \BaseController
       } else {
          return Redirect::back()
             ->withInput()
-            ->withErrors($validation);
+            ->withErrors($validation->errors());
       }
 	}
 

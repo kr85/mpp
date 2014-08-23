@@ -30,7 +30,7 @@ class VotesController extends \BaseController
    protected $answerRepository;
 
    /**
-    * Construct.
+    * Constructor.
     *
     * @param Vote $vote
     * @param QuestionRepository $questionRepository

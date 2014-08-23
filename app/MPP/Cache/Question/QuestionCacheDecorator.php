@@ -19,6 +19,13 @@ class QuestionCacheDecorator extends AbstractQuestionDecorator
     */
    protected $cache;
 
+   /**
+    * Constructor.
+    *
+    * @param QuestionRepository $questionRepository
+    * @param CacheInterface $cache
+    * @param Question $question
+    */
    public function __construct(QuestionRepository $questionRepository, CacheInterface $cache, Question $question)
    {
       parent::__construct($questionRepository, $question);

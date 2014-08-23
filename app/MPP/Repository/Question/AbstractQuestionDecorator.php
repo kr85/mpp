@@ -1,6 +1,7 @@
 <?php namespace MPP\Repository\Question;
 
 use Question;
+use StdClass;
 
 /**
  * Class AbstractQuestionDecorator
@@ -23,14 +24,20 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
     */
    protected $question;
 
+   /**
+    * Constructor.
+    *
+    * @param QuestionRepository $questionRepository
+    * @param Question $question
+    */
    public function __construct(QuestionRepository $questionRepository, Question $question)
    {
       $this->questionRepository = $questionRepository;
-      $this->question           = $question;
+      $this->question = $question;
    }
 
    /**
-    * All.
+    * Get all.
     *
     * @param array $with
     * @return mixed
@@ -41,7 +48,7 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
    }
 
    /**
-    * Find.
+    * Find by id.
     *
     * @param $id
     * @param array $with
@@ -110,11 +117,99 @@ abstract class AbstractQuestionDecorator implements QuestionRepository
    }
 
    /**
-    * Unimplemented methods,
+    * Get results on a page.
+    *
+    * @param $page
+    * @param $limit
+    * @param array $with
+    * @param $columnName
+    * @param $columnDirection
+    * @return mixed|StdClass
     */
-   public function getByPage($page, $limit, array $with = array(), $columnName, $columnDirection){}
-   public function getByPageWhere($key, $value, $page, $limit, array $with, $columnName, $columnDirection){}
-   public function getOneWhere($key, $value, array $with = array()){}
-   public function getManyWhere($key, $value, array $with = array()){}
-   public function orderBy(array $with = array(), $columnName, $columnDirection){}
+   public function getByPage($page, $limit, array $with = array(), $columnName, $columnDirection)
+   {
+      $results = new StdClass;
+      $results->page = $page;
+      $results->limit = $limit;
+      $results->totalItems = 0;
+      $results->items = array();
+
+      $query = $this->make($with)->orderBy($columnName, $columnDirection);
+
+      $entities = $query->skip($limit * ($page - 1))->take($limit)->get();
+
+      $results->totalItems = $this->question->count();
+      $results->items = $entities->all();
+
+      return $results;
+   }
+
+   /**
+    * Get results on a page with a condition.
+    *
+    * @param $key
+    * @param $value
+    * @param $page
+    * @param $limit
+    * @param array $with
+    * @param $columnName
+    * @param $columnDirection
+    * @return mixed|StdClass
+    */
+   public function getByPageWhere($key, $value, $page, $limit, array $with = array(), $columnName, $columnDirection)
+   {
+      $results = new StdClass;
+      $results->page = $page;
+      $results->limit = $limit;
+      $results->totalItems = 0;
+      $results->items = array();
+
+      $query = $this->makeWhere($with, $key, $value)->orderBy($columnName, $columnDirection);
+      $model = $query->get();
+      $entities = $query->skip($limit * ($page - 1))->take($limit)->get();
+
+      $results->totalItems = $model->count();
+      $results->items = $entities->all();
+
+      return $results;
+   }
+
+   /**
+    * Get one entity with a condition.
+    *
+    * @param $key
+    * @param $value
+    * @param array $with
+    * @return \Illuminate\Database\Eloquent\Model|mixed|null|static
+    */
+   public function getOneWhere($key, $value, array $with = array())
+   {
+      return $this->make($with)->where($key, '=', $value)->first();
+   }
+
+   /**
+    * Get all entities with a condition.
+    *
+    * @param $key
+    * @param $value
+    * @param array $with
+    * @return \Illuminate\Database\Eloquent\Collection|mixed|static[]
+    */
+   public function getManyWhere($key, $value, array $with = array())
+   {
+      return $this->make($with)->where($key, '=', $value)->get();
+   }
+
+   /**
+    * Order by.
+    *
+    * @param array $with
+    * @param $columnName
+    * @param $columnDirection
+    * @return mixed|void
+    */
+   public function orderBy(array $with = array(), $columnName, $columnDirection)
+   {
+      return $this->make($with)->orderBy($columnName, $columnDirection)->get();
+   }
 }

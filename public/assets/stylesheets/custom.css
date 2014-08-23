@@ -7,6 +7,16 @@
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px) {
+  .section-intro {
+    margin-top: -50px;
+    background-color: #000000;
+    background: url('../images/content/MPP-2.png');
+    background-repeat: no-repeat;
+    background-size: 320px 200px;
+    height: 200px;
+    box-shadow: 10px 10px 5px #888888;
+  }
+
   .container-body {
 
   }
@@ -56,6 +66,7 @@ and (max-width : 320px) {
 @media only screen
 and (min-device-width : 768px)
 and (max-device-width : 1024px) {
+
   .container-body {
 
   }
@@ -74,6 +85,7 @@ and (max-device-width : 1024px) {
 and (min-device-width : 768px)
 and (max-device-width : 1024px)
 and (orientation : landscape) {
+
   .container-body {
 
   }
@@ -92,6 +104,7 @@ and (orientation : landscape) {
 and (min-device-width : 768px)
 and (max-device-width : 1024px)
 and (orientation : portrait) {
+
   .container-body {
   }
 
@@ -107,6 +120,16 @@ and (orientation : portrait) {
 /* Desktops and laptops ----------- */
 @media only screen
 and (min-width : 1224px) {
+  .section-intro {
+    margin-top: -50px;
+    background-color: #000000;
+    background: url('../images/content/MPP-2.png');
+    background-repeat: no-repeat;
+    background-size: 1900px 1000px;
+    height: 1000px;
+    box-shadow: 10px 10px 5px #888888;
+  }
+
   .container-body {
   }
 
@@ -151,6 +174,22 @@ and (min-width : 1224px) {
 /* Large screens ----------- */
 @media only screen
 and (min-width : 1824px) {
+  .section-intro {
+
+    background-color: #000000;
+    background: url('../images/content/MPP-2.png');
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    box-shadow: 10px 10px 5px #888888;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+  }
+
   .container-body {
   }
 
@@ -183,7 +222,68 @@ body {
   padding-bottom: 50px;
   background-color: #f4f4f4;
   font-size: 150%;
-  height: 90%;
+  height: 100%;
+}
+
+.section-intro {
+  margin-top: -50px;
+  background-color: #000000;
+  background: url('../images/content/MPP-2.png');
+  background-repeat: no-repeat;
+  background-size: 1900px 1000px;
+  height: 1000px;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.intro-button-group {
+  margin-top: 25px;
+  margin-right: 25px;
+  width: 200px;
+  float: right;
+}
+
+.intro-button-group a {
+  color: #e0e0e0;
+}
+
+.intro-button {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #d1d1d1;
+  font-weight: 700;
+  font-family: "Segoe UI Semilight";
+  text-shadow: 3px 3px 3px white;
+}
+
+.intro-button:hover,
+.intro-button:focus {
+  text-decoration: none;
+  border-color: #ffffff;
+  border-bottom: solid;
+  border-top: solid;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 3em;
+  border-top-left-radius: 2em;
+  background-color: transparent;
+  font-weight: 900;
+  text-transform: lowercase;
+  font-family: "Segoe UI Semilight";
+  text-shadow: 5px 5px 5px red;
+  padding: 15px 15px 15px 15px;
+}
+
+.intro-section-arrow {
+  background: url('../images/content/arrow-down.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100px;
+  width: 100px;
+}
+
+.intro-section-arrow:hover,
+.intro-section-arrow:focus {
+  background: url('../images/content/arrow-down.png') no-repeat;
+  height: 100px;
 }
 
 ul, ol {
@@ -450,6 +550,17 @@ input::-webkit-search-cancel-button {
     width: 87%;
     padding: 3px 10px 5px 10px;
     margin: 25px 0;
+}
+
+#error {
+  float: left;
+  font-size: 15px;
+  color: #ff0000;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  width: 87%;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 .rrepol {

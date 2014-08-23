@@ -129,6 +129,8 @@ return array(
       'Khill\Fontawesome\FontAwesomeServiceProvider',
       'Bogardo\Mailgun\MailgunServiceProvider',
       'MPP\Composer\ComposerServiceProvider',
+      'MPP\Validation\ValidationServiceProvider',
+      'Fedeisas\LaravelJsRoutes\LaravelJsRoutesServiceProvider',
 
 	),
 

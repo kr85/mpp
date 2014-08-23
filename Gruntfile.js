@@ -28,6 +28,7 @@ module.exports = function(grunt) {
           './bower_components/jquery.ui/dist/jquery-ui.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
           './bower_components/libs/animated_bg.js',
+          './bower_components/libs/vegas/jquery.vegas.js',
           './app/assets/javascript/frontend.js'
         ],
         dest: './public/assets/javascript/frontend.js'
@@ -41,6 +42,7 @@ module.exports = function(grunt) {
           './bower_components/jquery.ui/dist/jquery-ui.js',
           './bower_components/bootstrap/dist/js/bootstrap.js',
           './bower_components/libs/animated_bg.js',
+          './bower_components/libs/vegas/jquery.vegas.js',
           './app/assets/javascript/backend.js'
         ],
         dest: './public/assets/javascript/backend.js'

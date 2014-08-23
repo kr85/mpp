@@ -17,7 +17,7 @@ class QuestionsListComposer
    protected $questionRepository;
 
    /**
-    * Construct.
+    * Constructor.
     *
     * @param QuestionRepository $questionRepository
     */

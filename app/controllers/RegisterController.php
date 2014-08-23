@@ -1,6 +1,8 @@
 <?php
 
-use MPP\Repository\User\UserRepository;
+use MPP\Repository\Register\RegisterRepository;
+use MPP\Repository\Session\SessionRepository;
+use MPP\Validation\Register\RegisterFormValidator;
 use Cartalyst\Sentry\Sentry as Sentry;
 
 /**
@@ -9,18 +11,18 @@ use Cartalyst\Sentry\Sentry as Sentry;
 class RegisterController extends \BaseController
 {
    /**
-    * User model.
+    * Register repository.
     *
-    * @var User
+    * @var MPP\Repository\Register\RegisterRepository
     */
-   protected $user;
+   protected $registerRepository;
 
    /**
-    * User repository.
+    * Session repository.
     *
-    * @var MPP\Repository\User\UserRepository
+    * @var MPP\Repository\Session\SessionRepository
     */
-   protected $userRepository;
+   protected $sessionRepository;
 
    /**
     * Sentry model.
@@ -30,21 +32,38 @@ class RegisterController extends \BaseController
    protected $sentry;
 
    /**
+    * Register form validation.
+    *
+    * @var
+    */
+   protected $validator;
+
+   /**
     * Master layout.
     *
     * @var string
     */
    protected $layout = 'layouts.master';
 
+   /**
+    * Constructor.
+    *
+    * @param RegisterRepository $registerRepository
+    * @param SessionRepository $sessionRepository
+    * @param Sentry $sentry
+    * @param RegisterFormValidator $registerFormValidator
+    */
    public function __construct(
-      User $user,
-      UserRepository $userRepository,
-      Sentry $sentry
+      RegisterRepository    $registerRepository,
+      SessionRepository     $sessionRepository,
+      Sentry                $sentry,
+      RegisterFormValidator $registerFormValidator
    )
    {
-      $this->user           = $user;
-      $this->userRepository = $userRepository;
+      $this->registerRepository = $registerRepository;
+      $this->sessionRepository = $sessionRepository;
       $this->sentry         = $sentry;
+      $this->validator      = $registerFormValidator;
    }
 
    /**
@@ -62,14 +81,15 @@ class RegisterController extends \BaseController
     */
    public function store()
 	{
-		$validation = Validator::make($data = Input::all(), $this->user->getRegisterRules());
+      $input = Input::all();
+      $validation = $this->validator->with($input);
 
-      if ($validation->fails()) {
+      if (!$validation->passes()) {
          return Redirect::back()
             ->withInput()
-            ->withErrors($validation);
+            ->withErrors($validation->errors());
       } else {
-         $info = array(
+         $input = array(
             'username'     => \Input::get('username'),
             'email'        => \Input::get('email'),
             'password'     => \Input::get('password'),
@@ -79,13 +99,13 @@ class RegisterController extends \BaseController
             'activated_at' => new \DateTime()
          );
 
-         $user = $this->userRepository->storeRegister($info);
+         $user = $this->registerRepository->store($input);
          $userGroup = $this->sentry->findGroupById(2);
          $user->addGroup($userGroup);
 
-         $this->welcomeEmail($data);
+         $this->welcomeEmail($input);
 
-         $login = $this->userRepository->storeSession(Input::only('email', 'password'), false);
+         $login = $this->sessionRepository->store(Input::only('email', 'password'), false);
 
          if ($login->getId() != null) {
             return Redirect::route('index')

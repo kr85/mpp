@@ -123,16 +123,31 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User implements  RemindableIn
       return $this::$registerRules;
    }
 
+   /**
+    * Get remember token.
+    *
+    * @return mixed
+    */
    public function getRememberToken()
    {
       return $this->remember_token;
    }
 
+   /**
+    * Set remember token.
+    *
+    * @param $value
+    */
    public function setRememberToken($value)
    {
       $this->remember_token = $value;
    }
 
+   /**
+    * Get remember token name.
+    *
+    * @return string
+    */
    public function getRememberTokenName()
    {
       return 'remember_token';
@@ -148,6 +163,11 @@ class User extends Cartalyst\Sentry\Users\Eloquent\User implements  RemindableIn
       return $this->hasMany('Question', 'user_id');
    }
 
+   /**
+    * Belongs to many.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
    public function votes()
    {
       return $this->belongsToMany('Vote', 'questions_votes', 'answers_votes');

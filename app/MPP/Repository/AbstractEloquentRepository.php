@@ -8,7 +8,7 @@ use StdClass;
  *
  * @package MPP\Repository
  */
-abstract class AbstractEloquentRepository implements Repository
+abstract class AbstractEloquentRepository implements Repository, Crudable, Panigable
 {
    /**
     * Model.
@@ -18,7 +18,7 @@ abstract class AbstractEloquentRepository implements Repository
    protected $model;
 
    /**
-    * Construct.
+    * Constructor.
     *
     * @param Model $model
     */
@@ -48,7 +48,7 @@ abstract class AbstractEloquentRepository implements Repository
     */
    public function makeWhere(array $with = array(), $key, $value)
    {
-      return $this->model->with($with)->where('answered', '=', 0);
+      return $this->model->with($with)->where($key, '=', $value);
    }
 
    /**
@@ -183,7 +183,7 @@ abstract class AbstractEloquentRepository implements Repository
     */
    public function getOneWhere($key, $value, array $with = array())
    {
-      return$this->make($with)->where($key, '=', $value)->first();
+      return $this->make($with)->where($key, '=', $value)->first();
    }
 
    /**

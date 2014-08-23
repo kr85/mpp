@@ -1,5 +1,6 @@
 <?php namespace MPP\Repository\Answer;
 
+use MPP\Repository\Crudable;
 use MPP\Repository\Repository;
 
 /**
@@ -7,7 +8,7 @@ use MPP\Repository\Repository;
  *
  * @package MPP\Repository\Answer
  */
-interface AnswerRepository extends Repository
+interface AnswerRepository extends Repository, Crudable
 {
    /**
     * Get latest answers.

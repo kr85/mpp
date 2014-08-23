@@ -1,42 +1,72 @@
 <?php namespace MPP\Validation;
 
-use Illuminate\Validation\Factory as Validator;
-
-abstract class AbstractValidator implements ValidationInterface
+/**
+ * Class AbstractValidator
+ *
+ * @package MPP\Validation
+ */
+abstract class AbstractValidator
 {
+   /**
+    * Validation instance.
+    *
+    * @var
+    */
    protected $validator;
 
+   /**
+    * Validation rules.
+    *
+    * @var
+    */
    protected $rules;
 
+   /**
+    * Input to be validated.
+    *
+    * @var array
+    */
    protected $input;
 
+   /**
+    * Validation errors.
+    *
+    * @var array
+    */
    protected $errors;
 
-   protected $messages;
-
-   public function __construct(Validator $validator)
+   /**
+    * Constructor.
+    */
+   public function __construct()
    {
-      $this->validator = $validator;
-      $this->rules = array();
       $this->input = array();
       $this->errors = array();
-      $this->messages = array();
    }
 
-   public function passes()
-   {
-      $validator = $this->validator->make(
-         $this->input,
-         $this->rules,
-         $this->messages
-      );
-   }
+   /**
+    * Passes the validation rules and input.
+    *
+    * @return mixed
+    */
+   abstract function passes();
 
+   /**
+    * Returns validation errors.
+    *
+    * @return array
+    */
    public function errors()
    {
       return $this->errors;
    }
 
+   /**
+    * Sets data to validate.
+    *
+    * @param array $input
+    * @return $this
+    */
    public function with(array $input)
    {
       $this->input = $input;

@@ -24,14 +24,14 @@ abstract class AbstractAnswerDecorator implements AnswerRepository
    protected $answer;
 
    /**
-    * Construct.
+    * Constructor.
     *
     * @param AnswerRepository $answerRepository
     * @param Answer $answer
     */
    public function __construct(AnswerRepository $answerRepository, Answer $answer)
    {
-      $this->$answerRepository = $answerRepository;
+      $this->answerRepository = $answerRepository;
       $this->answer            = $answer;
    }
 
@@ -116,11 +116,41 @@ abstract class AbstractAnswerDecorator implements AnswerRepository
    }
 
    /**
-    * Unimplemented methods,
+    * Get one entity with a condition.
+    *
+    * @param $key
+    * @param $value
+    * @param array $with
+    * @return \Illuminate\Database\Eloquent\Model|mixed|null|static
     */
-   public function getByPage($page, $limit, array $with = array(), $columnName, $columnDirection){}
-   public function getByPageWhere($key, $value, $page, $limit, array $with, $columnName, $columnDirection){}
-   public function getOneWhere($key, $value, array $with = array()){}
-   public function getManyWhere($key, $value, array $with = array()){}
-   public function orderBy(array $with = array(), $columnName, $columnDirection){}
+   public function getOneWhere($key, $value, array $with = array())
+   {
+      return $this->make($with)->where($key, '=', $value)->first();
+   }
+
+   /**
+    * Get all entities with a condition.
+    *
+    * @param $key
+    * @param $value
+    * @param array $with
+    * @return \Illuminate\Database\Eloquent\Collection|mixed|static[]
+    */
+   public function getManyWhere($key, $value, array $with = array())
+   {
+      return $this->make($with)->where($key, '=', $value)->get();
+   }
+
+   /**
+    * Order by.
+    *
+    * @param array $with
+    * @param $columnName
+    * @param $columnDirection
+    * @return mixed
+    */
+   public function orderBy(array $with = array(), $columnName, $columnDirection)
+   {
+      return $this->make($with)->orderBy($columnName, $columnDirection)->get();
+   }
 }

@@ -2,6 +2,7 @@
 
 use MPP\Repository\Answer\AnswerRepository;
 use MPP\Repository\Question\QuestionRepository;
+use MPP\Validation\Answer\AnswerFormValidator;
 
 /**
  * Class AnswersController
@@ -37,24 +38,34 @@ class AnswersController extends \BaseController
    protected $questionRepository;
 
    /**
-    * Construct.
+    * Answer form validator.
+    *
+    * @var
+    */
+   protected $validator;
+
+   /**
+    * Constructor.
     *
     * @param Answer $answer
     * @param Question $question
     * @param AnswerRepository $answerRepository
     * @param QuestionRepository $questionRepository
+    * @param AnswerFormValidator $answerFormValidator
     */
    public function __construct(
-      Answer             $answer,
-      Question           $question,
-      AnswerRepository   $answerRepository,
-      QuestionRepository $questionRepository
+      Answer              $answer,
+      Question            $question,
+      AnswerRepository    $answerRepository,
+      QuestionRepository  $questionRepository,
+      AnswerFormValidator $answerFormValidator
    )
    {
       $this->answer             = $answer;
       $this->question           = $question;
       $this->answerRepository   = $answerRepository;
       $this->questionRepository = $questionRepository;
+      $this->validator          = $answerFormValidator;
    }
 
    /**
@@ -68,13 +79,14 @@ class AnswersController extends \BaseController
       $question = $this->questionRepository->find($id, array());
 
       if ($question) {
-         $validation = Validator::make(Input::all(), $this->answer->getAnswerRules());
+         $input = Input::all();
+         $validation = $this->validator->with($input);
 
          if ($validation->passes()) {
             $this->answerRepository->create(array(
                'question_id' => $question->id,
                'user_id'     => Sentry::getUser()->getId(),
-               'answer'      => Input::get('answer')
+               'answer'      => trim(Input::get('answer'))
             ));
 
             $question->update(array(
@@ -86,7 +98,7 @@ class AnswersController extends \BaseController
          } else {
             return Redirect::route('question.show', $id)
                ->withInput()
-               ->withErrors($validation);
+               ->withErrors($validation->errors());
          }
       } else {
          return Redirect::route('question.index')
