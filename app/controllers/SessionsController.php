@@ -1,8 +1,6 @@
 <?php
 
 use MPP\Repository\Session\SessionRepository;
-use MPP\Validation\ValidationInterface;
-use MPP\Validation\Session\SessionFormValidator;
 use MPP\Form\Session\SessionForm;
 use Cartalyst\Sentry\Users\LoginRequiredException;
 use Cartalyst\Sentry\Users\PasswordRequiredException;
@@ -32,29 +30,25 @@ class SessionsController extends \BaseController
    protected $layout = 'layouts.master';
 
    /**
-    * Session form validator.
+    * Session form.
     *
-    * @var MPP\Validation\Session\SessionFormValidator
+    * @var MPP\Form\Session\SessionForm
     */
-   protected $validator;
-
    protected $sessionForm;
 
    /**
     * Constructor.
     *
     * @param SessionRepository $sessionRepository
-    * @param SessionFormValidator $sessionFormValidator
+    * @param SessionForm $sessionForm
     */
    public function __construct(
-      SessionRepository    $sessionRepository,
-      SessionFormValidator $sessionFormValidator,
-      SessionForm $sessionForm
+      SessionRepository $sessionRepository,
+      SessionForm       $sessionForm
    )
    {
       $this->sessionRepository = $sessionRepository;
-      $this->validator         = $sessionFormValidator;
-      $this->sessionForm      = $sessionForm;
+      $this->sessionForm       = $sessionForm;
    }
 
    /**
@@ -81,21 +75,8 @@ class SessionsController extends \BaseController
             ->withErrors($sessionForm->errors());
       } else {
          try {
-            //$remember = (Input::has('remember')) ? true : false;
-
-           // $credentials = array(
-           //    'email' => Input::get('email'),
-           //    'password' => Input::get('password'),
-           // );
-
-            //$login = $this->sessionRepository->store($credentials);
-
-            //if ($login->getId() == null) {
-            //   return Redirect::route('sessions.login');
-            //} else {
-               return Redirect::intended('/')
-                  ->with('success', 'You\'ve successfully logged in!');
-            //}
+            return Redirect::intended('/')
+               ->with('success', 'You\'ve successfully logged in!');
          } catch (LoginRequiredException $e) {
             return Redirect::route('sessions.login')
                ->withInput()

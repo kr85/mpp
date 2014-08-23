@@ -17,8 +17,7 @@ class EloquentSessionRepository implements SessionRepository
     */
    public function store($input)
    {
-      //$remember = (\Input::has('remember')) ? true : false;
-      $remember = false;
+      $remember = (isset($input['remember'])) ? true : false;
 
       $credentials = array(
          'email' => $input['email'],
