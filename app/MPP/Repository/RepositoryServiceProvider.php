@@ -12,6 +12,7 @@ use MPP\Repository\User\EloquentUserRepository;
 use User;
 use Question;
 use Answer;
+use Sentry;
 
 /**
  * Class RepositoryServiceProvider
@@ -48,7 +49,7 @@ class RepositoryServiceProvider extends ServiceProvider
    protected function registerRegisterRepository()
    {
       $this->app->bind('MPP\Repository\Register\RegisterRepository', function($app) {
-         return new EloquentRegisterRepository();
+         return new EloquentRegisterRepository(new Sentry());
       });
    }
 

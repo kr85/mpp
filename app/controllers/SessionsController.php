@@ -72,7 +72,7 @@ class SessionsController extends \BaseController
       if (!$sessionForm) {
          return Redirect::route('sessions.login')
             ->withInput()
-            ->withErrors($sessionForm->errors());
+            ->withErrors($this->sessionForm->errors());
       } else {
          try {
             return Redirect::intended('/')

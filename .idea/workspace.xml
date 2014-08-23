@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2c51222-b084-4c17-977f-cf55de2ad177" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/Session/EloquentSessionRepository.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/Session/EloquentSessionRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/Register/EloquentRegisterRepository.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/Register/EloquentRegisterRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Form/FormServiceProvider.php" afterPath="$PROJECT_DIR$/app/MPP/Form/FormServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/RegisterController.php" afterPath="$PROJECT_DIR$/app/controllers/RegisterController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php" afterPath="$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MPP/Form/Session/SessionForm.php" afterPath="$PROJECT_DIR$/app/MPP/Form/Session/SessionForm.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/SessionsController.php" afterPath="$PROJECT_DIR$/app/controllers/SessionsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/app.php" afterPath="$PROJECT_DIR$/app/config/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mpp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,79 +36,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ValidationServiceProvider.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/MPP/Validation/ValidationServiceProvider.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="7.3333335" vertical-offset="176" max-vertical-offset="1005">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionsController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/SessionsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="45" selection-start="52" selection-end="52" vertical-scroll-proportion="25.0" vertical-offset="630" max-vertical-offset="1935">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EloquentSessionRepository.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Session/EloquentSessionRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="44" selection-start="406" selection-end="406" vertical-scroll-proportion="0.375" vertical-offset="0" max-vertical-offset="760">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RepositoryServiceProvider.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="47" selection-start="2519" selection-end="2519" vertical-scroll-proportion="-34.583332" vertical-offset="535" max-vertical-offset="1605">
-              <folding>
-                <element signature="e#33#72#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/app.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="34" selection-start="4305" selection-end="4305" vertical-scroll-proportion="-15.625" vertical-offset="1440" max-vertical-offset="3195">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionForm.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/MPP/Form/Session/SessionForm.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="16" selection-start="16" selection-end="33" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="690">
-              <folding>
-                <element signature="e#35#80#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionFormValidator.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/MPP/Form/Session/SessionFormValidator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="6" selection-start="6" selection-end="33" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="405">
-              <folding>
-                <element signature="e#35#71#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FormServiceProvider.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/MPP/Form/FormServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="52" selection-start="375" selection-end="375" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="435">
+            <state line="21" column="36" selection-start="485" selection-end="485" vertical-scroll-proportion="-13.125" vertical-offset="0" max-vertical-offset="840">
               <folding>
                 <element signature="e#27#66#0" expanded="true" />
               </folding>
@@ -110,10 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ValidationInterface.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/MPP/Validation/ValidationInterface.php">
+      <file leaf-file-name="RemindersController.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/RemindersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="24" selection-start="385" selection-end="385" vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="540">
+            <state line="3" column="28" selection-start="39" selection-end="39" vertical-scroll-proportion="0.052878965" vertical-offset="0" max-vertical-offset="1335">
               <folding />
             </state>
           </provider>
@@ -132,11 +69,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/MPP/Validation/Session/SessionFormValidator.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Validation/Question/QuestionFormValidator.php" />
         <option value="$PROJECT_DIR$/app/MPP/Validation/AbstractValidator.php" />
         <option value="$PROJECT_DIR$/app/MPP/Validation/LaravelValidator.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Validation/Register/RegisterFormValidator.php" />
         <option value="$PROJECT_DIR$/app/MPP/Validation/Answer/AnswerFormValidator.php" />
         <option value="$PROJECT_DIR$/app/MPP/Validation/ValidationServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/views/qa/create.blade.php" />
@@ -172,17 +106,20 @@
         <option value="$PROJECT_DIR$/app/controllers/AnswersController.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repository/User/UserRepository.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repository/Register/RegisterRepository.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Repository/Register/EloquentRegisterRepository.php" />
-        <option value="$PROJECT_DIR$/app/controllers/RegisterController.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repository/User/EloquentUserRepository.php" />
         <option value="$PROJECT_DIR$/app/MPP/Form/Session/SessionFormValidator.php" />
-        <option value="$PROJECT_DIR$/app/config/app.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repository/Session/SessionRepository.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Form/Session/SessionForm.php" />
-        <option value="$PROJECT_DIR$/app/MPP/Form/FormServiceProvider.php" />
-        <option value="$PROJECT_DIR$/app/controllers/SessionsController.php" />
         <option value="$PROJECT_DIR$/app/MPP/Repository/Session/EloquentSessionRepository.php" />
+        <option value="$PROJECT_DIR$/app/config/app.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Form/Session/SessionForm.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Validation/Register/RegisterFormValidator.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Form/Register/RegisterFormValidator.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Form/FormServiceProvider.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Form/Register/RegisterForm.php" />
+        <option value="$PROJECT_DIR$/app/controllers/SessionsController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/RegisterController.php" />
+        <option value="$PROJECT_DIR$/app/MPP/Repository/Register/EloquentRegisterRepository.php" />
       </list>
     </option>
   </component>
@@ -244,9 +181,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="27" />
-    <option name="width" value="1049" />
-    <option name="height" value="1026" />
+    <option name="x" value="-1" />
+    <option name="y" value="26" />
+    <option name="width" value="1922" />
+    <option name="height" value="1029" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -375,6 +313,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="password" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mpp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -396,10 +356,6 @@
               <option name="myItemId" value="MPP" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Validation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -415,129 +371,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Validation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Session" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Session" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Session" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mpp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MPP" />
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -637,7 +471,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1049" height="1026" extended-state="0" />
+    <frame x="-1" y="26" width="1922" height="1029" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -645,7 +479,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38706467" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20713525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -702,43 +536,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/MPP/Validation/AbstractValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="6" selection-start="618" selection-end="656" vertical-scroll-proportion="-27.5" vertical-offset="45" max-vertical-offset="1215">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Repository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="24" selection-start="911" selection-end="911" vertical-scroll-proportion="-33.125" vertical-offset="0" max-vertical-offset="1065">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Panigable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="2" selection-start="62" selection-end="62" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Crudable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="2" selection-start="61" selection-end="61" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="720">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/AbstractEloquentRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="17" selection-start="375" selection-end="375" vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="3285">
-          <folding>
-            <element signature="e#33#72#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Question/QuestionRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="68" selection-start="280" selection-end="280" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="450">
@@ -851,13 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="22" selection-start="2867" selection-end="2867" vertical-scroll-proportion="-103.75" vertical-offset="0" max-vertical-offset="2700">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Tag.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="6" selection-start="169" selection-end="206" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="585">
@@ -921,13 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/RemindersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="28" selection-start="39" selection-end="39" vertical-scroll-proportion="19.208334" vertical-offset="506" max-vertical-offset="1335">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/QuestionsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="17" selection-start="872" selection-end="872" vertical-scroll-proportion="159.83333" vertical-offset="4616" max-vertical-offset="5445">
@@ -972,15 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.017626323" vertical-offset="0" max-vertical-offset="2070">
-          <folding>
-            <element signature="e#7#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Register/RegisterRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="275" selection-end="275" vertical-scroll-proportion="0.29964748" vertical-offset="0" max-vertical-offset="851">
@@ -994,13 +768,6 @@
           <folding>
             <element signature="e#38#84#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Register/EloquentRegisterRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="1" selection-start="439" selection-end="439" vertical-scroll-proportion="0.4054054" vertical-offset="0" max-vertical-offset="851">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1020,44 +787,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Validation/ValidationServiceProvider.php">
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Session/EloquentSessionRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="7.3333335" vertical-offset="176" max-vertical-offset="1005">
+        <state line="14" column="19" selection-start="258" selection-end="258" vertical-scroll-proportion="0.27631578" vertical-offset="0" max-vertical-offset="760">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Form/Session/SessionForm.php">
+    <entry file="file://$PROJECT_DIR$/app/MPP/Validation/ValidationServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="16" selection-start="16" selection-end="33" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="690">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
           <folding>
-            <element signature="e#35#80#0" expanded="true" />
+            <element signature="e#33#72#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php">
+    <entry file="file://$PROJECT_DIR$/app/config/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="47" selection-start="2519" selection-end="2519" vertical-scroll-proportion="-34.583332" vertical-offset="535" max-vertical-offset="1605">
-          <folding>
-            <element signature="e#33#72#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Form/FormServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="52" selection-start="375" selection-end="375" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="435">
-          <folding>
-            <element signature="e#27#66#0" expanded="true" />
-          </folding>
+        <state line="202" column="6" selection-start="8099" selection-end="8099" vertical-scroll-proportion="3.7269373" vertical-offset="0" max-vertical-offset="3180">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/MPP/Validation/ValidationInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="24" selection-start="385" selection-end="385" vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="540">
+        <state line="24" column="24" selection-start="385" selection-end="385" vertical-scroll-proportion="0.4245283" vertical-offset="0" max-vertical-offset="848">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="22" selection-start="2864" selection-end="2864" vertical-scroll-proportion="3.147914" vertical-offset="0" max-vertical-offset="2700">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Validation/Register/RegisterFormValidator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="1" selection-start="648" selection-end="648" vertical-scroll-proportion="0.42435426" vertical-offset="0" max-vertical-offset="813">
+          <folding>
+            <element signature="e#42#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Form/Register/RegisterFormValidator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="1" selection-start="642" selection-end="642" vertical-scroll-proportion="0.42435426" vertical-offset="0" max-vertical-offset="813">
+          <folding>
+            <element signature="e#36#72#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1070,23 +851,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/app.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="34" selection-start="4305" selection-end="4305" vertical-scroll-proportion="-15.625" vertical-offset="1440" max-vertical-offset="3195">
-          <folding />
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.017626323" vertical-offset="0" max-vertical-offset="1680">
+          <folding>
+            <element signature="e#7#52#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/SessionsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="45" selection-start="52" selection-end="52" vertical-scroll-proportion="25.0" vertical-offset="630" max-vertical-offset="1935">
+        <state line="74" column="53" selection-start="1766" selection-end="1766" vertical-scroll-proportion="1.3043479" vertical-offset="0" max-vertical-offset="1935">
+          <folding>
+            <element signature="e#7#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/RepositoryServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="51" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.8989424" vertical-offset="0" max-vertical-offset="1620">
+          <folding>
+            <element signature="e#33#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Register/EloquentRegisterRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="0.052878965" vertical-offset="0" max-vertical-offset="851">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/MPP/Repository/Session/EloquentSessionRepository.php">
+    <entry file="file://$PROJECT_DIR$/app/MPP/Form/Session/SessionForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="44" selection-start="406" selection-end="406" vertical-scroll-proportion="0.375" vertical-offset="0" max-vertical-offset="760">
+        <state line="32" column="31" selection-start="620" selection-end="620" vertical-scroll-proportion="0.5640423" vertical-offset="0" max-vertical-offset="1230">
+          <folding>
+            <element signature="e#35#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Form/Register/RegisterForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="31" selection-start="238" selection-end="238" vertical-scroll-proportion="0.19388954" vertical-offset="0" max-vertical-offset="851">
+          <folding>
+            <element signature="e#36#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/MPP/Form/FormServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="36" selection-start="485" selection-end="485" vertical-scroll-proportion="-13.125" vertical-offset="0" max-vertical-offset="840">
+          <folding>
+            <element signature="e#27#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/password/remind.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/password/reset.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/RemindersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="28" selection-start="39" selection-end="39" vertical-scroll-proportion="0.052878965" vertical-offset="0" max-vertical-offset="1335">
           <folding />
         </state>
       </provider>

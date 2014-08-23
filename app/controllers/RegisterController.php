@@ -1,8 +1,7 @@
 <?php
 
-use MPP\Repository\Register\RegisterRepository;
 use MPP\Repository\Session\SessionRepository;
-use MPP\Validation\Register\RegisterFormValidator;
+use MPP\Form\Register\RegisterForm;
 use Cartalyst\Sentry\Sentry as Sentry;
 
 /**
@@ -10,13 +9,6 @@ use Cartalyst\Sentry\Sentry as Sentry;
  */
 class RegisterController extends \BaseController
 {
-   /**
-    * Register repository.
-    *
-    * @var MPP\Repository\Register\RegisterRepository
-    */
-   protected $registerRepository;
-
    /**
     * Session repository.
     *
@@ -32,11 +24,11 @@ class RegisterController extends \BaseController
    protected $sentry;
 
    /**
-    * Register form validation.
+    * Register form.
     *
-    * @var
+    * @var MPP\Form\Register\RegisterForm
     */
-   protected $validator;
+   protected $registerForm;
 
    /**
     * Master layout.
@@ -48,22 +40,19 @@ class RegisterController extends \BaseController
    /**
     * Constructor.
     *
-    * @param RegisterRepository $registerRepository
     * @param SessionRepository $sessionRepository
     * @param Sentry $sentry
-    * @param RegisterFormValidator $registerFormValidator
+    * @param RegisterForm $registerForm
     */
    public function __construct(
-      RegisterRepository    $registerRepository,
-      SessionRepository     $sessionRepository,
-      Sentry                $sentry,
-      RegisterFormValidator $registerFormValidator
+      SessionRepository $sessionRepository,
+      Sentry            $sentry,
+      RegisterForm      $registerForm
    )
    {
-      $this->registerRepository = $registerRepository;
       $this->sessionRepository = $sessionRepository;
-      $this->sentry         = $sentry;
-      $this->validator      = $registerFormValidator;
+      $this->sentry            = $sentry;
+      $this->registerForm      = $registerForm;
    }
 
    /**
@@ -82,29 +71,14 @@ class RegisterController extends \BaseController
    public function store()
 	{
       $input = Input::all();
-      $validation = $this->validator->with($input);
+      $registerForm = $this->registerForm->save($input);
 
-      if (!$validation->passes()) {
+      if (!$registerForm) {
          return Redirect::back()
             ->withInput()
-            ->withErrors($validation->errors());
+            ->withErrors($this->registerForm->errors());
       } else {
-         $input = array(
-            'username'     => \Input::get('username'),
-            'email'        => \Input::get('email'),
-            'password'     => \Input::get('password'),
-            'first_name'   => \Input::get('first_name'),
-            'last_name'    => \Input::get('last_name'),
-            'permissions'  => array('general-user' => 1),
-            'activated_at' => new \DateTime()
-         );
-
-         $user = $this->registerRepository->store($input);
-         $userGroup = $this->sentry->findGroupById(2);
-         $user->addGroup($userGroup);
-
          $this->welcomeEmail($input);
-
          $login = $this->sessionRepository->store(Input::only('email', 'password'), false);
 
          if ($login->getId() != null) {
