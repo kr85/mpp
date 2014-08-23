@@ -3,6 +3,7 @@
 use MPP\Repository\Session\SessionRepository;
 use MPP\Validation\ValidationInterface;
 use MPP\Validation\Session\SessionFormValidator;
+use MPP\Form\Session\SessionForm;
 use Cartalyst\Sentry\Users\LoginRequiredException;
 use Cartalyst\Sentry\Users\PasswordRequiredException;
 use Cartalyst\Sentry\Users\WrongPasswordException;
@@ -37,6 +38,8 @@ class SessionsController extends \BaseController
     */
    protected $validator;
 
+   protected $sessionForm;
+
    /**
     * Constructor.
     *
@@ -45,11 +48,13 @@ class SessionsController extends \BaseController
     */
    public function __construct(
       SessionRepository    $sessionRepository,
-      SessionFormValidator $sessionFormValidator
+      SessionFormValidator $sessionFormValidator,
+      SessionForm $sessionForm
    )
    {
       $this->sessionRepository = $sessionRepository;
       $this->validator         = $sessionFormValidator;
+      $this->sessionForm      = $sessionForm;
    }
 
    /**
@@ -68,29 +73,29 @@ class SessionsController extends \BaseController
    public function store()
 	{
       $input = Input::all();
-      $validator = $this->validator->with($input);
+      $sessionForm = $this->sessionForm->save($input);
 
-      if (!$validator->passes()) {
+      if (!$sessionForm) {
          return Redirect::route('sessions.login')
             ->withInput()
-            ->withErrors($validator->errors());
+            ->withErrors($sessionForm->errors());
       } else {
          try {
-            $remember = (Input::has('remember')) ? true : false;
+            //$remember = (Input::has('remember')) ? true : false;
 
-            $credentials = array(
-               'email' => Input::get('email'),
-               'password' => Input::get('password'),
-            );
+           // $credentials = array(
+           //    'email' => Input::get('email'),
+           //    'password' => Input::get('password'),
+           // );
 
-            $login = $this->sessionRepository->store($credentials, $remember);
+            //$login = $this->sessionRepository->store($credentials);
 
-            if ($login->getId() == null) {
-               return Redirect::route('sessions.login');
-            } else {
+            //if ($login->getId() == null) {
+            //   return Redirect::route('sessions.login');
+            //} else {
                return Redirect::intended('/')
                   ->with('success', 'You\'ve successfully logged in!');
-            }
+            //}
          } catch (LoginRequiredException $e) {
             return Redirect::route('sessions.login')
                ->withInput()

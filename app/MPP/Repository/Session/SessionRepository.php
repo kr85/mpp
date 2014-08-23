@@ -11,10 +11,9 @@ interface SessionRepository
     * Store user's session.
     *
     * @param $credentials
-    * @param $remember
     * @return mixed
     */
-   public function store($credentials, $remember);
+   public function store($credentials);
 
    /**
     * Destroy a session.

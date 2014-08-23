@@ -131,6 +131,7 @@ return array(
       'MPP\Composer\ComposerServiceProvider',
       'MPP\Validation\ValidationServiceProvider',
       'Fedeisas\LaravelJsRoutes\LaravelJsRoutesServiceProvider',
+      'MPP\Form\FormServiceProvider',
 
 	),
 

@@ -12,15 +12,26 @@ class EloquentSessionRepository implements SessionRepository
    /**
     * Store user's session.
     *
-    * @param $credentials
-    * @param $remember
+    * @param $input
     * @return \Cartalyst\Sentry\Users\UserInterface|mixed
     */
-   public function store($credentials, $remember)
+   public function store($input)
    {
+      //$remember = (\Input::has('remember')) ? true : false;
+      $remember = false;
+
+      $credentials = array(
+         'email' => $input['email'],
+         'password' => $input['password']
+      );
+
       $login = Sentry::authenticate($credentials, $remember);
 
-      return $login;
+      if (!$login) {
+         return false;
+      }
+
+      return true;
    }
 
    /**
