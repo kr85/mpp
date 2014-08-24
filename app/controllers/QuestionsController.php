@@ -1,21 +1,14 @@
 <?php
 
 use MPP\Repository\Question\QuestionRepository;
-use MPP\Validation\Question\QuestionFormValidator;
 use MPP\Form\Question\QuestionForm;
+use MPP\Repository\Tag\TagRepository;
 
 /**
  * Class QuestionsController
  */
 class QuestionsController extends \BaseController
 {
-   /**
-    * Question model.
-    *
-    * @var Question
-    */
-   protected $question;
-
    /**
     * Question repository.
     *
@@ -24,19 +17,17 @@ class QuestionsController extends \BaseController
    protected $questionRepository;
 
    /**
-    * Tag model.
+    * Tag repository.
     *
-    * @var Tag
+    * @var MPP\Repository\Tag\TagRepository
     */
-   protected $tag;
+   protected $tagRepository;
 
    /**
-    * Question form validator.
+    * Question form.
     *
-    * @var MPP\Validation\Question\QuestionFormValidator
+    * @var MPP\Form\Question\QuestionForm
     */
-   protected $validator;
-
    protected $questionForm;
 
    /**
@@ -47,33 +38,21 @@ class QuestionsController extends \BaseController
    protected $layout = 'layouts.qa';
 
    /**
-    * Number of items displayed on the page.
+    * Constructor.
     *
-    * @var int
-    */
-   private static $pageLimit = 4;
-
-   /**
-    * Construct.
-    *
-    * @param Question $question
     * @param QuestionRepository $questionRepository
-    * @param Tag $tag
-    * @param QuestionFormValidator $questionFormValidator
+    * @param TagRepository $tagRepository
+    * @param QuestionForm $questionForm
     */
    public function __construct(
-      Question              $question,
-      QuestionRepository    $questionRepository,
-      Tag                   $tag,
-      QuestionFormValidator $questionFormValidator,
-      QuestionForm $questionForm
+      QuestionRepository $questionRepository,
+      QuestionForm       $questionForm,
+      TagRepository      $tagRepository
    )
    {
-      $this->question           = $question;
       $this->questionRepository = $questionRepository;
-      $this->tag                = $tag;
-      $this->validator          = $questionFormValidator;
-      $this->questionForm   = $questionForm;
+      $this->questionForm       = $questionForm;
+      $this->tagRepository      = $tagRepository;
    }
 
    /**
@@ -81,9 +60,10 @@ class QuestionsController extends \BaseController
     */
    public function index()
 	{
+      $pageLimit = 4;
       $page = Input::get('page', 1);
-      $data = $this->questionRepository->getByPage($page, QuestionsController::$pageLimit, array('users', 'tags', 'answers', 'votes'), 'id', 'desc');
-      $questions = Paginator::make($data->items, $data->totalItems, QuestionsController::$pageLimit);
+      $data = $this->questionRepository->getByPage($page, $pageLimit, array('users', 'tags', 'answers', 'votes'), 'id', 'desc');
+      $questions = Paginator::make($data->items, $data->totalItems, $pageLimit);
 
 		return $this->layout->content = View::make('qa.index')
          ->with('title', 'All Questions!')
@@ -267,7 +247,10 @@ class QuestionsController extends \BaseController
     */
    public function getTags()
    {
-      $tags = $this->tag->with('questions')->orderBy('tag_name', 'asc')->get();
+      $pageLimit = 100;
+      $page = Input::get('page', 1);
+      $data = $this->tagRepository->getByPage($page, $pageLimit, array('questions'), 'tag_name', 'asc');
+      $tags = Paginator::make($data->items, $data->totalItems, $pageLimit);
 
       return $this->layout->content = View::make('qa.tags')
          ->with('title', 'All Tags')
@@ -282,8 +265,9 @@ class QuestionsController extends \BaseController
     */
    public function getTaggedWith($tag)
    {
-      $tag = $this->tag->where('tag_name', $tag)->first();
-      $questions = $tag->questions()->with('users', 'tags', 'answers', 'votes')->paginate(4);
+      $pageLimit = 4;
+      $tag = $this->tagRepository->getOneWhere('tag_name', $tag, array());
+      $questions = $tag->questions()->with('users', 'tags', 'answers', 'votes')->orderBy('id', 'desc')->paginate($pageLimit);
 
       if ($tag) {
          return View::make('qa.index')
@@ -302,9 +286,10 @@ class QuestionsController extends \BaseController
     */
    public function getUnanswered()
    {
+      $pageLimit = 4;
       $page = Input::get('page', 1);
-      $data = $this->questionRepository->getByPageWhere('answered', 0, $page, QuestionsController::$pageLimit, array('users', 'tags', 'answers', 'votes'), 'id', 'desc');;
-      $questions = Paginator::make($data->items, $data->totalItems, 4);
+      $data = $this->questionRepository->getByPageWhere('answered', 0, $page, $pageLimit, array('users', 'tags', 'answers', 'votes'), 'id', 'desc');;
+      $questions = Paginator::make($data->items, $data->totalItems, $pageLimit);
 
       return $this->layout->content = View::make('qa.index')
          ->with('title', 'Unanswered Questions!')

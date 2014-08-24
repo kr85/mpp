@@ -1,4 +1,4 @@
-<?php namespace MPP\Validation\Answer;
+<?php namespace MPP\Form\Answer;
 
 use MPP\Validation\LaravelValidator;
 use MPP\Validation\ValidationInterface;
@@ -6,7 +6,7 @@ use MPP\Validation\ValidationInterface;
 /**
  * Class AnswerFormValidator
  *
- * @package MPP\Validation\Answer
+ * @package MPP\Form\Answer
  */
 class AnswerFormValidator extends LaravelValidator implements ValidationInterface
 {

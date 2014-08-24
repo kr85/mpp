@@ -1,6 +1,8 @@
 <?php namespace MPP\Form;
 
 use Illuminate\Support\ServiceProvider;
+use MPP\Form\Answer\AnswerForm;
+use MPP\Form\Answer\AnswerFormValidator;
 use MPP\Form\Question\QuestionForm;
 use MPP\Form\Question\QuestionFormValidator;
 use MPP\Form\Register\RegisterForm;
@@ -23,6 +25,7 @@ class FormServiceProvider extends ServiceProvider
       $this->registerSessionForm();
       $this->registerRegisterForm();
       $this->registerQuestionForm();
+      $this->registerAnswerForm();
    }
 
    /**
@@ -60,6 +63,19 @@ class FormServiceProvider extends ServiceProvider
          return new QuestionForm(
             $app->make('MPP\Repository\Question\QuestionRepository'),
             new QuestionFormValidator($app['validator'])
+         );
+      });
+   }
+
+   /**
+    * Register answer form.
+    */
+   public function registerAnswerForm()
+   {
+      $this->app->bind('MPP\Form\Answer\AnswerForm', function($app) {
+         return new AnswerForm(
+            $app->make('MPP\Repository\Answer\AnswerRepository'),
+            new AnswerFormValidator($app['validator'])
          );
       });
    }

@@ -8,11 +8,13 @@ use MPP\Cache\Question\QuestionCacheDecorator;
 use MPP\Repository\Question\EloquentQuestionRepository;
 use MPP\Repository\Register\EloquentRegisterRepository;
 use MPP\Repository\Session\EloquentSessionRepository;
+use MPP\Repository\Tag\EloquentTagRepository;
 use MPP\Repository\User\EloquentUserRepository;
 use User;
 use Question;
 use Answer;
 use Sentry;
+use Tag;
 
 /**
  * Class RepositoryServiceProvider
@@ -31,6 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
       $this->registerUserRepository();
       $this->registerQuestionRepository();
       $this->registerAnswerRepository();
+      $this->registerTagRepository();
    }
 
    /**
@@ -69,7 +72,10 @@ class RepositoryServiceProvider extends ServiceProvider
    protected function registerQuestionRepository()
    {
       $this->app->bind('MPP\Repository\Question\QuestionRepository', function($app) {
-         $questionRepository =  new EloquentQuestionRepository(new Question(), new \Tag());
+         $questionRepository =  new EloquentQuestionRepository(
+            new Question(),
+            $app->make('MPP\Repository\Tag\TagRepository')
+         );
 
          /* Uncomment to use cache for questions.
 
@@ -98,6 +104,16 @@ class RepositoryServiceProvider extends ServiceProvider
             new Answer()
          );*/
          return $answerRepository;
+      });
+   }
+
+   /**
+    * Register tag repository.
+    */
+   protected function registerTagRepository()
+   {
+      $this->app->bind('MPP\Repository\Tag\TagRepository', function($app) {
+         return new EloquentTagRepository(new Tag(), new Question());
       });
    }
 }
