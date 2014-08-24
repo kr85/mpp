@@ -9,19 +9,13 @@ use Sentry;
  */
 class EloquentRegisterRepository implements RegisterRepository
 {
-   protected $sentry;
-
-   public function __construct(Sentry $sentry)
-   {
-      $this->sentry = $sentry;
-   }
    /**
     * Register a new user.
     *
     * @param $input
     * @return \Cartalyst\Sentry\Users\UserInterface|mixed
     */
-   public function store($input)
+   public function create($input)
    {
       $true = 1;
       $userGroupId = 2;
@@ -37,7 +31,7 @@ class EloquentRegisterRepository implements RegisterRepository
       );
 
       $user = Sentry::register($input, true);
-      $userGroup = $this->sentry->findGroupById($userGroupId);
+      $userGroup = Sentry::findGroupById($userGroupId);
       $user->addGroup($userGroup);
 
       if (!$user) {

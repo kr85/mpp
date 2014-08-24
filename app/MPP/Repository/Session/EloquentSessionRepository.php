@@ -24,13 +24,13 @@ class EloquentSessionRepository implements SessionRepository
          'password' => $input['password']
       );
 
-      $login = Sentry::authenticate($credentials, $remember);
+      $user = Sentry::authenticate($credentials, $remember);
 
-      if (!$login) {
+      if (!$user) {
          return false;
       }
 
-      return true;
+      return $user;
    }
 
    /**

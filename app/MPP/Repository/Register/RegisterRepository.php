@@ -13,5 +13,5 @@ interface RegisterRepository
     * @param $input
     * @return mixed
     */
-   public function store($input);
+   public function create($input);
 }

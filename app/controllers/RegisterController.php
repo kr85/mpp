@@ -79,9 +79,9 @@ class RegisterController extends \BaseController
             ->withErrors($this->registerForm->errors());
       } else {
          $this->welcomeEmail($input);
-         $login = $this->sessionRepository->create(Input::only('email', 'password'), false);
+         $user = $this->sessionRepository->create(Input::only('email', 'password'), false);
 
-         if ($login->getId() != null) {
+         if ($user->getId() != null) {
             return Redirect::route('index')
                ->with('success', 'You\'ve registered and logged in successfully!');
          } else {
