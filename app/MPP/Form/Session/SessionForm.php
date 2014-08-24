@@ -1,5 +1,6 @@
 <?php namespace MPP\Form\Session;
 
+use MPP\Form\AbstractForm;
 use MPP\Repository\Session\SessionRepository;
 use MPP\Validation\ValidationInterface;
 
@@ -8,22 +9,8 @@ use MPP\Validation\ValidationInterface;
  *
  * @package MPP\Form\Session
  */
-class SessionForm
+class SessionForm extends AbstractForm
 {
-   /**
-    * Session repository.
-    *
-    * @var \MPP\Repository\Session\SessionRepository
-    */
-   protected $sessionRepository;
-
-   /**
-    * Validator.
-    *
-    * @var \MPP\Validation\ValidationInterface
-    */
-   protected $validator;
-
    /**
     * Constructor.
     *
@@ -35,43 +22,7 @@ class SessionForm
       ValidationInterface $validationInterface
    )
    {
-      $this->sessionRepository = $sessionRepository;
-      $this->validator         = $validationInterface;
-   }
-
-   /**
-    * Save the form if valid.
-    *
-    * @param array $input
-    * @return bool|mixed
-    */
-   public function save(array $input)
-   {
-      if (!$this->valid($input)) {
-         return false;
-      }
-
-      return $this->sessionRepository->store($input);
-   }
-
-   /**
-    * Return validation errors.
-    *
-    * @return mixed
-    */
-   public function errors()
-   {
-      return $this->validator->errors();
-   }
-
-   /**
-    * Check if valid.
-    *
-    * @param array $input
-    * @return mixed
-    */
-   protected function valid(array $input)
-   {
-      return $this->validator->with($input)->passes();
+      $this->repository = $sessionRepository;
+      $this->validator  = $validationInterface;
    }
 }

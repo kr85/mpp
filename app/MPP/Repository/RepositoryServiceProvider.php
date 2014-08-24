@@ -69,7 +69,7 @@ class RepositoryServiceProvider extends ServiceProvider
    protected function registerQuestionRepository()
    {
       $this->app->bind('MPP\Repository\Question\QuestionRepository', function($app) {
-         $questionRepository =  new EloquentQuestionRepository(new Question());
+         $questionRepository =  new EloquentQuestionRepository(new Question(), new \Tag());
 
          /* Uncomment to use cache for questions.
 

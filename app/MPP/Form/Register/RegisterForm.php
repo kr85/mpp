@@ -1,44 +1,28 @@
 <?php namespace MPP\Form\Register;
 
+use MPP\Form\AbstractForm;
 use MPP\Repository\Register\RegisterRepository;
 use MPP\Validation\ValidationInterface;
 
-class RegisterForm
+/**
+ * Class RegisterForm
+ *
+ * @package MPP\Form\Register
+ */
+class RegisterForm extends AbstractForm
 {
-   protected $registerRepository;
-
-   protected $validator;
-
+   /**
+    * Constructor.
+    *
+    * @param RegisterRepository $registerRepository
+    * @param ValidationInterface $validationInterface
+    */
    public function __construct(
       RegisterRepository  $registerRepository,
       ValidationInterface $validationInterface
    )
    {
-      $this->registerRepository = $registerRepository;
-      $this->validator          = $validationInterface;
-   }
-
-   public function save(array $input)
-   {
-      if (!$this->valid($input)) {
-         return false;
-      }
-
-      return $this->registerRepository->store($input);
-   }
-
-   /**
-    * Return validation errors.
-    *
-    * @return mixed
-    */
-   public function errors()
-   {
-      return $this->validator->errors();
-   }
-
-   protected function valid(array $input)
-   {
-      return $this->validator->with($input)->passes();
+      $this->repository = $registerRepository;
+      $this->validator  = $validationInterface;
    }
 }

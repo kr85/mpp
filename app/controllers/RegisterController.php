@@ -79,7 +79,7 @@ class RegisterController extends \BaseController
             ->withErrors($this->registerForm->errors());
       } else {
          $this->welcomeEmail($input);
-         $login = $this->sessionRepository->store(Input::only('email', 'password'), false);
+         $login = $this->sessionRepository->create(Input::only('email', 'password'), false);
 
          if ($login->getId() != null) {
             return Redirect::route('index')

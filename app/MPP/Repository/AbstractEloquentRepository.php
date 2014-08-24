@@ -92,10 +92,11 @@ abstract class AbstractEloquentRepository implements Repository, Crudable, Panig
    /**
     * Update an entity.
     *
+    * @param $id
     * @param array $data
     * @return bool|int|mixed
     */
-   public function update(array $data)
+   public function update($id, array $data)
    {
       return $this->model->update($data);
    }

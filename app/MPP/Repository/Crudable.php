@@ -27,10 +27,11 @@ interface Crudable
    /**
     * Update.
     *
+    * @param $id
     * @param array $data
     * @return mixed
     */
-   public function update(array $data);
+   public function update($id, array $data);
 
    /**
     * Delete.

@@ -13,7 +13,7 @@ interface SessionRepository
     * @param $credentials
     * @return mixed
     */
-   public function store($credentials);
+   public function create($credentials);
 
    /**
     * Destroy a session.

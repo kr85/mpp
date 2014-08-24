@@ -2,6 +2,7 @@
 
 use MPP\Repository\Question\QuestionRepository;
 use MPP\Validation\Question\QuestionFormValidator;
+use MPP\Form\Question\QuestionForm;
 
 /**
  * Class QuestionsController
@@ -36,6 +37,8 @@ class QuestionsController extends \BaseController
     */
    protected $validator;
 
+   protected $questionForm;
+
    /**
     * Questions/Answers layout.
     *
@@ -51,7 +54,7 @@ class QuestionsController extends \BaseController
    private static $pageLimit = 4;
 
    /**
-    * Constructor.
+    * Construct.
     *
     * @param Question $question
     * @param QuestionRepository $questionRepository
@@ -62,13 +65,15 @@ class QuestionsController extends \BaseController
       Question              $question,
       QuestionRepository    $questionRepository,
       Tag                   $tag,
-      QuestionFormValidator $questionFormValidator
+      QuestionFormValidator $questionFormValidator,
+      QuestionForm $questionForm
    )
    {
       $this->question           = $question;
       $this->questionRepository = $questionRepository;
       $this->tag                = $tag;
       $this->validator          = $questionFormValidator;
+      $this->questionForm   = $questionForm;
    }
 
    /**
@@ -101,65 +106,19 @@ class QuestionsController extends \BaseController
    public function store()
 	{
       $input = Input::all();
-      $validation = $this->validator->with($input);
+      $question = $this->questionForm->save($input);
 
-      if ($validation->passes()) {
-         $question = $this->questionRepository->create(array(
-            'user_id'  => Sentry::getUser()->getId(),
-            'title'    => trim(Input::get('title')),
-            'question' => trim(Input::get('question'))
-         ));
-
-         $questionId = $question->id;
-         $this->handleTags($questionId);
-
+      if ($question) {
          return Redirect::route('question.index')
             ->with('success','Your question has been successfully created! '.HTML::linkRoute(
-                  'question.show', 'Click here to see your question', $questionId));
+                  'question.show', 'Click here to see your question', $question->id));
 
       } else {
          return Redirect::back()
             ->withInput()
-            ->withErrors($validation->errors());
+            ->withErrors($this->questionForm->errors());
       }
 	}
-
-   /**
-    * Helper function. Handles tags.
-    *
-    * @param $questionId
-    */
-   protected function handleTags($questionId)
-   {
-      $question = $this->question->find($questionId);
-
-      if (Str::length(Input::get('tags'))) {
-         $tagsArray = explode(',', Input::get('tags'));
-
-         if (count($tagsArray)) {
-            foreach ($tagsArray as $tag) {
-               $tag = trim($tag);
-
-               if (Str::length(Str::slug($tag))) {
-                  $tagName = Str::slug($tag);
-
-                  $tagCheck = $this->tag->where('tag_name', $tagName);
-
-                  if ($tagCheck->count() == 0) {
-                     $tagInfo = $this->tag->create(array(
-                        'tag'      => $tag,
-                        'tag_name' => $tagName
-                     ));
-                  } else {
-                     $tagInfo = $tagCheck->first();
-                  }
-               }
-
-               $question->tags()->attach($tagInfo->id);
-            }
-         }
-      }
-   }
 
    /**
     * Displays a question by id.
@@ -212,16 +171,11 @@ class QuestionsController extends \BaseController
     */
    public function update($id)
 	{
-      $question = $this->questionRepository->find($id, array('users', 'tags', 'answers', 'votes'));
       $input = Input::all();
-      $validation = $this->validator->with($input);
 
-      if ($validation->passes()) {
-         $question->update(array(
-            'title'    => trim(Input::get('title')),
-            'question' => trim(Input::get('question'))
-         ));
+      $question = $this->questionForm->update($id, $input);
 
+      if ($question) {
          return $this->layout->content = View::make('qa.show')
             ->with('title', $question->title)
             ->with('question', $question)
@@ -229,7 +183,7 @@ class QuestionsController extends \BaseController
       } else {
          return Redirect::back()
             ->withInput()
-            ->withErrors($validation->errors());
+            ->withErrors($this->questionForm->errors());
       }
 	}
 

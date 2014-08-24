@@ -15,7 +15,7 @@ class EloquentSessionRepository implements SessionRepository
     * @param $input
     * @return \Cartalyst\Sentry\Users\UserInterface|mixed
     */
-   public function store($input)
+   public function create($input)
    {
       $remember = (isset($input['remember'])) ? true : false;
 
